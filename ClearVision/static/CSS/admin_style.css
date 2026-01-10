@@ -1,0 +1,411 @@
+body {
+    background-color: #f1f3f64f !important;
+    font-family: Inter, -apple-system, Helvetica, Arial, sans-serif !important;
+    font-size: 17px !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    color: #212121 !important;
+}
+
+#loader {
+    position: fixed !important;
+    top: 50% !important;
+    z-index: 1 !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: -76px 0 0 -76px !important;
+    border: 5px solid #f3f3f3 !important;
+    border-radius: 50% !important;
+    border-top: 5px solid rgba(0, 0, 255, 0.67) !important;
+    -webkit-animation: spin .5s linear infinite !important;
+    animation: spin .5s linear infinite !important;
+    background-color: white !important;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+#myDiv {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d8d4d4 !important;
+    border-radius: 10px !important;
+}
+
+#menu .active {
+    color: black !important;
+    background-color: #8a2be21a !important;
+    border-radius: 50px !important;
+}
+
+#goggles_view .active,
+#add_products .active,
+#brand_view .active {
+    color: black !important;
+    background-color: #f3e9fc !important;
+    border: 0 !important;
+}
+
+#goggles_view .tab-pane,
+#add_products .tab-pane,
+#brand_view .tab-pane {
+    background-color: white !important;
+}
+
+#dashboard header #headerfirstblock a .row #clearvision_logo img {
+    width: 182px !important;
+}
+
+header .header-first-block ul li a {
+    font-size: 20px !important;
+    color: black !important;
+}
+
+header .header-second-block div div form input {
+    font-size: 15px !important;
+}
+
+header #headersecondblock div .second-block .dropdown ul {
+    position: absolute !important;
+    top: 35px !important;
+    left: -40px !important;
+    /* width: 100% !important; */
+    font-size: 17px !important;
+}
+
+#dropdown1:hover>#dropdown-menu1 {
+    display: block !important;
+}
+
+#dropdown1>#dropdown-toggle1:active {
+    pointer-events: none !important;
+}
+
+/* ------------------------------------------------------------------- */
+/* Categories */
+/* ------------------------------------------------------------------- */
+
+#categories #typebox {
+    width: 49% !important;
+    border-top: 3px solid #0000ff75 !important;
+}
+
+#categories #typeimg {
+    width: 17vw !important;
+    height: 100px !important;
+}
+
+#categoriesedit form label,
+#categoriesedit form button,
+#categoriesedit form a {
+    font-weight: 500 !important;
+}
+
+#categoriesedit #blah {
+    width: 0 !important;
+    max-width: 20% !important;
+}
+
+#categoriesedit form button,
+#categoriesedit form a {
+    font-size: 1.4rem !important;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;
+}
+
+#categoriesedit form input {
+    font-weight: 450 !important;
+}
+
+#allbox:hover>#alledit,
+#allbox:hover>#alldelete,
+#menbox:hover>#menedit,
+#menbox:hover>#mendelete,
+#womenbox:hover>#womenedit,
+#womenbox:hover>#womendelete,
+#kidsbox:hover>#kidsedit,
+#kidsbox:hover>#kidsdelete {
+    display: block !important;
+}
+
+/* ------------------------------------------------------------------- */
+/* Add_product */
+/* ------------------------------------------------------------------- */
+
+#add_products #addproductsbox table thead tr th h4 {
+    color: #000000d4 !important;
+}
+
+#add_products #addproductsbox table tbody tr td h5 {
+    color: #00000090 !important;
+}
+
+/* ------------------------------------------------------------------- */
+/* Brands */
+/* ------------------------------------------------------------------- */
+
+#brands table thead tr th h4,
+#brand_view table thead tr th h4 {
+    color: #000000d4 !important;
+}
+
+#brands table tbody tr td h5,
+#brand_view table tbody tr td h5 {
+    color: #00000090 !important;
+}
+
+/* ------------------------------------------------------------------- */
+/* Coupons */
+/* ------------------------------------------------------------------- */
+
+#BrandSearchBox,
+#BrandSearchButton,
+#CategoriesSearchBox,
+#CategoriesSearchButton,
+#GogglesSearchBox,
+#GogglesSearchButton {
+    border: none !important;
+    border-radius: 0px !important;
+    font-family: math !important;
+}
+
+.BrandHidden,
+.CategoriesHidden,
+.GogglesHidden {
+    display: none;
+}
+
+#BrandSearchBox:focus+#BrandSearchButton,
+#BrandSearchBox:focus,
+#CategoriesSearchBox:focus+#CategoriesSearchButton,
+#CategoriesSearchBox:focus,
+#GogglesSearchBox:focus+#GogglesSearchButton,
+#GogglesSearchBox:focus {
+    box-shadow: none !important;
+    border-bottom: 2px solid blue !important;
+}
+
+#coupons #addcoupons .modal-body form div #gender_select .modal-overlay-gender,
+#coupons #addcoupons .modal-body form div #brand_select .modal-overlay-brand,
+#coupons #addcoupons .modal-body form div #categories_select .modal-overlay-categories,
+#coupons #addcoupons .modal-body form div #goggles_select .modal-overlay-goggles {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#coupons #addcoupons .modal-body form div #gender_select .modal-overlay-gender .modal-wrapper-gender {
+    width: 300px;
+    background: ghostwhite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color) !important;
+}
+
+#coupons #addcoupons .modal-body form div #brand_select .modal-overlay-brand .modal-wrapper-brand {
+    background: white !important;
+    width: 91% !important;
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color) !important;
+}
+
+#coupons #addcoupons .modal-body form div #categories_select .modal-overlay-categories .modal-wrapper-categories {
+    background: white !important;
+    width: 91% !important;
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color) !important;
+}
+
+#coupons #addcoupons .modal-body form div #goggles_select .modal-overlay-goggles .modal-wrapper-goggles {
+    background: white !important;
+    width: 91% !important;
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color) !important;
+}
+
+#coupons #addcoupons .modal-body form div #gender_select .modal-overlay-gender .modal-wrapper-gender .close-btn-wrapper-gender,
+#coupons #addcoupons .modal-body form div #brand_select .modal-overlay-brand .modal-wrapper-brand .close-btn-wrapper-brand,
+#coupons #addcoupons .modal-body form div #categories_select .modal-overlay-categories .modal-wrapper-categories .close-btn-wrapper-categories,
+#coupons #addcoupons .modal-body form div #goggles_select .modal-overlay-goggles .modal-wrapper-goggles .close-btn-wrapper-goggles {
+    display: flex;
+}
+
+#coupons #addcoupons .modal-body form div #gender_select .modal-overlay-gender .modal-wrapper-gender .modal-content-gender,
+#coupons #addcoupons .modal-body form div #brand_select .modal-overlay-brand .modal-wrapper-brand .modal-content-brand,
+#coupons #addcoupons .modal-body form div #categories_select .modal-overlay-categories .modal-wrapper-categories .modal-content-categories,
+#coupons #addcoupons .modal-body form div #goggles_select .modal-overlay-goggles .modal-wrapper-goggles .modal-content-goggles {
+    margin: 20px auto;
+    max-width: 420px;
+    width: 100%;
+}
+
+#coupons #addcoupons .modal-body form div #gender_select .hide-gender,
+#coupons #addcoupons .modal-body form div #brand_select .hide-brand,
+#coupons #addcoupons .modal-body form div #categories_select .hide-categories,
+#coupons #addcoupons .modal-body form div #goggles_select .hide-goggles {
+    display: none;
+}
+
+#coupons #addcoupons .modal-body form div #gender_select .modal-overlay-gender .modal-wrapper-gender h1,
+#coupons #addcoupons .modal-body form div #brand_select .modal-overlay-brand .modal-wrapper-brand h1,
+#coupons #addcoupons .modal-body form div #categories_select .modal-overlay-categories .modal-wrapper-categories h1,
+#coupons #addcoupons .modal-body form div #goggles_select .modal-overlay-goggles .modal-wrapper-goggles h1 {
+    text-align: center;
+}
+
+#BrandName,
+#CategoriesName,
+#GogglesName {
+    width: 151px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    color: #00000090 !important;
+    font-weight: 600 !important;
+}
+
+#coupons #addcoupons h4 {
+    font-size: 18px !important;
+}
+
+#coupons #addcoupons select {
+    font-size: 16px !important;
+}
+
+#coupons #addcoupons input {
+    font-size: 16px !important;
+}
+
+#coupons #addcoupons button {
+    font-size: 16px !important;
+}
+
+#coupons #addcoupons textarea {
+    font-size: 16px !important;
+}
+
+#coupons table thead tr th h4,
+#coupons_view table thead tr th h4 {
+    color: #000000d4 !important;
+}
+
+#coupons table tbody tr td h5,
+#coupons_view table tbody tr td h5 {
+    color: #00000090 !important;
+}
+
+/* ------------------------------------------------------------------- */
+/* User */
+/* ------------------------------------------------------------------- */
+
+#users #userstable table thead tr th h4 {
+    color: #000000d4 !important;
+}
+
+#users #userstable table tbody tr td h5 {
+    color: #00000090 !important;
+}
+
+@media only screen and (max-width: 855px) {
+
+    #categories #typebox {
+        width: 100% !important;
+    }
+
+    #categories #typeimg {
+        width: 40vw !important;
+        height: 100px !important;
+    }
+
+    #categoriesedit form .col-2 {
+        width: 49% !important;
+    }
+
+    #categoriesedit form #image .col-4 {
+        width: 60% !important;
+    }
+
+    #categoriesedit #blah {
+        max-width: 100% !important;
+    }
+
+    #categoriesedit form #name .col-4,
+    #categoriesedit form #information .col-5,
+    #categoriesedit .col-5 {
+        width: 100% !important;
+    }
+
+    #categoriesedit #button .col-3 {
+        width: 50% !important;
+    }
+
+}

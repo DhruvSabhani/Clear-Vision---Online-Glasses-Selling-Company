@@ -1,0 +1,242 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="" id="brands">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">
+            brands
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+    <div class="text-decoration-none text-dark rounded-2 me-2 bg-white w-100 shadow-sm p-3 mb-5 bg-body" id="brandtable"
+        style="border-top: 3px solid #0000ff75 !important;overflow-y: scroll !important;">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr style="text-align: center !important;">
+                    <th scope="col">
+                        <h4>No.</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Operation</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>ID</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Font Image</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>is active</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Name</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Informations</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Date and Time</h4>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for brands in goggles_brand %}
+                <tr class="text-center">
+                    <th scope="row">
+                        <h5 style="width: 30px !important;">
+                            {% if '0123456789'|make_list %}
+                            {{ forloop.counter }}
+                            {% endif %}
+                        </h5>
+                    </th>
+
+                    <td title="Data View || Edit || Delete">
+                        <a href="/brands/view-{{ brands.goggles_brand_id }}/"
+                            class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                            style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #f5d162 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                            <span>
+                                <span>View</span>
+                            </span>
+                        </a>
+
+                        <a href="/brands/edit-{{ brands.goggles_brand_id }}/"
+                            class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                            style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #0000ff57 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                            <span>
+                                <span>Edit</span>
+                            </span>
+                        </a>
+
+                        <a href="/brands/delete-{{ brands.goggles_brand_id }}/"
+                            class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                            onClick="return confirm('Are you sure you want to delete?')"
+                            style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #ff0000b5 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                            <span>
+                                <span>Delete</span>
+                            </span>
+                        </a>
+                    </td>
+
+                    <td title="ID = {{brands.goggles_brand_id}}">
+                        {% if brands.goggles_brand_id == '' %}
+                        <h5 style="width: 30px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 30px !important;">{{brands.goggles_brand_id}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Font Image={{brands.goggles_brand_img}}">
+                        {% if brands.goggles_brand_img != '' %}
+                        <h5 style="width: 100px !important;">
+                            <img src="/Images/{{brands.goggles_brand_img}}" alt="{{brands.goggles_brand_name}} Image"
+                                class="d-flex justify-content-center align-items-center" width="100" height="100">
+                        </h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="is active = {{brands.is_active}}">
+                        {% if brands.is_active == '' %}
+                        <h5 style="width: 70px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 70px !important;">{{brands.is_active}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Name = {{brands.goggles_brand_name}}">
+                        {% if brands.goggles_brand_name == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">{{brands.goggles_brand_name}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Informations = {{brands.goggles_brand_informations}}">
+                        {% if brands.goggles_brand_informations == '' %}
+                        <h5 style="width: 500px !important;">
+                            -
+                        </h5>
+                        {% else %}
+                        <h5 style="width: 500px !important;">
+                            {{brands.goggles_brand_informations}}
+                        </h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="DateTime = {{brands.joind_date}} {{brands.joind_time}}">
+                        {% if brands.joind_date == '' and brands.joind_time == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">
+                            {{brands.joind_date}}
+                            {{brands.joind_time}}
+                        </h5>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="position-fixed translate-middle-x" style="bottom: 5% !important; left: 60% !important;" id="add">
+        <button type="button" class="btn rounded-circle" data-bs-toggle="modal" data-bs-target="#addbrand"
+            style="background: rgba(0, 0, 0, 0.665) !important;box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">
+            <i class="fa fa-plus fs-1 p-1 text-white"></i>
+        </button>
+    </div>
+    <div class="modal" id="addbrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="addbrandLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center p-2 m-2">
+                    <h4 class="modal-title" id="addbrandLabel">ADD BRAND</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col-7">
+                                {{ brand_form.goggles_brand_id }}
+                            </div>
+
+                            <div class="col">
+                                <select class="form-select form-select-sm" id="id_is_active" name="is_active"
+                                    aria-label=".form-select-sm example" style="font-size: 19px !important;">
+                                    <option value="True" selected>True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col">
+                                {{ brand_form.goggles_brand_img }}
+                            </div>
+
+                            <img src="#" alt="" class="col" id="blah" style="width: 0;">
+
+                        </div>
+                        <script>
+                            id_goggles_brand_img.onchange = evt => {
+                                const [file] = id_goggles_brand_img.files
+                                if (file) {
+                                    blah.src = URL.createObjectURL(file)
+                                }
+                            }
+                        </script>
+
+                        <div class="mb-3">
+                            {{ brand_form.goggles_brand_name }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ brand_form.goggles_brand_informations }}
+                        </div>
+
+                        <div class="mb-3 d-none">
+                            <input type="text" class="form-control text-black" value="{{ datetime|date:'Y-m-d' }}"
+                                name="joind_date" required id="id_joind_date">
+                        </div>
+
+                        <div class="mb-3 d-none">
+                            <input type="text" class="form-control text-black" value="{{ datetime|time:'G:i' }}"
+                                name="joind_time" required id="id_joind_time">
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col modal-footer d-flex justify-content-center align-items-center">
+                                <button type="submit" class="btn btn-primary w-100 rounded-2 fs-4" name="submit"
+                                    value="submit"
+                                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">ADD</button>
+                            </div>
+                            <div class="col modal-footer d-flex justify-content-center align-items-center">
+                                <button type="button" class="btn btn-secondary w-100 rounded-2 fs-4"
+                                    data-bs-dismiss="modal"
+                                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

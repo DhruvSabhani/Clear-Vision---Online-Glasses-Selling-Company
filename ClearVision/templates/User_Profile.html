@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+
+{% include "alert.html" %}
+{% if request.user.is_authenticated %}
+<section class="d-flex justify-content-center align-items-center">
+    <div class="row container-xl p-0 m-0">
+        <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
+            <div class="p-5">
+                <div class="row">
+                    <div class="col d-flex justify-content-center align-items-center">
+                        <img src="{% static 'Images/avatar.png' %}" alt="User Profile" class="rounded-circle"
+                            width="200">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-black">{{request.user.username}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 bsb-tpl-bg-lotion" id="first-col">
+            <div class="p-md-4 p-xl-5">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col rounded-5 bg-white" style="box-shadow: var(--bs-box-shadow-sm) !important;">
+                        <form action="" method="POST" class="p-3 m-3">
+                            {% csrf_token %}
+
+                            <div class="row mb-3">
+                                <label for="name_register" class="form-label fw-bold fs-6 text-start p-0 m-0"
+                                    style="color: #00000090 !important;">Username</label>
+                                <input type="text" class="form-control border-2 fs-4 p-0 m-0" id="name_register"
+                                    name="name_register" placeholder="Username" value="{{request.user.username}}">
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="phone_register" class="form-label fw-bold fs-6 text-start p-0 m-0"
+                                    style="color: #00000090 !important;">Phone No.</label>
+                                <input type="number" class="form-control border-2 fs-4 p-0 m-0" id="phone_register"
+                                    name="phone_register" placeholder="Phone No." value="{{request.user.phone_no}}">
+                            </div>
+
+                            <div class="row mb-3">
+                                {% if request.user.gender == 'Male' %}
+                                <div class="col">
+                                    <div class="row mb-2">
+                                        <label class="form-check-label" for="male">
+                                            <img src="{% static 'Images/man.png' %}" alt="Male avatar"
+                                                class="rounded-circle" width="60" height="60">
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <input class="form-check" type="radio" name="gender_register" id="male"
+                                            value="Male" checked>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="col">
+                                    <div class="row mb-2">
+                                        <label class="form-check-label" for="male">
+                                            <img src="{% static 'Images/man.png' %}" alt="Male avatar"
+                                                class="rounded-circle" width="60" height="60">
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <input class="form-check" type="radio" name="gender_register" id="male"
+                                            value="Male">
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                {% if request.user.gender == 'Female' %}
+                                <div class="col">
+                                    <div class="row mb-2">
+                                        <label class="form-check-label" for="female">
+                                            <img src="{% static 'Images/woman.png' %}" alt="Male avatar"
+                                                class="rounded-circle" width="60" height="60">
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <input class="form-check" type="radio" name="gender_register" id="female"
+                                            value="Female" checked>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="col">
+                                    <div class="row mb-2">
+                                        <label class="form-check-label" for="female">
+                                            <img src="{% static 'Images/woman.png' %}" alt="Male avatar"
+                                                class="rounded-circle" width="60" height="60">
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <input class="form-check" type="radio" name="gender_register" id="female"
+                                            value="Female">
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                {% if request.user.gender == 'Other' %}
+                                <div class="col">
+                                    <div class="row mb-2">
+                                        <label class="form-check-label" for="other">
+                                            <img src="{% static 'Images/other.png' %}" alt="Other avatar"
+                                                class="rounded-circle" width="60" height="60">
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <input class="form-check" type="radio" name="gender_register" id="other"
+                                            value="Other" checked>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="col">
+                                    <div class="row mb-2">
+                                        <label class="form-check-label" for="other">
+                                            <img src="{% static 'Images/other.png' %}" alt="Other avatar"
+                                                class="rounded-circle" width="60" height="60">
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <input class="form-check" type="radio" name="gender_register" id="other"
+                                            value="Other">
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="email_register" class="form-label fw-bold fs-6 text-start p-0 m-0"
+                                    style="color: #00000090 !important;">Email</label>
+                                <input type="email" class="form-control border-2 fs-4 p-0 m-0" id="email_register"
+                                    name="email_register" placeholder="Email ID" value="{{request.user.email}}">
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="birthday_register" class="form-label fw-bold fs-6 text-start p-0 m-0"
+                                    style="color: #00000090 !important;">Birthday</label>
+                                <input type="text" class="form-control border-2 fs-4 p-0 m-0" id="birthday_register"
+                                    name="birthday_register" placeholder="birthday" value="{{request.user.birthday}}">
+                            </div>
+
+                            <div class="row">
+                                <hr>
+                            </div>
+
+                            <div class="row">
+                                <button type="submit" class="btn btn-primary w-100 rounded-2"
+                                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;font-size: 17px !important;">
+                                    Update</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

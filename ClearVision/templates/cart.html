@@ -1,0 +1,564 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+{% for gid in g_id %}
+<div class="container-fluid">
+    <div class="row shadow bg-body rounded-3 p-0 m-0" style="box-shadow: 0 0 8px 0 rgba(0, 0, 0, .18) !important;">
+        <div class="col-20 col-md-8">
+            <div>
+                {% if gid.goggles_font_img != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#font_img">
+                    <img src="/Images/{{ gid.goggles_font_img }}" class="rounded-3 m-1 hover-opacity"
+                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                        style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="font_img" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="font_imgLabel" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_font_img }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img1 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img1">
+                    <img src="/Images/{{ gid.goggles_img1 }}" class="rounded-3 m-1 hover-opacity"
+                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                        style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img1Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img1 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img2 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img2">
+                    <img src="/Images/{{ gid.goggles_img2 }}" class="rounded-3 m-1" alt="{{ gid.goggles_name }} Image"
+                        title="{{ gid.goggles_name }}" style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img2Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img2 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img3 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img3">
+                    <img src="/Images/{{ gid.goggles_img3 }}" class="rounded-3 m-1" alt="{{ gid.goggles_name }} Image"
+                        title="{{ gid.goggles_name }}" style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img3Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img3 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img4 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img4">
+                    <img src="/Images/{{ gid.goggles_img4 }}" class="rounded-3 m-1" alt="{{ gid.goggles_name }} Image"
+                        title="{{ gid.goggles_name }}" style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img4Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img4 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img5 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img5">
+                    <img src="/Images/{{ gid.goggles_img5 }}" class="rounded-3 m-1" alt="{{ gid.goggles_name }} Image"
+                        title="{{ gid.goggles_name }}" style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img5Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img5 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img6 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img6">
+                    <img src="/Images/{{ gid.goggles_img6 }}" class="rounded-3 m-1" alt="{{ gid.goggles_name }} Image"
+                        title="{{ gid.goggles_name }}" style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img6Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img6 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img7 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img7">
+                    <img src="/Images/{{ gid.goggles_img7 }}" class="rounded-3 m-1" alt="{{ gid.goggles_name }} Image"
+                        title="{{ gid.goggles_name }}" style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img7Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img7 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img8 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img8">
+                    <img src="/Images/{{ gid.goggles_img8 }}" class="rounded-3 m-1" alt="{{ gid.goggles_name }} Image"
+                        title="{{ gid.goggles_name }}" style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img8" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img8Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img8 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img9 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img9">
+                    <img src="/Images/{{ gid.goggles_img9 }}" class="rounded-3 m-1" alt="{{ gid.goggles_name }} Image"
+                        title="{{ gid.goggles_name }}" style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img9" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img9Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img9 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gid.goggles_img10 != '' %}
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img10">
+                    <img src="/Images/{{ gid.goggles_img10 }}" class="rounded-3 m-1" alt="{{ gid.goggles_name }} Image"
+                        title="{{ gid.goggles_name }}" style="width: 31vw !important;">
+                </a>
+                <div class="modal" id="img10" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="img10Label" data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gid.goggles_img10 }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gid.goggles_name }} Image" title="{{ gid.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-20 col-md-4 bsb-tpl-bg-lotion border-start">
+            <div class="p-3">
+                <div class="row fs-1 p-1 fw-bold">
+                    <div class="col-10 text-start">
+                        {% if gid.goggles_name != '' %}
+                        {{gid.goggles_name}}
+                        {% endif %}
+                    </div>
+                    <div class="col-1 text-end">
+                        <button class="text-decoration-none border-0 bg-body" title="share goggle">
+                            <span class="fa fa-heart fa-xs" id="heart" style="color: #00000090 !important;"
+                                onclick="heart_click()"></span>
+                        </button>
+                    </div>
+                    <div class="col-1 text-end btn-group" id="share">
+                        <a href="" class="text-decoration-none dropdown-toggle" title="share goggle"
+                            data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <span class="fa fa-share-nodes fa-xs" style="color: #00000090 !important;"></span>
+                        </a>
+                        <div class="row dropdown-menu" id="share_menu">
+                            <div class="col">
+                                <a href="" class="text-decoration-none" title="share goggle">
+                                    <span class="fa-brands fa-whatsapp fa-xs"
+                                        style="color: #00000090 !important;"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-start">
+                    <div class="rate text-start">
+                        {% if gid.goggles_review != '' %}
+                        <span class="fa fa-star fs-6 checked"></span>
+                        <span class="fa fa-star fs-6 checked"></span>
+                        <span class="fa fa-star fs-6 checked"></span>
+                        <span class="fa fa-star fs-6" style="color: #00000090 !important;"></span>
+                        <span class="fa fa-star fs-6" style="color: #00000090 !important;"></span>
+                        &nbsp;
+                        <span class="fs-6">{{gid.goggles_review}} Reviews</span>
+                        {% endif %}
+                        &nbsp;
+                        <span><i class="fa-solid fa-bag-shopping fs-6"></i>&nbsp;1 Orders</span>
+                    </div>
+                </div>
+                <div class="row text-start fs-2 p-1 fw-bold">
+                    {% if gid.goggles_price != '' %}
+                    ₹{{gid.goggles_price}}.00
+                    {% endif %}
+                </div>
+                <div class="row text-start p-1 fw-normal" style="color: #00000090 !important;">
+                    {% if gid.goggles_informations != '' %}
+                    {{gid.goggles_informations}}
+                    {% endif %}
+                </div>
+                <div class="row text-start p-1">
+                    <div class="col-4 fw-bold">
+                        {% for gb in g_brand %}
+                        {% if gb.goggles_brand_name != '' %}
+                        <p>Brand</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% if gid.goggles_color != '' %}
+                        <p>Color</p>
+                        {% endif %}
+                        {% if gid.goggles_material != '' %}
+                        <p>Material</p>
+                        {% endif %}
+                        {% if gid.goggles_size != '' %}
+                        <p>Size</p>
+                        {% endif %}
+                        <div class="p-0 m-0" id="details1" style="display: none !important;">
+                            {% for type in g_type%}
+                            {% if type.goggles_types_name != '' %}
+                            <p>Type</p>
+                            {% endif %}
+                            {% endfor %}
+                            {% if gid.goggles_gender != '' %}
+                            <p>Gender</p>
+                            {% endif %}
+                            {% if gid.goggles_model_name != '' %}
+                            <p>Modal Name</p>
+                            {% endif %}
+                            {% if gid.goggles_width != '' %}
+                            <p>Width</p>
+                            {% endif %}
+                            {% if gid.goggles_height != '' %}
+                            <p>Height</p>
+                            {% endif %}
+                            {% if gid.goggles_weight != '' %}
+                            <p>Weight</p>
+                            {% endif %}
+                            {% if gid.goggles_shape != '' %}
+                            <p>Shap</p>
+                            {% endif %}
+                        </div>
+                        <button class="btn text-start p-0 m-0 text-decoration-none w-75 border-0" id="show_down"
+                            onclick="down_details()"
+                            style="margin-top: -15px !important;color: #00000090 !important;"><i
+                                class="fa-solid fa-caret-down"></i> Details</button>
+                        <button class="btn text-start p-0 m-0 text-decoration-none w-75 border-0" id="show_up"
+                            onclick="up_details()"
+                            style="margin-top: -15px !important; display: none !important;color: #00000090 !important;"><i
+                                class="fa-solid fa-caret-up"></i> Details</button>
+                    </div>
+                    <div class="col p-0 m-0">
+                        {% for gb in g_brand %}
+                        {% if gb.goggles_brand_name != '' %}
+                        <p>
+                            {{gb.goggles_brand_name}}
+                        </p>
+                        {% endif %}
+                        {% endfor %}
+                        {% if gid.goggles_color != '' %}
+                        <p>{{gid.goggles_color}}</p>
+                        {% endif %}
+                        {% if gid.goggles_material != '' %}
+                        <p>{{gid.goggles_material}}</p>
+                        {% endif %}
+                        {% if gid.goggles_size != '' %}
+                        <p>{{gid.goggles_size}}</p>
+                        {% endif %}
+                        <div class="p-0 m-0" id="details2" style="display: none !important;">
+                            {% for type in g_type %}
+                            {% if type.goggles_types_name != '' %}
+                            <p>{{type.goggles_types_name}}</p>
+                            {% endif %}
+                            {% endfor %}
+                            {% if gid.goggles_gender != '' %}
+                            <p>{{gid.goggles_gender}}</p>
+                            {% endif %}
+                            {% if gid.goggles_model_name != '' %}
+                            <p>{{gid.goggles_model_name}}</p>
+                            {% endif %}
+                            {% if gid.goggles_width != '' %}
+                            <p>{{gid.goggles_width}}</p>
+                            {% endif %}
+                            {% if gid.goggles_height != '' %}
+                            <p>{{gid.goggles_height}}</p>
+                            {% endif %}
+                            {% if gid.goggles_weight != '' %}
+                            <p>{{gid.goggles_weight}}</p>
+                            {% endif %}
+                            {% if gid.goggles_shape != '' %}
+                            <p>{{gid.goggles_shape}}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row text-start p-1">
+                    <div class="col-5 text-start">
+                        <p class="fs-4 fw-bold">Quantity</p>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example"
+                            style="width: 35px !important;">
+                            <button type="button"
+                                class="btn btn-outline-primary m-1 fs-4 d-flex justify-content-center align-items-center"
+                                id="plus" onclick="plus_fun();" style="border-color: #00000090 !important;">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <input type="text" name="qty" id="qty"
+                                class="btn btn-outline-primary m-1 fs-4 d-flex justify-content-center align-items-center"
+                                min="1" max="5" value="1"
+                                style="width: 35px !important; border-color: #00000090 !important;" readonly>
+                            <button type="button"
+                                class="btn btn-outline-primary m-1 fs-4 d-flex justify-content-center align-items-center"
+                                id="minus" onclick="minus_fun();" style="border-color: #00000090 !important;">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="/add-to-cart/{{gid.goggles_id}}"
+                            class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100"
+                            style="height: 38px !important;white-space: normal !important;font-size: 14px !important;font-weight: 500 !important;line-height: 35px !important;box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;background-color: #f5d162 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                            <span>
+                                <span><i class="fa-solid fa-cart-shopping"></i></span>
+                                <span>Add to Cart</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/cart-view/"
+                            class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100"
+                            style="height: 38px !important;white-space: normal !important;font-size: 14px !important;font-weight: 500 !important;line-height: 35px !important;box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;background-color: #f5d162 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                            <span>
+                                <span><i class="fa-solid fa-play"></i></span>
+                                <span>Buy Now</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-2">
+                    <div class="col border p-2 rounded-3 m-1">
+                        <p><span class="fas fa-user-shield fs-3"></span></p>
+                        <p class="p-0 m-0">{{gid.goggles_warranty}}</p>
+                    </div>
+                    <div class="col border p-2 rounded-3 m-1">
+                        <p><span class="fas fa-exchange fs-3"></span></p>
+                        <p class="p-0 m-0">{{gid.goggles_warranty}}</p>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-4 border-end d-flex justify-content-center align-items-center p-2">
+                        <div>
+                            {% if gid.goggles_review != '' %}
+                            <span class="p-0 m-0 fs-3">★★★★★</span>
+                            {% endif %}
+                            <p style="color: #878787 !important;">12 Ratings and {{gid.goggles_review}} Review</p>
+                        </div>
+                    </div>
+                    <div class="col p-4">
+                        <div class="row">
+                            <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                                <div class="fs-4 me-1 d-flex">
+                                    <span>5</span>
+                                    <span>★</span>
+                                </div>
+                                <div class="progress rounded-pill m-2"
+                                    style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                                    <div class="progress-bar rounded-pill" role="progressbar"
+                                        style="width: 25% !important; background: #388e3c !important;" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="fs-4" style="color: #878787 !important;">
+                                    <span>{{gid.goggles_review}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                                <div class="fs-4 me-1 d-flex">
+                                    <span>4</span>
+                                    <span>★</span>
+                                </div>
+                                <div class="progress rounded-pill m-2"
+                                    style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                                    <div class="progress-bar rounded-pill" role="progressbar"
+                                        style="width: 25% !important; background: #388e3c !important;" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="fs-4" style="color: #878787 !important;">
+                                    <span>{{gid.goggles_review}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                                <div class="fs-4 me-1 d-flex">
+                                    <span>3</span>
+                                    <span>★</span>
+                                </div>
+                                <div class="progress rounded-pill m-2"
+                                    style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                                    <div class="progress-bar rounded-pill" role="progressbar"
+                                        style="width: 25% !important; background: #388e3c !important;" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="fs-4" style="color: #878787 !important;">
+                                    <span>{{gid.goggles_review}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                                <div class="fs-4 me-1 d-flex">
+                                    <span>2</span>
+                                    <span>★</span>
+                                </div>
+                                <div class="progress rounded-pill m-2"
+                                    style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                                    <div class="progress-bar rounded-pill" role="progressbar"
+                                        style="width: 25% !important; background: #388e3c !important;" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="fs-4" style="color: #878787 !important;">
+                                    <span>{{gid.goggles_review}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                                <div class="fs-4 me-1 d-flex">
+                                    <span>1</span>
+                                    <span>★</span>
+                                </div>
+                                <div class="progress rounded-pill m-2"
+                                    style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                                    <div class="progress-bar rounded-pill" role="progressbar"
+                                        style="width: 25% !important; background: #388e3c !important;" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="fs-4" style="color: #878787 !important;">
+                                    <span>{{gid.goggles_review}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="rounded-3 m-1">
+                        <img src="{% static '/Images/banner1.png' %}" class="w-100 rounded-3" alt="...">
+                    </div>
+                    <div class="rounded-3 m-1">
+                        <img src="{% static '/Images/banner2.webp' %}" class="w-100 rounded-3" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<br>
+{% endblock %}

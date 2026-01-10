@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="" id="orders_show">
+    <div class="container">
+        <div class="row rounded bg-body p-2 m-2 border" style="box-shadow: var(--bs-box-shadow-sm) !important;">
+            <div class="col-1 text-start" style="width: 170px !important;">
+                <img src="/Images/grey-transparent-gray-full-rim-rectangle-lenskart-air-signia-la-e14573-c3-eyeglasses_g_2477_09-july.webp" alt="User Profile" class="rounded-3" width="150">
+            </div>
+            <div class="col text-start">
+                <div class="row-1 text-start">
+                    <h3>Gray Transparent Full Rim Square</h3>
+                    <div class="d-flex justify-content-start"
+                        style="color: #878787 !important; font-size: 17px !important;">
+                        <span>Color : Gray Transparent</span>
+                    </div>
+                    <div class="d-flex justify-content-start"
+                        style="color: #878787 !important; font-size: 17px !important;">
+                        <span>Size : Medium</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-start">
+                <style>
+                    ul.experiences li {
+                        list-style: none !important;
+                    }
+
+                    .what {
+                        font-size: 0.75em !important;
+                        font-weight: 700 !important;
+                        text-transform: uppercase !important;
+                        color: #fff !important;
+                        background-color: #444444 !important;
+                        display: inline-block !important;
+                        padding: 0 12px !important;
+                        margin: -5px 0.5em 0 0 !important;
+                        -webkit-border-radius: 3px !important;
+                        -moz-border-radius: 3px !important;
+                        border-radius: 3px !important;
+                    }
+
+                    .what.green {
+                        background-color: #c4df9b !important;
+                    }
+
+                    .what.blue {
+                        background-color: #6dcff6 !important;
+                    }
+
+                    .what.pink {
+                        background-color: #f06eaa !important;
+                    }
+
+                    .when {
+                        float: right !important;
+                        color: #b9b9b9 !important;
+                        font-style: italic !important;
+                    }
+
+                    ul.experiences li {
+                        position: relative !important;
+                        margin-bottom: 0 !important;
+                        padding-bottom: 2.5em !important;
+                    }
+
+                    ul.experiences li:after {
+                        content: url('http://upload.wikimedia.org/wikipedia/commons/thumb/3/30/RedDisc.svg/20px-RedDisc.svg.png') !important;
+                        position: absolute !important;
+                        left: -26px !important;
+                        top: 0px !important;
+                    }
+
+                    ul.experiences li:before {
+                        content: "" !important;
+                        position: absolute !important;
+                        left: -17px !important;
+                        border-left: 3px solid #26a541 !important;
+                        height: 100% !important;
+                        width: 1px !important;
+                    }
+
+                    ul.experiences li:first-child:before {
+                        top: 6px !important;
+                    }
+
+                    ul.experiences li:last-child:before {
+                        height: 6px !important;
+                    }
+                </style>
+                <ul class="experiences">
+                    <li class="green">
+                        <span class="where">Order Confirmed</span>
+                        <br>
+                        <span class="where">Sat, 26 Nov</span>
+                    </li>
+                    <li class="green">
+                        <span class="where">Sat, 28 Nov</span>
+                    </li>
+                    <li class="green">
+                        <span class="where">Delivered</span>
+                        <br>
+                        <span class="where">Sat, 29 Nov</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-1 d-flex justify-content-end">
+                <div class="row">
+                    <h3><i class="fa-solid fa-share-nodes"></i></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row rounded bg-body p-2 m-2 border" style="box-shadow: var(--bs-box-shadow-sm) !important;">
+            <div class="col text-start">
+                <div>
+                    <h4>Add a photo/video</h4>
+                </div>
+                <div class="d-flex justify-content-start align-items-center">
+                    <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                    <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                    <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                    <span class="fa fa-star fs-4 checked me-3"></span>
+                    <span class="fa fa-star fs-4 checked me-3"></span>
+                </div>
+                <span style="color: #878787 !important;">Rate & Review Product</span>
+            </div>
+            <div class="col d-flex justify-content-end align-items-center">
+                <a href="button" class="btn btn-outline-primary w-50 rounded-2"
+                    style="box-shadow: var(--bs-box-shadow-sm) !important;font-size: 17px !important;"><i class="fa-solid fa-camera"></i>&nbsp;Add photo</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

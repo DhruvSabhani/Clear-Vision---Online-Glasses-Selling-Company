@@ -1,0 +1,140 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+{% for bedit in brand_edit %}
+<div class="p-2" id="brandedit">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">edit {{ bedit.goggles_brand_name }} Brand
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center" id="id">
+            <div class="col-2 me-2">
+                <div class="row">
+                    <label for="id_goggles_brand_id" style="color: #00000090 !important;">
+                        <h4>Brand ID</h4>
+                    </label>
+                </div>
+                <div class="row">
+                    {{ brand_form.goggles_brand_id }}
+                </div>
+            </div>
+
+            <div class="col-2">
+                <div class="row">
+                    <label for="id_is_active" style="color: #00000090 !important;">
+                        <h4>Is Active</h4>
+                    </label>
+                </div>
+                <div class="row">
+                    <select class="form-select form-select-sm" id="id_is_active" name="is_active"
+                        aria-label=".form-select-sm example" style="font-size: 19px !important;">
+                        <option value="{{bedit.is_active}}" selected>{{bedit.is_active}}</option>
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center" id="image">
+            <div class="col-4">
+                <div class="row">
+                    <label for="id_goggles_brand_img" style="color: #00000090 !important;">
+                        <h4>Brand Image</h4>
+                    </label>
+                </div>
+                <div class="row me-3">
+                    {{ brand_form.goggles_brand_img }}
+                </div>
+            </div>
+
+            <img src="/Images/{{ bedit.goggles_brand_img }}" alt="" class="col rounded" id="blah"
+                style="max-width: 200px !important;">
+            <script>
+                id_goggles_brand_img.onchange = evt => {
+                    const [file] = id_goggles_brand_img.files
+                    if (file) {
+                        blah.src = URL.createObjectURL(file)
+                    }
+                }
+            </script>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center" id="name">
+            <div class="col-4">
+                <div class="row">
+                    <label for="id_goggles_brand_name" style="color: #00000090 !important;">
+                        <h4>Brand name</h4>
+                    </label>
+                </div>
+                <div class="row">
+                    {{ brand_form.goggles_brand_name }}
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center" id="information">
+            <div class="col-5">
+                <div class="row">
+                    <label for="id_goggles_brand_informations" style="color: #00000090 !important;">
+                        <h4>Brand information</h4>
+                    </label>
+                </div>
+                <div class="row">
+                    {{ brand_form.goggles_brand_informations }}
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-none justify-content-left align-items-center">
+            <div class="col-2">
+                <input type="text" class="form-control text-black" value="{{ datetime|date:'Y-m-d' }}" name="joind_date"
+                    required id="id_joind_date">
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control text-black" value="{{ datetime|time:'G:i' }}" name="joind_time"
+                    required id="id_joind_time">
+            </div>
+
+        </div>
+
+        <div class="mb-3 col-6">
+            <hr>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center" id="button">
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary w-100 rounded fs-4" name="submit" value="submit"
+                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">Update</button>
+            </div>
+            <div class="col-3">
+                <a href="/brands/" class="btn btn-secondary w-100 rounded fs-4"
+                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endfor %}
+
+{% endblock %}

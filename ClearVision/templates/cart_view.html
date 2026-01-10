@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="container" id="view_cart" style="font-family: math !important;">
+    <div class="row">
+        <div class="col p-1 m-1">
+            {% for gctf in goggles_cart_item_filter_values reversed %}
+            {% for go in goggless reversed %}
+            {% if gctf.item_id == go.goggles_id %}
+            <div class="p-2 m-2 text-decoration-none text-dark rounded-2 border mb-3 bg-white w-100"
+                style="box-shadow: var(--bs-box-shadow-sm) !important;position: relative !important;bottom: 12px !important;">
+                <div class="row p-0 m-0">
+                    <div class="col-1 d-flex justify-content-center align-items-center"
+                        style="width: 120px !important;height: 100px !important;">
+                        {% if go.goggles_font_img == '' %}
+                        <img src="/Images/not_img.jpg" alt="Not Image" class="rounded-3" width="100">
+                        {% else %}
+                        <img src="/Images/{{ go.goggles_font_img }}" alt="{{ go.goggles_name }} Image"
+                            title="{{ go.goggles_name }}" class="rounded-4" width="100">
+                        {% endif %}
+                    </div>
+                    <div class="col d-flex justify-content-start">
+                        <div class="row-1 text-start">
+                            <h3 class="p-0 m-0" id="white-space">{{ go.goggles_name }}</h3>
+                            <div class="d-flex justify-content-start"
+                                style="color: #878787 !important; font-size: 17px !important;">
+                                <span id="white-space">Color : {{ go.goggles_color }}</span>
+                            </div>
+                            <div class="d-flex justify-content-start"
+                                style="color: #878787 !important; font-size: 17px !important;">
+                                <span id="white-space">Size : {{ go.goggles_size }}</span>
+                            </div>
+                            <div class="" style="font-family: system-ui !important;">
+                                <h4 class="d-flex">
+                                    <span class="fw-bold text-decoration-line-through"
+                                        style="font-size: 14px !important;color: #878787 !important;">
+                                        <script>
+                                            p = "{{go.goggles_price}}"
+                                            q = "{{gctf.item_quantity}}"
+                                            pq = p * q
+                                            document.write("₹", numberWithCommas(pq))
+                                        </script>
+                                    </span>
+                                    &nbsp;&nbsp;
+                                    <span>
+                                        <script>
+                                            p = "{{go.goggles_price}}"
+                                            d = "{{go.goggles_discount}}"
+                                            q = "{{gctf.item_quantity}}"
+                                            dp = p * d / 100
+                                            t = p - dp
+
+                                            document.write("₹", numberWithCommas(t * q))
+                                        </script>
+                                    </span>
+                                    &nbsp;&nbsp;
+                                    <span style="font-size: 14px !important;color: #388e3c !important;">
+                                        <b>
+                                            <script>
+                                                d = "{{go.goggles_discount}}"
+                                                q = "{{gctf.item_quantity}}"
+                                                td = d * q
+                                                document.write(numberWithCommas(td), "% OFF")
+                                            </script>
+                                        </b>
+                                    </span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <div class="row-1 text-end">
+                            <div class="me-2"
+                                style="background-color: #26a541 !important;width: 10px !important;height: 10px !important;border-radius: 50% !important;display: inline-block !important;">
+                            </div>
+                            <span class="fs-4" id="white-space">Delivered on Oct 01</span>
+                            <br>
+                            <div class="d-flex justify-content-end align-items-center">
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3"></span>
+                                <span class="fa fa-star fs-4 checked me-3"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-0 m-0">
+                    <div class="col">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{gctf.item_id}}" name="itemid">
+                            <div class="dropdown rounded-3"
+                                style="color: #000000c7 !important;background-color: #ededfe !important;">
+                                <button class="btn btn-secondary dropdown-toggle f-5 w-100" type="button"
+                                    id="quantity{{gctf.cart_id}}" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Quantity : {{gctf.item_quantity}}
+                                </button>
+                                <ul class="dropdown-menu w-100" aria-labelledby="quantity{{gctf.cart_id}}">
+                                    <li><button type="submit" class="dropdown-item" name="1To9Quantity"
+                                            value="1">1</button></li>
+                                    <li><button type="submit" class="dropdown-item" name="1To9Quantity"
+                                            value="2">2</button></li>
+                                    <li><button type="submit" class="dropdown-item" name="1To9Quantity"
+                                            value="3">3</button></li>
+                                    <li><button type="submit" class="dropdown-item" name="1To9Quantity"
+                                            value="4">4</button></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <a href="/cart_view/remove/{{gctf.item_id}}/" class="btn rounded-3 w-100"
+                            onClick="return confirm('Are you sure you want to remove?')"
+                            style="color: #000000c7 !important;background-color: #ff00002e !important;">
+                            <span>
+                                <span><i class='fa-solid fa-trash'></i>&nbsp;Remove</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </div>
+
+        <div class="col">
+            <div class="rounded bg-body border text-dark rounded-2 border bg-white me-5 mb-3"
+                style="box-shadow: var(--bs-box-shadow-sm) !important; width: 450px !important;height: 150px !important;font-family: inherit !important;">
+                <div class="modal-header d-flex justify-content-between">
+                    <label class="modal-title form-label fw-bold text-uppercase p-1 m-1" id="addressmodalTitle"
+                        style="color: #00000090 !important;">Address</label>
+                    <button class="btn btn-outline-primary p-1 m-1" data-bs-target="#addressmodal"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">Change</button>
+                </div>
+                <hr class="p-0 m-0">
+                <div class="p-2">
+                    {% for ua in address %}
+                    {% if request.user.id == ua.userid or ua.is_active == "True" %}
+                    <div class="text-capitalize text-start p-0 m-0"
+                        style="color: #000000d4 !important;font-weight: 600 !important;font-size: 18px !important;">
+                        {{ua.full_name}}
+                    </div>
+                    <div class="fw-bold p-0 m-0 text-start"
+                        style="color: #00000090 !important;font-size: 18px !important;">
+                        {{ua.useremail}}
+                    </div>
+                    <div class="p-0 m-0 text-start" style="color: #878787 !important;font-size: revert !important;">
+                        {{ua.house_no}}{% if ua.house_no == '' %}{{''}}{% else %}{{','}}{% endif %}
+                        {{ua.colony_name}}{% if ua.colony_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                        {{ua.city_name}}{% if ua.city_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                        {{ua.state}}
+                        {% if ua.state == '' %}{{''}}{% else %}{{'-'}}{% endif %}
+                        {{ua.pincode}}{% if ua.pincode == '' %}{{''}}{% else %}{{','}}{% endif %}
+                        {{ua.country}}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="rounded bg-body border text-dark rounded-2 border bg-white me-5 mb-3"
+                style="box-shadow: var(--bs-box-shadow-sm) !important; width: 450px !important;height: 210px !important;">
+                <div class="modal-header d-flex justify-content-between p-1 m-1" style="font-size: 17px !important;">
+                    <label class="modal-title form-label fw-bold text-uppercase" id="addressmodalTitle"
+                        style="color: #00000090 !important;">Price Details</label>
+                </div>
+                <hr class="p-0 m-0">
+                <div class="row p-2 m-2">
+                    <div class="col text-start">
+                        <h4 class="p-1">
+                            <script>document.write("Price ", numberWithCommas("({{goggles_cart_item_filter_count}} Items)"))</script>
+                        </h4>
+                        <h4 class="p-1">Discount</h4>
+                        <h4 class="p-1">Delivery Changes</h4>
+                    </div>
+                    <div class="col text-end">
+                        <h4 class="p-1">
+                            <script>document.write("₹", numberWithCommas("{{total}}"))</script>
+                        </h4>
+                        <h4 class="p-1 text-danger">
+                            <script>document.write("- ₹", numberWithCommas("{{totaldiscount}}"))</script>
+                        </h4>
+                        <h4 class="p-1"><span class="text-decoration-line-through">
+                                <script>document.write("₹", numberWithCommas("100"))</script>
+                            </span>&nbsp;<span>Free</span>
+                        </h4>
+                    </div>
+                    <hr>
+                    <div class="col text-start">
+                        <h3 class="p-1 fw-bold">Total Amount</h3>
+                    </div>
+                    <div class="col text-end">
+                        <h3 class="p-1 fw-bold">
+                            <script>document.write("₹", numberWithCommas("{{ta}}"))</script>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <a href="" class="btn d-flex justify-content-center align-items-center fs-3"
+                style="background: #fb641b !important;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2) !important;border: none !important;color: #fff !important;width: 250px !important;height: 50px !important;">
+                PLACE ORDER
+            </a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

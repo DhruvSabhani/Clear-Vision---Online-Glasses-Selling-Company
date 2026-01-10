@@ -1,0 +1,160 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="" id="users">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">
+            users
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+
+    <div class="text-decoration-none text-dark rounded me-2 bg-white w-100 shadow-sm p-3 mb-5 bg-body" id="userstable"
+        style="border-top: 3px solid #0000ff75 !important;overflow-y: scroll !important;">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr style="text-align: center !important;">
+                    <th scope="col">
+                        <h4>No.</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Operation</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>ID</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Username</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Email</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Phone No.</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Gender</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Birthday</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Password</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Date and Time</h4>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for us in users %}
+                <tr class="text-center">
+                    <th scope="row">
+                        <h5>
+                            {% if '0123456789'|make_list %}
+                            {{ forloop.counter }}
+                            {% endif %}
+                        </h5>
+                    </th>
+
+                    <td title="Data View">
+                        <a href="/users/view-{{ us.id }}/"
+                            class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                            style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #f5d162 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                            <span>
+                                <span>View</span>
+                            </span>
+                        </a>
+                    </td>
+
+                    <td title="ID = {{us.id}}">
+                        {% if us.id == '' %}
+                        <h5>-</h5>
+                        {% else %}
+                        <h5>{{us.id}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Username = {{us.username}}">
+                        {% if us.username == '' %}
+                        <h5>-</h5>
+                        {% else %}
+                        <h5>{{us.username}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Email = {{us.email}}">
+                        {% if us.email == '' %}
+                        <h5>-</h5>
+                        {% else %}
+                        <h5>{{us.email}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Phone No. = {{us.phone_no}}">
+                        {% if us.phone_no == '' %}
+                        <h5>-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">{{us.phone_no}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Gender = {{us.gender}}">
+                        {% if us.gender == '' %}
+                        <h5>-</h5>
+                        {% else %}
+                        <h5>{{us.gender}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Birthday = {{us.birthday}}">
+                        {% if us.birthday == '' %}
+                        <h5>-</h5>
+                        {% else %}
+                        <h5>{{us.birthday}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Password = {{us.password}}">
+                        {% if us.password == '' %}
+                        <h5>-</h5>
+                        {% else %}
+                        <h5>{{us.password}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="DateTime = {{us.joind_date}} {{us.joind_time}}">
+                        {% if us.joind_date == '' and us.joind_time == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">
+                            {{us.joind_date}}
+                            {{us.joind_time}}
+                        </h5>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

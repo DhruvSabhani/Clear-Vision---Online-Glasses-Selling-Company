@@ -1,0 +1,13 @@
+[
+    {
+        "model": "adminApp.UserAdmin",
+        "pk": 1,
+        "fields": {
+            "username": "Admin",
+            "email": "admin@gmail.com",
+            "password": "admin",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    }
+]

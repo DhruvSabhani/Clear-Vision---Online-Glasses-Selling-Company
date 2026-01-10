@@ -1,0 +1,127 @@
+{% load static %}
+
+<footer class="border-top shadow bg-light overflow-hidden" id="footer">
+    <div class="row" style="background: #f3f3e0 !important;" id="first_footer">
+        <div class="col text-center d-flex justify-content-center align-items-center">
+            <ul class="nav" id="nav_menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <img src="{% static 'Images/logo-no-background.png' %}" alt="Logo" class="align-text-top"
+                            width="350">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col text-center">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Types</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">ORDERS</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">BRAND</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">COUPONS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">content</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col text-center d-flex justify-content-center align-items-center">
+            <div class="container-fluid">
+                {% if request.user.is_authenticated %}
+                {% for ua in address %}
+                {% if request.user.id == ua.userid or ua.is_active == "True" %}
+                <div class="link-body-emphasis text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="{{ua.house_no}}{% if ua.house_no == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.colony_name}}{% if ua.colony_name == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.city_name}}{% if ua.city_name == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.state}}{% if ua.state == '' %}{{''}}{% else %}{{' - '}}{% endif %}{{ua.pincode}}{% if ua.pincode == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.country}}">
+
+                    <button class="btn btn-outline-primary" data-bs-target="#addressmodal" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" style="font-size: 18px !important;"><i
+                            class="fa-solid fa-pen-to-square"></i>&nbsp;Change</button>
+
+                    <div class="text-capitalize">
+                        {{ua.house_no}}{% if ua.house_no == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.colony_name}}{% if ua.colony_name == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.city_name}}{% if ua.city_name == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.state}}{% if ua.state == '' %}{{''}}{% else %}{{' - '}}{% endif %}{{ua.pincode}}{% if ua.pincode == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.country}}
+                    </div>
+
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <a class="link-body-emphasis text-decoration-none" href="/signup/" data-bs-toggle="tooltip"
+                    data-bs-placement="bottom" title="Add Address">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <div class="text-capitalize">
+                        Add Address
+                    </div>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col text-center d-flex justify-content-center align-items-center">
+            <div class="container-fluid">
+                <div class="social-account">
+                    <ul class="list-unstyled d-flex justify-content-center align-items-center">
+                        <li class="ms-3"><a class="link-body-emphasis" href="#" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        </li>
+                        <li class="ms-3"><a class="link-body-emphasis" href="#" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li class="ms-3"><a class="link-body-emphasis" href="#" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                    <div>
+                        <a class="link-body-emphasis text-decoration-none" href="#" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="00000 00000">
+                            <i class="fa-solid fa-phone"></i>
+                            &nbsp;+91 1234567890
+                        </a>
+                    </div>
+                    <div>
+                        <a class="link-body-emphasis text-decoration-none" href="#" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="clearvision@help.com">
+                            <i class="fa-solid fa-envelope"></i>
+                            &nbsp;clearvision@help.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row border-top p-1"
+        id="second_footer">
+        <div class="text-white">
+            © {% now "Y" %} Copyright :
+            <a class="text-reset fw-bold" href="/">Clear Vision</a>
+        </div>
+        <div class="social-account" id="social-account">
+            <ul class="list-unstyled p-1 m-0 d-flex justify-content-center align-items-center">
+                <li class="ms-3"><a class="link-body-emphasis text-white" href="#" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="Facebook"><i class="fa-brands fa-facebook"></i></a></li>
+                <li class="ms-3"><a class="link-body-emphasis text-white" href="#" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+                <li class="ms-3"><a class="link-body-emphasis text-white" href="#" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

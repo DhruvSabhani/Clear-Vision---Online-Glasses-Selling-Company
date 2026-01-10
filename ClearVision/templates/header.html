@@ -1,0 +1,509 @@
+{% load static %}
+<header class="shadow-sm p-0 bg-body rounded fixed-top">
+    <div class="header-first-block border-bottom d-flex justify-content-between align-items-center container-fluid">
+        <div class="social-account">
+            <ul class="list-unstyled p-1 m-0 d-flex justify-content-center align-items-center">
+                <li class="ms-3"><a class="link-body-emphasis text-white" href="#" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="Facebook"><i class="fa-brands fa-facebook"></i></a></li>
+                <li class="ms-3"><a class="link-body-emphasis text-white" href="#" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+                <li class="ms-3"><a class="link-body-emphasis text-white" href="#" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                <li class="ms-5">
+                    <a class="link-body-emphasis text-decoration-none text-white" href="#" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="00000 00000">
+                        <i class="fa-solid fa-phone"></i>
+                        &nbsp;+91 1234567890
+                    </a>
+                </li>
+                <li class="ms-5">
+                    <a class="link-body-emphasis text-decoration-none text-white" href="#" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="clearvision@help.com">
+                        <i class="fa-solid fa-envelope"></i>
+                        &nbsp;clearvision@help.com
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="custom-details">
+            <ul class="list-unstyled p-1 m-0 d-flex justify-content-center align-items-center">
+                {% if request.user.is_authenticated %}
+                <li class="ms-5">
+                    <a class="nav-link link-body-emphasis text-white d-flex justify-content-center align-items-center"
+                        data-bs-toggle="modal" data-bs-placement="bottom" data-bs-target="#addressmodal">
+                        <i class="fa-solid fa-location-dot"></i>
+                        &nbsp;
+
+                        {% for ua in address %}
+                        {% if request.user.id == ua.userid or ua.is_active == "True" %}
+                        <div id="location"
+                            title="{{ua.house_no}}{% if ua.house_no == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.colony_name}}{% if ua.colony_name == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.city_name}}{% if ua.city_name == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.state}}{% if ua.state == '' %}{{''}}{% else %}{{' - '}}{% endif %}{{ua.pincode}}{% if ua.pincode == '' %}{{''}}{% else %}{{','}}{% endif %}{{ua.country}}">
+                            {{ua.house_no}}{% if ua.house_no == '' %}{{''}}{% else %}{{','}}{% endif %}
+                            {{ua.colony_name}}{% if ua.colony_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                            {{ua.city_name}}{% if ua.city_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                            {{ua.state}}
+                            {% if ua.state == '' %}{{''}}{% else %}{{' - '}}{% endif %}
+                            {{ua.pincode}}{% if ua.pincode == '' %}{{''}}{% else %}{{','}}{% endif %}
+                            {{ua.country}}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+
+                        <div class="text-decoration-underline" title="Select address">
+                            Select Address
+                        </div>
+                    </a>
+                </li>
+                {% endif %}
+
+                <!-- <a class="link-body-emphasis text-decoration-none text-white d-flex justify-content-center align-items-center"
+                        data-bs-toggle="modal" data-bs-placement="bottom" data-bs-target="#addressmodal"
+                        title="Add Address">
+                        <div><i class="fa-solid fa-location-dot"></i></div>
+                        &nbsp;
+                        <div id="location" class="text-capitalize" style="width: 8vw !important;">
+                            Add Address
+                        </div>
+                    </a> -->
+
+
+                <li class="ms-5">
+                    <a class="link-body-emphasis text-decoration-none text-white" href="/orders/"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Track Order">
+                        <i class="fa-solid fa-truck"></i>&nbsp;Track Order</a>
+                </li>
+
+                {% if request.user.is_authenticated %}
+                <li class="ms-5 nav-item dropdown position-relative">
+                    {% if request.user.username != '' %}
+                    <a href="" data-mdb-button-init data-mdb-ripple-init data-mdb-dropdown-init
+                        class="nav-link dropdown-toggle text-white text-capitalize" data-bs-toggle="dropdown"
+                        aria-expanded="false" role="button" id="dropdownMenuButton"><i class="fa-solid fa-user
+                            text-white"></i>&nbsp;{{ request.user.username }}</a>
+                    {% else %}
+                    <a href="" data-mdb-button-init data-mdb-ripple-init data-mdb-dropdown-init
+                        class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false"
+                        role="button" id="dropdownMenuButton"><i class="fa-solid fa-user
+                            text-white"></i>&nbsp;{{ request.user.email }}</a>
+                    {% endif %}
+                    <ul class="dropdown-menu dropdown-menu-dark position-absolute fs-5"
+                        aria-labelledby="dropdownMenuButton" style="left: -50px !important;right: -10px !important;">
+                        <li><a class="dropdown-item" href="/profile/{{request.user.id}}"><i
+                                    class="fa-solid fa-user me-2">&nbsp;</i>User Profile</a></li>
+
+                        <li><a class="dropdown-item" href="/orders/"><i
+                                    class="fa-solid fa-box me-2">&nbsp;</i>Orders</a>
+                        </li>
+
+                        <!-- <li><a class="dropdown-item" href="#"><i class="fa-solid fa-heart me-2">&nbsp;</i>Wishlist</a></li> -->
+
+                        <li><a href="/logout/" class="dropdown-item"><i
+                                    class="fa-solid fa-power-off me-2">&nbsp;</i>Logout</a></li>
+
+                        <li><a href="/delete_profile/{{request.user.id}}" class="dropdown-item"><i
+                                    class="fa-solid fa-user-xmark me-2"></i>&nbsp;Delete Profile</a>
+                        </li>
+                    </ul>
+                </li>
+                {% else %}
+                <div class="ms-5 d-flex justify-content-center align-items-center">
+                    <li>
+                        <a class="link-body-emphasis text-decoration-none text-white" href="/signup/"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sign Up"><i class="fa-solid fa-user
+                            text-white"></i>&nbsp;Sign Up</a>
+                    </li>
+                    <li class="text-white">&nbsp;||&nbsp;</li>
+                    <li>
+                        <a href="/login/" class="link-body-emphasis text-decoration-none text-white"
+                            data-bs-toggle="tooltip" title="Login">Login</a>
+                    </li>
+                </div>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="header-second-block border-bottom navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-start text-bg-light" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close btn-close-dark fs-5" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <ul class="nav d-flex justify-content-between" id="nav_menu">
+                    {% if request.path == '/' %}
+                    {% else %}
+                    <li class="nav-item d-flex justify-content-center align-items-center">
+                        <button onclick="history.back()"
+                            class="btn border-0 d-flex justify-content-center align-items-center">
+                            <i class="fa-solid fa-arrow-left fs-2"></i>
+                        </button>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item d-flex justify-content-center align-items-center">
+                        <a href="/" class="nav-link">
+                            <img src="{% static 'Images/logo-no-background.png' %}" alt="Logo" class="align-text-top"
+                                id="logo_img">
+                        </a>
+                    </li>
+                    <li>
+                        <hr>
+                    </li>
+                    <div class="d-flex justify-content-center align-items-center" id="menu">
+                        {% if "/" == request.path %}
+                        <li class="nav-item me-4">
+                            <a href="/" class="nav-link active"><span class="fa fa-house"></span></a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item me-4">
+                            <a href="/" class="nav-link"><span class="fa fa-house"></span></a>
+                        </li>
+                        {% endif %}
+
+                        <li class="nav-item me-4">
+                            <div class="dropdown">
+                                <a class="btn border-0 rounded-0 dropdown-toggle nav-link" role="button" id="types"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    types
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="types">
+                                    {% for gogglestype in goggles_type %}
+                                    <a class="dropdown-item"
+                                        href="/{{ gogglestype.goggles_types_name }}-{{ gogglestype.goggles_types_id }}">
+                                        <li>
+                                            <div class="d-flex">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    {% if types.goggles_types_img == '' %}
+                                                    <img src="/Images/goggles_img/not_img.jpg"
+                                                        class="d-flex justify-content-center align-items-center rounded-4 m-2"
+                                                        alt="Not Image" title="Not Image">
+                                                    {% else %}
+                                                    <img src="/Images/{{ gogglestype.goggles_types_img }}"
+                                                        class="d-flex justify-content-center align-items-center rounded-4 m-2"
+                                                        alt="{{ types.goggles_types_name }} Image"
+                                                        style="width: 5vw !important;">
+                                                    {% endif %}
+                                                </div>
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    {{ gogglestype.goggles_types_name }}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </a>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+
+                        {% if "/orders/" == request.path %}
+                        <li class="nav-item me-4">
+                            <a href="/orders/" class="nav-link active">orders</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item me-4">
+                            <a href="/orders/" class="nav-link">orders</a>
+                        </li>
+                        {% endif %}
+
+                        {% if "/brands/" == request.path %}
+                        <li class="nav-item me-4">
+                            <a href="/brands/" class="nav-link active">brand</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item me-4">
+                            <a href="/brands/" class="nav-link">brand</a>
+                        </li>
+                        {% endif %}
+
+                        {% if "#" == request.path %}
+                        <li class="nav-item me-4">
+                            <a href="#" class="nav-link active">coupons</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item me-4">
+                            <a href="#" class="nav-link">coupons</a>
+                        </li>
+                        {% endif %}
+
+                        {% if "#" == request.path %}
+                        <li class="nav-item me-4">
+                            <a href="#" class="nav-link active">content</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item me-4">
+                            <a href="#" class="nav-link">content</a>
+                        </li>
+                        {% endif %}
+                    </div>
+                </ul>
+            </div>
+            <div>
+                <ul class="list-unstyled m-0 d-flex justify-content-between align-items-center">
+                    <li class="ms-5">
+                        <div class="search-container">
+                            <form class="d-flex">
+                                <input type="search" class="form-control bg-body fs-4" placeholder="Search..."
+                                    name="search" id="search_box">
+                                <button type="submit" class="btn" id="search_button"><i
+                                        class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </li>
+                    <li class="ms-5 me-4">
+                        <a class="link-body-emphasis" href="/cart-view/" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="Add to Cart">
+                            <i class="fa-solid fa-cart-shopping fs-3"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="modal fade" id="addressmodal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+    aria-labelledby="addressmodalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content" style="background-color: #f1f3f6 !important;">
+            <div class="modal-header d-flex justify-content-between" style="font-size: 17px !important;">
+
+                <label class="modal-title form-label fw-bold text-uppercase" id="addressmodalTitle"
+                    style="color: #00000090 !important;">Address Select</label>
+
+                <button class="btn btn-primary" data-bs-target="#addaddressmodal" data-bs-toggle="modal"
+                    data-bs-dismiss="modal" style="font-size: 17px !important;"><i class="fa fa-plus"></i>&nbsp;ADD
+                    Address</button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="GET">
+                    {% csrf_token %}
+
+                    {% for ua in address %}
+                    {% if request.user.id == ua.userid or ua.is_active == "True" %}
+                    <div class="form-check d-flex justify-content-center align-items-center">
+                        <input class="d-none" name="user_id" value="{{ua.userid}}">
+                        <input class="form-check-input me-3" type="radio" name="address_select" id="address{{ua.id}}"
+                            value="{{ua.id}}" checked>
+                        <label class="form-check-label" for="address{{ua.id}}">
+                            <div class="row border rounded-4 bg-white p-1 m-1 mb-2" style="font-size: 16px !important;">
+                                <div class="text-capitalize text-start p-0 m-0"
+                                    style="color: #000000d4 !important;font-weight: 600 !important;font-size: 18px !important;">
+                                    {{ua.full_name}}
+                                </div>
+                                <div class="fw-bold p-0 m-0 text-start"
+                                    style="color: #00000090 !important;font-size: 18px !important;">
+                                    {{ua.useremail}}
+                                </div>
+                                <div class="p-0 m-0 text-start"
+                                    style="color: #878787 !important;font-size: revert !important;">
+                                    {{ua.house_no}}{% if ua.house_no == '' %}{{''}}{% else %}{{','}}{% endif %}
+                                    {{ua.colony_name}}{% if ua.colony_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                                    {{ua.city_name}}{% if ua.city_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                                    {{ua.state}}
+                                    {% if ua.state == '' %}{{''}}{% else %}{{'-'}}{% endif %}
+                                    {{ua.pincode}}{% if ua.pincode == '' %}{{''}}{% else %}{{','}}{% endif %}
+                                    {{ua.country}}
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% for ua in address %}
+                    {% if request.user.id == ua.userid or ua.is_active == "False" %}
+                    <div class="form-check d-flex justify-content-center align-items-center">
+                        <input class="d-none" name="user_id" value="{{ua.userid}}">
+                        <input class="form-check-input me-3" type="radio" name="address_select" id="address{{ua.id}}"
+                            value="{{ua.id}}">
+                        <label class="form-check-label" for="address{{ua.id}}">
+                            <div class="row border rounded-4 bg-white p-1 m-1 mb-2" style="font-size: 16px !important;">
+                                <div class="text-capitalize text-start p-0 m-0"
+                                    style="color: #000000d4 !important;font-weight: 600 !important;font-size: 18px !important;">
+                                    {{ua.full_name}}
+                                </div>
+                                <div class="fw-bold p-0 m-0 text-start"
+                                    style="color: #00000090 !important;font-size: 18px !important;">
+                                    {{ua.useremail}}
+                                </div>
+                                <div class="p-0 m-0 text-start"
+                                    style="color: #878787 !important;font-size: revert !important;">
+                                    {{ua.house_no}}{% if ua.house_no == '' %}{{''}}{% else %}{{','}}{% endif %}
+                                    {{ua.colony_name}}{% if ua.colony_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                                    {{ua.city_name}}{% if ua.city_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                                    {{ua.state}}
+                                    {% if ua.state == '' %}{{''}}{% else %}{{'-'}}{% endif %}
+                                    {{ua.pincode}}{% if ua.pincode == '' %}{{''}}{% else %}{{','}}{% endif %}
+                                    {{ua.country}}
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                    <div class="mb-3">
+                        <hr>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <button type="button" class="btn btn-secondary w-100 rounded-2" data-bs-dismiss="modal"
+                                style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;font-size: 17px !important;">Close</button>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary w-100 rounded-2"
+                                style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;font-size: 17px !important;">
+                                Update Address</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addaddressmodal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+    aria-labelledby="addaddressmodalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content" style="background-color: #f1f3f6 !important;">
+            <div class="modal-header d-flex justify-content-between" style="font-size: 17px !important;">
+                <div class="modal-title fw-bold text-uppercase" id="addaddressmodalTitle"
+                    style="color: #00000090 !important;">New Address</div>
+                <button class="btn btn-primary" data-bs-target="#addressmodal" data-bs-toggle="modal"
+                    data-bs-dismiss="modal" style="font-size: 17px !important;">Address Select</button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row d-none">
+                        <div class="col">
+                            <input type="number" name="userid" id="id_userid" value="{{request.user.id}}">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="joind_date" value="{{ datetime|date:'Y-m-d' }}" id="id_joind_date">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="joind_time" value="{{ datetime|time:'G:i' }}" id="id_joind_time">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="id_full_name" style="color: #00000090 !important;">
+                                <h4>Full Name</h4>
+                            </label>
+                            {{ af.full_name }}
+                        </div>
+                        <div class="col-4">
+                            <label for="id_pincode" style="color: #00000090 !important;">
+                                <h4>Pincode</h4>
+                            </label>
+                            {{ af.pincode }}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="id_useremail" style="color: #00000090 !important;">
+                            <h4>Email</h4>
+                        </label>
+                        {{ af.useremail }}
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="id_house_no" style="color: #00000090 !important;">
+                            <h4>House No. / Building Name</h4>
+                        </label>
+                        {{ af.house_no }}
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="id_colony_name" style="color: #00000090 !important;">
+                            <h4>Colony/Area/Road Name</h4>
+                        </label>
+                        {{ af.colony_name }}
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="id_city_name" style="color: #00000090 !important;">
+                            <h4>Village/City Name</h4>
+                        </label>
+                        {{ af.city_name }}
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="id_state" style="color: #00000090 !important;">
+                                <h4>State</h4>
+                            </label>
+                            <select name="state" class="form-control form-select" aria-label=".form-select-lg example"
+                                style="font-size: 17px !important;" maxlength="255" id="id_state">
+                                <option selected>Select State</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="id_country" style="color: #00000090 !important;">
+                                <h4>Country</h4>
+                            </label>
+                            <select name="country" class="form-control form-select" aria-label=".form-select-lg example"
+                                style="font-size: 17px !important;" maxlength="255" id="id_country">
+                                <option selected>Select Country</option>
+                                <option value="India">India</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <hr>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <button type="button" class="btn btn-secondary w-100 rounded-2" data-bs-dismiss="modal"
+                                style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;font-size: 17px !important;">Close</button>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary w-100 rounded-2"
+                                style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;font-size: 17px !important;">Add
+                                Address</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

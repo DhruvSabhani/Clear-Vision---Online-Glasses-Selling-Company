@@ -1,0 +1,280 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+{% for cedit in coupons_edit %}
+<div class="p-2" id="couponsedit">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">edit {{ cedit.coupon_name }} Coupons
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center">
+            <div class="col-2">
+                <label for="id_coupon_code" style="color: #00000090 !important;">
+                    <h4>Coupon Code</h4>
+                </label>
+                {{coupons_form.coupon_code}}
+            </div>
+
+            <div class="col-2">
+                <label for="id_is_active" style="color: #00000090 !important;">
+                    <h4>is active</h4>
+                </label>
+                <select class="form-select form-select-sm" id="id_is_active" name="is_active"
+                    aria-label=".form-select-sm example" required>
+                    <option value="{{cedit.is_active}}" selected>{{cedit.is_active}}</option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </div>
+
+            <div class="col-3">
+                <label for="id_home_screen_is_active" style="color: #00000090 !important;">
+                    <h4>Home Screen is active</h4>
+                </label>
+                <select class="form-select form-select-sm" id="id_home_screen_is_active" name="home_screen_is_active"
+                    aria-label=".form-select-sm example" required>
+                    <option value="{{cedit.home_screen_is_active}}" selected>{{cedit.home_screen_is_active}}</option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center">
+            <div class="col-4">
+                <label for="id_coupon_font_img" style="color: #00000090 !important;">
+                    <h4>Font Image</h4>
+                </label>
+
+                {{coupons_form.coupon_font_img}}
+            </div>
+            <img src="/Images/{{ cedit.coupon_font_img }}" alt="" class="col" id="fontimg"
+                style="width: 0 !important;max-width: 250px !important;">
+            <script>
+                id_coupon_font_img.onchange = evt => {
+                    const [file] = id_coupon_font_img.files
+                    if (file) {
+                        fontimg.src = URL.createObjectURL(file)
+                    }
+                }
+            </script>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center">
+            <div class="col-3">
+                <label for="id_coupon_name" style="color: #00000090 !important;">
+                    <h4>Coupon Name</h4>
+                </label>
+                {{coupons_form.coupon_name}}
+            </div>
+            <div class="col-2" id="gender_select">
+                <label for="id_Gender_select" style="color: #00000090 !important;">
+                    <h4>Gender select</h4>
+                </label>
+                <div class="open-modal-btn-wrapper-gender">
+                    <button type="button" class="btn w-100 open-modal-btn-gender"
+                        style="border: 1px solid #dee2e6;background-color: #f8f9fa;">
+                        Gender Check
+                    </button>
+                </div>
+            </div>
+            <div class="col-2">
+                <label for="id_coupon_discount" style="color: #00000090 !important;">
+                    <h4>Discount</h4>
+                </label>
+                {{coupons_form.coupon_discount}}
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center">
+            <div class="col-3" id="brand_select">
+                <label for="id_brands_select" style="color: #00000090 !important;">
+                    <h4>Brand select</h4>
+                </label>
+                <div class="open-modal-btn-wrapper-brand">
+                    <button type="button" class="btn w-100 open-modal-btn-brand"
+                        style="border: 1px solid #dee2e6;background-color: #f8f9fa;">
+                        Brand Check
+                    </button>
+                </div>
+            </div>
+            <div class="col-3" id="categories_select">
+                <label for="id_categories_select" style="color: #00000090 !important;">
+                    <h4>Categories select</h4>
+                </label>
+                <div class="open-modal-btn-wrapper-categories">
+                    <button type="button" class="btn w-100 open-modal-btn-categories"
+                        style="border: 1px solid #dee2e6;background-color: #f8f9fa;">
+                        Categories Check
+                    </button>
+                </div>
+            </div>
+            <div class="col-3" id="goggles_select">
+                <label for="id_goggles_select" style="color: #00000090 !important;">
+                    <h4>Goggles select</h4>
+                </label>
+                <div class="open-modal-btn-wrapper-goggles">
+                    <button type="button" class="btn w-100 open-modal-btn-goggles"
+                        style="border: 1px solid #dee2e6;background-color: #f8f9fa;">
+                        Goggles Check
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center">
+            <div class="col-3">
+                <label for="id_coupon_img_1" style="color: #00000090 !important;">
+                    <h4>Image 1</h4>
+                </label>
+                {{coupons_form.coupon_img_1}}
+            </div>
+            <div class="col-3">
+                <label for="id_coupon_img_2" style="color: #00000090 !important;">
+                    <h4>Image 2</h4>
+                </label>
+                {{coupons_form.coupon_img_2}}
+            </div>
+            <div class="col-3">
+                <label for="id_coupon_img_3" style="color: #00000090 !important;">
+                    <h4>Image 3</h4>
+                </label>
+                {{coupons_form.coupon_img_3}}
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center">
+            <img src="/Images/{{ cedit.coupon_img_1 }}" alt="" class="col" id="img1"
+                style="width: 0 !important;max-width: 255px !important;">
+            <script>
+                id_coupon_img_1.onchange = evt => {
+                    const [file] = id_coupon_img_1.files
+                    if (file) {
+                        img1.src = URL.createObjectURL(file)
+                    }
+                }
+            </script>
+
+            <img src="/Images/{{ cedit.coupon_img_2 }}" alt="" class="col" id="img2"
+                style="width: 0 !important;max-width: 255px !important;">
+            <script>
+                id_coupon_img_2.onchange = evt => {
+                    const [file] = id_coupon_img_2.files
+                    if (file) {
+                        img2.src = URL.createObjectURL(file)
+                    }
+                }
+            </script>
+
+            <img src="/Images/{{ cedit.coupon_img_3 }}" alt="" class="col" id="img3"
+                style="width: 0 !important;max-width: 255px !important;">
+            <script>
+                id_coupon_img_3.onchange = evt => {
+                    const [file] = id_coupon_img_3.files
+                    if (file) {
+                        img3.src = URL.createObjectURL(file)
+                    }
+                }
+            </script>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center">
+            <div class="col-3">
+                <label for="id_coupon_img_4" style="color: #00000090 !important;">
+                    <h4>Image 4</h4>
+                </label>
+                {{coupons_form.coupon_img_4}}
+            </div>
+
+            <div class="col-3">
+                <label for="id_coupon_img_5" style="color: #00000090 !important;">
+                    <h4>Image 5</h4>
+                </label>
+                {{coupons_form.coupon_img_5}}
+            </div>
+
+            <div class="col-4">
+                <label for="id_coupon_informations" style="color: #00000090 !important;">
+                    <h4>Informations</h4>
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center">
+            <img src="/Images/{{ cedit.coupon_img_4 }}" alt="" class="col" id="img4"
+                style="width: 0 !important;max-width: 250px !important;">
+            <script>
+                id_coupon_img_4.onchange = evt => {
+                    const [file] = id_coupon_img_4.files
+                    if (file) {
+                        img4.src = URL.createObjectURL(file)
+                    }
+                }
+            </script>
+
+            <img src="/Images/{{ cedit.coupon_img_5 }}" alt="" class="col" id="img5"
+                style="width: 0 !important;max-width: 250px !important;">
+            <script>
+                id_coupon_img_5.onchange = evt => {
+                    const [file] = id_coupon_img_5.files
+                    if (file) {
+                        img5.src = URL.createObjectURL(file)
+                    }
+                }
+            </script>
+
+            <div class="col-4">
+                {{coupons_form.coupon_informations}}
+            </div>
+        </div>
+
+        <div class="mb-3 row d-none">
+            <div class="col-2">
+                <input type="text" name="joind_date" value="{{ datetime|date:'Y-m-d' }}" required id="id_joind_date">
+            </div>
+
+            <div class="col-2">
+                <input type="text" name="joind_time" value="{{ datetime|time:'G:i' }}" required id="id_joind_time">
+            </div>
+        </div>
+
+        <div class="mb-3 col-6">
+            <hr>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center" id="button">
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary w-100 rounded fs-4" name="submit" value="submit"
+                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">Update</button>
+            </div>
+            <div class="col-3">
+                <a href="/coupons/" class="btn btn-secondary w-100 rounded fs-4"
+                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endfor %}
+
+{% endblock %}

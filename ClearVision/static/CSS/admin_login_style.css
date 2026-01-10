@@ -1,0 +1,65 @@
+body {
+  background-color: #f8fbff !important;
+  font-family: math !important;
+  font-size: 17px !important;
+}
+
+#admin_login
+  section
+  .container-xl
+  #first-col
+  div
+  .row
+  .col
+  a
+  #clearvision_logo {
+  width: 300px !important;
+}
+
+input,
+button {
+  font-size: 17px !important;
+}
+
+section .container-xl #first-col div .row .col-9 div
+/* section .container-xl #first-col div .row .col-9 form  */ {
+  color: #8c8d90 !important;
+}
+
+section .container-xl #second-col {
+  background-color: #3f70ed !important;
+}
+
+section .container-xl #second-col div .row h2 {
+  width: 70% !important;
+}
+
+@media only screen and (max-width: 992px) {
+  body {
+    font-size: 17px !important;
+  }
+
+  #admin_login
+    section
+    .container-xl
+    #first-col
+    div
+    .row
+    .col
+    a
+    #clearvision_logo {
+    width: 174px !important;
+  }
+
+  section .container-xl #first-col {
+    width: 100% !important;
+  }
+
+  section .container-xl #first-col div .row .col-9 {
+    width: 100% !important;
+  }
+
+  section .container-xl #second-col {
+    display: none !important;
+  }
+}

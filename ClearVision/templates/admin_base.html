@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Load Static Folder -->
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Web Icon Link -->
+    <link rel="icon" href="{% static 'Images/logo-no-background.png' %}" type="image/x-icon">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="{% static 'CSS/admin_style.css' %}">
+    <!-- JS Link -->
+    <script src="{% static 'JS/admin.js' %}"></script>
+    <script src="{% static 'JS/Chart.min.js' %}"></script>
+    <!-- Fontwesome Icon Link -->
+    <link rel="stylesheet" href="{% static 'Resources/Fontawesome/css/all.min.css' %}">
+    <!-- Bootstrap CSS Link -->
+    <link rel="stylesheet" href="{% static 'Resources/Bootstrap/css/bootstrap.min.css' %}">
+    <!-- Bootstrap JS Link -->
+    <script src="{% static 'Resources/Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var myVar;
+
+        function myFunction() {
+            myVar = setTimeout(showPage, 300);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        }
+    </script>
+    <title>ClearVision Dashboard</title>
+</head>
+
+<body onload="myFunction()" style="margin:0 !important;" id="dashboard">
+    <header>
+        <div class="flex-column flex-shrink-0 p-3 header-first-block rounded-3 bg-white border" id="headerfirstblock"
+            style="display: flex !important;width: 310px !important;height: 98vh !important;position: fixed !important;top: 5px !important;right: 0 !important;left: 5px !important;z-index: 1030 !important;overflow-y: scroll !important;">
+            <a href="/dashboard/"
+                class="d-flex align-items-center mb-md-0 me-md-auto link-dark text-decoration-none rounded-3">
+                <div class="row p-3 d-flex justify-content-center align-items-center">
+                    <div class="col border-2 border-end" id="clearvision_logo">
+                        <img src="{% static 'Images\logo-no-background.png' %}" alt="Clear Vision Logo"
+                            class="d-flex justify-content-center align-items-center" width="190">
+                    </div>
+                    <div class="col">
+                        <img src="{% static 'Images\bGhbzTsDNoes_OTSSABo3-transformed.png' %}" alt="Deshboard Logo"
+                            class="d-flex justify-content-center align-items-center" width="50" id="admin_logo">
+                    </div>
+                </div>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto p-2 m-2" id="menu">
+                {% if "/dashboard/" == request.path %}
+                <li class="nav-item mb-1">
+                    <a href="/dashboard/" class="nav-link d-flex justify-content-between align-items-center active"
+                        aria-current="page">
+                        <div><i class="fa-solid fa-chart-simple me-4"></i>Dashboard</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item mb-1">
+                    <a href="/dashboard/" class="nav-link d-flex justify-content-between align-items-center"
+                        aria-current="page">
+                        <div><i class="fa-solid fa-chart-simple me-4"></i>Dashboard</div>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if "/dashboard/orders/" == request.path %}
+                <li class="nav-item mb-1">
+                    <a href="/dashboard/orders/" class="nav-link d-flex justify-content-between align-items-center active">
+                        <div><i class="fa-solid fa-bag-shopping me-4"></i>Orders</div>
+                        <div></div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item mb-1">
+                    <a href="/dashboard/orders/" class="nav-link d-flex justify-content-between align-items-center ">
+                        <div><i class="fa-solid fa-bag-shopping me-4"></i>Orders</div>
+                        <div></div>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if "/categories/" == request.path %}
+                <li class="nav-item mb-1">
+                    <a href="/categories/" class="nav-link d-flex justify-content-between align-items-center active">
+                        <div><i class="fas fa-archive me-4"></i>Categories</div>
+                        <div>{{goggles_type_count}}</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item mb-1">
+                    <a href="/categories/" class="nav-link d-flex justify-content-between align-items-center">
+                        <div><i class="fas fa-archive me-4"></i>Categories</div>
+                        <div>{{goggles_type_count}}</div>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if "/add-product/" == request.path %}
+                <li class="nav-item mb-1">
+                    <a href="/add-product/" class="nav-link d-flex justify-content-between align-items-center active">
+                        <div><i class="fas fa-plus-square me-4"></i>Add Product</div>
+                        <div>{{goggless_count}}</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item mb-1">
+                    <a href="/add-product/" class="nav-link d-flex justify-content-between align-items-center">
+                        <div><i class="fas fa-plus-square me-4"></i>Add Product</div>
+                        <div>{{goggless_count}}</div>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if "/dashboard/brands/" == request.path %}
+                <li class="nav-item mb-1">
+                    <a href="/dashboard/brands/" class="nav-link d-flex justify-content-between align-items-center active">
+                        <div><i class="fas fa-th me-4"></i>Brands</div>
+                        <div>{{goggles_brand_count}}</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item mb-1">
+                    <a href="/dashboard/brands/" class="nav-link d-flex justify-content-between align-items-center">
+                        <div><i class="fas fa-th me-4"></i>Brands</div>
+                        <div>{{goggles_brand_count}}</div>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if "/coupons/" == request.path %}
+                <li class="nav-item mb-1">
+                    <a href="/coupons/" class="nav-link d-flex justify-content-between align-items-center active">
+                        <div><i class="fas fa-gift me-4"></i>Coupons</div>
+                        <div>{{goggles_coupons_count}}</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item mb-1">
+                    <a href="/coupons/" class="nav-link d-flex justify-content-between align-items-center">
+                        <div><i class="fas fa-gift me-4"></i>Coupons</div>
+                        <div>{{goggles_coupons_count}}</div>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if "/users/" == request.path %}
+                <li class="nav-item mb-1">
+                    <a href="/users/" class="nav-link d-flex justify-content-between align-items-center active">
+                        <div><i class="fas fa-users me-4"></i>Users</div>
+                        <div>{{users_count}}</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item mb-1">
+                    <a href="/users/" class="nav-link d-flex justify-content-between align-items-center">
+                        <div><i class="fas fa-users me-4"></i>Users</div>
+                        <div>{{users_count}}</div>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if "/reviews/" == request.path %}
+                <li class="nav-item mb-1">
+                    <a href="/reviews/" class="nav-link d-flex justify-content-between align-items-center active">
+                        <div><i class="fas fa-comment-medical me-4"></i>Reviews</div>
+                        <div></div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item mb-1">
+                    <a href="/reviews/" class="nav-link d-flex justify-content-between align-items-center">
+                        <div><i class="fas fa-comment-medical me-4"></i>Reviews</div>
+                        <div></div>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if "/admin-logout/" == request.path %}
+                <li class="nav-item mb-1">
+                    <a href="/admin-logout/" class="nav-link active">
+                        <i class="fas fa-sign-out-alt me-4"></i>Logout
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item mb-1">
+                    <a href="/admin-logout/" class="nav-link">
+                        <i class="fas fa-sign-out-alt me-4"></i>Logout
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+            <hr>
+            <a href="/dashboard/" class="d-flex align-items-center mb-md-0 me-md-auto link-dark text-decoration-none">
+                <div class="row">
+                    <div class="col">
+                        <img src="{% static 'Images\avatar.jpg' %}" alt="User Image" width="55"
+                            class="rounded-circle me-2">
+                    </div>
+                    <div class="col">
+                        {% for user_admin in email %}
+                        <div class="row fw-bold text-capitalize"
+                            style="font-size: 20px !important; color: #00000090 !important;">
+                            {{user_admin.username}}
+                        </div>
+                        <div class="row" style="font-size: 17px !important; color: #00000090 !important;">
+                            {{user_admin.email}}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="d-flex flex-column flex-shrink-0 header-second-block rounded-3" id="headersecondblock"
+            style="width: 76vw !important;position: relative !important;top: 5px !important;right: 0 !important;left: 322px !important;">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-center align-items-center first-block">
+                    <button class="btn rounded-5" id="firstbars" onclick="header_show();"
+                        style="display: flex !important;">
+                        <i class="fa-solid fa-bars-staggered fs-2"></i>
+                    </button>
+                    <button class="btn rounded-5" id="secondbars" onclick="header_hide();"
+                        style="display: none !important;">
+                        <i class="fa-solid fa-bars-staggered fs-2"></i>
+                    </button>
+                    <form class="d-flex justify-content-center align-items-center">
+                        <input type="search" class="form-control rounded-pill me-2 bg-white" placeholder="Search..."
+                            name="search" id="search_box">
+                        <button type="submit" class="btn rounded-circle border me-2 bg-white" id="search_button">
+                            <i class="far fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="d-flex justify-content-center align-items-center second-block">
+                    <button type="button" class="btn bg-white rounded-circle border me-2">
+                        <i class="far fa-bell fs-4"></i>
+                    </button>
+                    <div class="dropdown" id="dropdown1">
+                        <button type="button"
+                            class="btn border bg-white p-1 m-0 rounded-5 dropdown-toggle d-flex justify-content-between align-items-center"
+                            data-bs-toggle="dropdown" aria-expanded="false" id="dropdown-toggle1">
+                            &nbsp;
+
+                            {% for user_admin in email %}
+                            {% if user_admin.username != '' %}
+                            <div class="me-2 text-capitalize" style="font-size: 16px !important;">
+                                {{user_admin.username}}</div>
+                            {%else%}
+                            <div class="me-2" style="font-size: 16px !important;">{{user_admin.email}}</div>
+                            {% endif %}
+                            {% endfor %}
+                            <div><img src="{% static 'Images\avatar.jpg' %}" alt="User Image" width="26"
+                                    class="rounded-circle"></div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-white p-0 m-0" id="dropdown-menu1"
+                            aria-labelledby="dropdown-toggle1">
+                            <li>
+                                <a href="/my-profile/" class="dropdown-item">
+                                    <i class="fas fa-user-circle me-4"></i>My Profile
+                                </a>
+                            </li>
+                            <hr class="p-0 m-0">
+                            <li>
+                                <a href="/admin-logout/" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt me-4"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="display:none;" id="myDiv" class="p-3">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </header>
+    <div id="loader" style="left: 65% !important;"></div>
+</body>
+
+</html>

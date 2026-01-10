@@ -1,0 +1,75 @@
+[
+    {
+        "model": "app1.Gogglestype",
+        "pk": 1,
+        "fields": {
+            "goggles_types_id": "1",
+            "is_active": "True",
+            "goggles_types_img": "eyeglasses.jpg",
+            "goggles_types_name": "Eyeglasses",
+            "goggles_types_informations": "Glasses, also known as eyeglasses and spectacles, are vision eyewear with clear or tinted lenses mounted in a frame that holds them in front of a person's eyes, typically utilizing a bridge over the nose and hinged arms, known as temples or temple pieces, that rest over the ears.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglestype",
+        "pk": 2,
+        "fields": {
+            "goggles_types_id": "2",
+            "is_active": "True",
+            "goggles_types_img": "ProgressiveLenses.webp",
+            "goggles_types_name": "Progressive Lenses",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglestype",
+        "pk": 3,
+        "fields": {
+            "goggles_types_id": "3",
+            "is_active": "True",
+            "goggles_types_img": "PowerSunglasses.webp",
+            "goggles_types_name": "Power Sunglasses",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglestype",
+        "pk": 4,
+        "fields": {
+            "goggles_types_id": "4",
+            "is_active": "True",
+            "goggles_types_img": "ScreenGlasses.webp",
+            "goggles_types_name": "Screen Glasses",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglestype",
+        "pk": 5,
+        "fields": {
+            "goggles_types_id": "5",
+            "is_active": "True",
+            "goggles_types_img": "sunglasses.webp",
+            "goggles_types_name": "Sunglasses",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglestype",
+        "pk": 6,
+        "fields": {
+            "goggles_types_id": "6",
+            "is_active": "True",
+            "goggles_types_img": "safetyglasses.png",
+            "goggles_types_name": "Safety Glasses",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    }
+]

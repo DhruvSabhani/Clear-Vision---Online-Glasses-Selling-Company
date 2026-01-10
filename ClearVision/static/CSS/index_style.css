@@ -1,0 +1,416 @@
+#loader {
+    position: absolute !important;
+    left: 53% !important;
+    top: 50% !important;
+    z-index: 1 !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: -76px 0 0 -76px !important;
+    border: 5px solid #f3f3f3 !important;
+    border-radius: 50% !important;
+    border-top: 5px solid #3498db !important;
+    -webkit-animation: spin .5s linear infinite !important;
+    animation: spin .5s linear infinite !important;
+    background-color: white !important;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg) !important;
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg) !important;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-bottom {
+    position: relative !important;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 0;
+    animation-name: animatebottom;
+    animation-duration: 0
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+#myDiv {
+    display: none;
+    text-align: center;
+}
+
+body {
+    background-color: #f0f4f973 !important;
+    font-family: Inter, -apple-system, Helvetica, Arial, sans-serif !important;
+    font-size: 17px !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    color: #212121 !important;
+}
+
+::-webkit-scrollbar {
+    width: 0px !important;
+    display: none !important;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+/* ========================> HERDER <==================================== */
+
+.header-first-block,
+footer .flex-column {
+    background-color: #3C3C32 !important;
+}
+
+#location {
+    width: 15vw !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block !important;
+}
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none !important;
+}
+
+.dropend:hover>.dropdown-menu {
+    display: block !important;
+    top: 0 !important;
+    right: auto !important;
+    left: 100% !important;
+    margin-top: 0 !important;
+    margin-left: var(--bs-dropdown-spacer) !important;
+}
+
+.dropend>.dropdown-menu:active {
+    pointer-events: none !important;
+}
+
+#share:hover>#share_menu {
+    display: block !important;
+}
+
+#share>.dropdown-toggle {
+    pointer-events: none !important;
+}
+
+#search_box,
+#search_button,
+#name_register,
+#phone_register,
+#email_register,
+#birthday_register {
+    border: none !important;
+    border-radius: 0px !important;
+    border-bottom: 2px solid #eee !important;
+}
+
+#search_box:focus,
+#search_box:focus+#search_button,
+#name_register:focus,
+#phone_register:focus,
+#email_register:focus,
+#birthday_register:focus {
+    box-shadow: none !important;
+    border-bottom: 2px solid blue !important;
+}
+
+.header-second-block {
+    height: 6rem !important;
+}
+
+#logo_img {
+    width: 19vw !important;
+}
+
+header .header-second-block .container-fluid #offcanvasDarkNavbar #nav_menu #menu li a {
+    font-size: 1.4vw !important;
+    font-family: monospace !important;
+}
+
+header .header-second-block .container-fluid #offcanvasDarkNavbar #nav_menu #menu li .active {
+    color: blue !important;
+    border-bottom: 2px solid blue !important;
+}
+
+#clearvision {
+    font-size: 80px !important;
+}
+
+/* ========================> FOOTER <==================================== */
+
+header .header-second-block .container-fluid .offcanvas ul #menu li a,
+footer .row .col .row ul li a {
+    font-size: 18px !important;
+    color: #616161 !important;
+    text-transform: uppercase !important;
+}
+
+header .header-second-block .container-fluid .offcanvas ul #menu li a:hover,
+footer .row .col .row ul li a:hover {
+    color: blue !important;
+    border-bottom: 2px solid blue !important;
+}
+
+header,
+footer,
+section,
+textarea {
+    /* font-family: math !important; */
+    font-size: 17px !important;
+}
+
+/* ========================> BODY <==================================== */
+
+#box {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.container-fluid center .position-relative #goggles_type {
+    width: 92vw !important;
+}
+
+.container-fluid center .position-relative #goggles {
+    width: 93vw !important;
+}
+
+.container-fluid center .position-relative #goggles_type a .card {
+    width: 13vw !important;
+}
+
+.container-fluid #eyeglasses_goggless a .card {
+    width: 13vw !important;
+}
+
+/* ========================> Goggles Show <==================================== */
+
+#goggles_show .col .row-cols-1 .col .card #card-body .p1 {
+    font-size: 19px !important;
+    color: darkslateblue !important;
+    /* width: 12vw !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; */
+}
+
+#goggles_show .col .row-cols-1 .col .card #card-body .p2 {
+    color: #616161 !important;
+    width: 12vw !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+#goggles_show .col .row-cols-1 .col {
+    width: 192px !important;
+}
+
+#goggles_show .col .row-cols-1 .col .card #card-body .checked,
+.rate {
+    color: orange !important;
+}
+
+/* ========================> Brand view <==================================== */
+
+#user_brands #brands-pills-tab .active {
+    color: black !important;
+    background-color: #f3e9fc !important;
+    border: 0 !important;
+}
+
+/* ========================> Cart view <==================================== */
+
+#white-space {
+    width: 15vw !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* ========================> MEDIA <==================================== */
+
+@media only screen and (max-width: 1157px) {
+    header .header-second-block .container-fluid div ul li .search-container form input {
+        width: 14vw !important;
+    }
+}
+
+@media (min-width: 0) {
+    .dropdown-menu-lg-start[data-bs-popper] {
+        right: 0 !important;
+        left: auto !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+
+    #clearvision {
+        font-size: 40px !important;
+    }
+
+    /* ========================> HERDER <==================================== */
+    header .header-first-block,
+    #social-account {
+        display: none !important;
+    }
+
+    #search_box .header-second-block {
+        height: 4rem !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    #logo_img {
+        width: 300px !important;
+    }
+
+    div div .rounded-circle {
+        width: 20% !important;
+    }
+
+    #nav_menu .nav-item .nav-link img {
+        width: 300px !important;
+    }
+
+    ul,
+    #menu,
+    li {
+        text-align: center !important;
+        display: block !important;
+        font-size: 20px;
+    }
+
+    header .header-second-block .container-fluid div ul li .search-container form input {
+        width: 50vw !important;
+    }
+
+    /* ========================> BODY <==================================== */
+
+    #homepage center #goggles_eyeglasses {
+        border-radius: var(--bs-border-radius-lg) !important;
+        border: 2px solid black !important;
+    }
+
+    .container-fluid center .position-relative #goggles_type {
+        width: 80vw !important;
+    }
+
+    .container-fluid center .position-relative #goggles {
+        width: 80vw !important;
+    }
+
+    .container-fluid center .position-relative #goggles_type a .card {
+        width: 30vw !important;
+    }
+
+    .container-fluid center .position-relative #goggles a .card {
+        width: 30vw !important;
+    }
+
+    .container-fluid center .position-relative #goggles a .card #card-body .p1,
+    .container-fluid center .position-relative #goggles a .card #card-body .p2 {
+        width: 28vw !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .container-fluid div .shadow div img {
+        width: 25vw !important;
+    }
+
+    #box {
+        display: block !important;
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    .container-fluid center .position-relative #goggles a .card div img {
+        width: 25vw !important;
+    }
+
+    .container-fluid center .brand a img {
+        width: 80px !important;
+    }
+
+    .container-fluid .shadow .row-cols-1 .col {
+        width: 235px !important;
+    }
+
+    /* ========================> FOOTER <==================================== */
+
+    #search_box {
+        border: 2px solid #eee !important;
+        border-radius: 40px 0 0 40px !important;
+    }
+
+    #search_button {
+        border: 2px solid #eee !important;
+        border-radius: 0 40px 40px 0 !important;
+        width: 64px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background-color: #eee;
+        font-size: 18px !important;
+    }
+
+    #search_box:focus {
+        box-shadow: none !important;
+        border: 2px solid blue !important;
+    }
+
+    #search_box:focus+#search_button {
+        box-shadow: none !important;
+        border: 0 !important;
+    }
+
+    #first_footer {
+        display: contents !important;
+    }
+
+    footer,
+    footer .row .col .row ul li a {
+        font-size: 10px !important;
+    }
+}

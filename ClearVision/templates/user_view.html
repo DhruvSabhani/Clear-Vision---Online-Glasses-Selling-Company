@@ -1,0 +1,72 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+{% for uv in users_view %}
+<div class="" id="user_view">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">{{uv.username}} Profile
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+
+    <div class="row p-2">
+        <div class="col-3 rounded-4 bg-white p-3 m-3 shadow-sm border">
+            <div class="row mb-3 d-flex justify-content-center align-items-center">
+                <img src="{% static 'Images\avatar.jpg' %}" alt="User Image" class="rounded-circle mb-3"
+                    style="width: 40% !important;">
+                <h3 class="text-center">{{uv.username}}</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <h3 class="p-2 m-2"><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;{{uv.email}}</h3>
+                <h3 class="p-2 m-2"><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;{{uv.phone_no}}</h3>
+                <h3 class="p-2 m-2"><i class="fa-solid fa-person-half-dress"></i>&nbsp;&nbsp;{{uv.gender}}</h3>
+                <h3 class="p-2 m-2"><i class="fa-solid fa-cake-candles"></i>&nbsp;&nbsp;{{uv.birthday}}</h3>
+            </div>
+        </div>
+        <div class="col-6 p-3 m-3">
+            {% for ua in user_address %}
+            <div class="mb-4">
+                <div class="d-flex justify-content-between">
+                    <h5>{{ua.joind_date}}</h5>
+                    <h5>{{ua.joind_time}}</h5>
+                </div>
+                <div class="row rounded-4 bg-white border p-1 m-1">
+                    <h4 class="text-capitalize fw-bold" style="color: #000000d4 !important;">{{ua.full_name}}</h4>
+                    <h5 class="fw-bold" style="color: #00000090 !important;">{{ua.useremail}}</h5>
+                    <h5 style="color: #00000090 !important;">
+                        {{ua.house_no}}{% if ua.house_no == '' %}{{''}}{% else %}{{','}}{% endif %}
+                        {{ua.colony_name}}{% if ua.colony_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                        {{ua.city_name}}{% if ua.city_name == '' %}{{''}}{% else %}{{','}}{% endif %}
+                        {{ua.state}}
+                        {% if ua.state == '' %}{{''}}{% else %}{{'-'}}{% endif %}
+                        {{ua.pincode}}{% if ua.pincode == '' %}{{''}}{% else %}{{','}}{% endif %}
+                        {{ua.country}}
+                    </h5>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="" id="goggles_show">
+    <div class="row">
+        <div class="rounded bg-body border text-dark rounded-2 border bg-white me-5"
+            style="box-shadow: var(--bs-box-shadow-sm) !important; width: 332px !important;position: relative;top: 12px !important;left: 25px !important;">
+            <!-- <div class="row p-1 text-start">
+                <span
+                    style="font-weight: 600 !important;font-size: 20px !important;color: #00000090 !important;">Filters</span>
+            </div>
+            <hr class="p-0 m-0"> -->
+            <div class="row p-1 text-start">
+                <span class="text-uppercase"
+                    style="font-weight: 600 !important;font-size: 14px !important;">Gender</span>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="gender" id="man">
+                <label class="form-check-label text-capitalize" for="man">
+                    Man
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="gender" id="woamn">
+                <label class="form-check-label text-capitalize" for="woamn">
+                    Woman
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="gender" id="kids">
+                <label class="form-check-label text-capitalize" for="kids">
+                    Kids
+                </label>
+            </div>
+            <hr class="p-0 m-0">
+            <div class="row p-1 text-start">
+                <span class="text-uppercase" style="font-weight: 600 !important;font-size: 14px !important;">
+                    price
+                </span>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="price" id="rs1000-rs2000">
+                <label class="form-check-label text-capitalize" for="rs1000-rs2000">
+                    Rs. 1000 - Rs. 2000
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="price" id="rs3000-rs4000">
+                <label class="form-check-label text-capitalize" for="rs3000-rs4000">
+                    Rs. 3000 - Rs. 4000
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="price" id="rs5000-rs6000">
+                <label class="form-check-label text-capitalize" for="rs5000-rs6000">
+                    Rs. 5000 - Rs. 6000
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="price" id="rs7000-rs8000">
+                <label class="form-check-label text-capitalize" for="rs7000-rs8000">
+                    Rs. 7000 - Rs. 8000
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="price" id="rs9000-rs10000">
+                <label class="form-check-label text-capitalize" for="rs9000-rs10000">
+                    Rs. 9000 - Rs. 10000
+                </label>
+            </div>
+            <hr class="p-0 m-0">
+            <div class="row p-1 text-start">
+                <span class="text-uppercase" style="font-weight: 600 !important;font-size: 14px !important;">FRAME
+                    TYPE</span>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="frametype" id="fullrim">
+                <label class="form-check-label text-capitalize" for="fullrim">
+                    Full Rim
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="frametype" id="halfrim">
+                <label class="form-check-label text-capitalize" for="halfrim">
+                    Half Rim
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="frametype" id="remless">
+                <label class="form-check-label text-capitalize" for="remless">
+                    Remless
+                </label>
+            </div>
+            <hr class="p-0 m-0">
+            <div class="row p-1 text-start">
+                <span class="text-uppercase" style="font-weight: 600 !important;font-size: 14px !important;">
+                    frame color
+                </span>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="framecolor" id="black">
+                <label class="form-check-label text-capitalize" for="black">
+                    black
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="framecolor" id="blue">
+                <label class="form-check-label text-capitalize" for="blue">
+                    blue
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="framecolor" id="silver">
+                <label class="form-check-label text-capitalize" for="silver">
+                    silver
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="framecolor" id="grey">
+                <label class="form-check-label text-capitalize" for="grey">
+                    grey
+                </label>
+            </div>
+            <hr class="p-0 m-0">
+            <div class="row p-1 text-start">
+                <span class="text-uppercase" style="font-weight: 600 !important;font-size: 14px !important;">
+                    Brand
+                </span>
+            </div>
+            {% for g_brand in goggles_brand %}
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="brand" id="{{g_brand.goggles_brand_name}}">
+                <label class="form-check-label text-capitalize" for="{{g_brand.goggles_brand_name}}">
+                    {{g_brand.goggles_brand_name}}
+                </label>
+            </div>
+            {% endfor %}
+            <hr class="p-0 m-0">
+            <div class="row p-1 text-start">
+                <span class="text-uppercase" style="font-weight: 600 !important;font-size: 14px !important;">
+                    Frame Size
+                </span>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="framesize" id="extranarraw">
+                <label class="form-check-label text-capitalize" for="extranarraw">
+                    extra narraw
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="framesize" id="narraw">
+                <label class="form-check-label text-capitalize" for="narraw">
+                    narraw
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="framesize" id="medium">
+                <label class="form-check-label text-capitalize" for="medium">
+                    medium
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="framesize" id="wide">
+                <label class="form-check-label text-capitalize" for="wide">
+                    wide
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="framesize" id="extrawide">
+                <label class="form-check-label text-capitalize" for="extrawide">
+                    extra wide
+                </label>
+            </div>
+        </div>
+        <div class="col p-2 m-2 bg-body rounded-3 border"
+            style="box-shadow: var(--bs-box-shadow-sm) !important;position: relative !important;top: 6px !important; right: 10px !important;">
+            <div class="row p-0 m-0 row-cols-1 row-cols-md-3 d-flex">
+                {% for goggle in goggles_show %}
+                <div class="col p-1 m-1">
+                    <a href="{% for types in goggles_type_name %}{{ types.goggles_types_name }}{% endfor %}-{{goggle.goggles_types_id}}{{goggle.goggles_brand_id}}/cart-{{goggle.goggles_id}}"
+                        class="text-decoration-none">
+                        <div class="card">
+                            {% if goggle.goggles_font_img == '' %}
+                            <img src="/Images/goggles_img/not_img.jpg"
+                                class="d-flex justify-content-center align-items-center rounded-3" alt="Not Image"
+                                title="Not Image">
+                            {% else %}
+                            <img src="/Images/{{ goggle.goggles_font_img }}"
+                                class="d-flex justify-content-center align-items-center rounded-3"
+                                alt="{{ goggle.goggles_name }} Image" title="{{ goggle.goggles_name }}"
+                                style="width: 180px !important;height: 155px !important;">
+                            {% endif %} 
+                            <div class="card-body rounded-3" style="background-color: #fbf9f7 !important;"
+                                id="card-body">
+                                <div class="text-start">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <div class="text-start p1 p-0 m-0" title="{{goggle.goggles_name}}">
+                                    {{goggle.goggles_name}}</div>
+                                <div class="text-start fw-normal p2 p-0 m-0" title="{{goggle.goggles_informations}}">
+                                    {{goggle.goggles_informations}}</div>
+                                <div class="float-start fst-normal p3 p-0 m-0" title="Rs.₹{{goggle.goggles_price}}">
+                                    Rs.₹{{goggle.goggles_price}}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

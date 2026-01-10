@@ -1,0 +1,1177 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="" id="coupons">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">
+            coupons
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+    <div class="text-decoration-none text-dark rounded-2 bg-white w-100 shadow-sm bg-body p-2 m-2"
+        id="couponstable" style="border-top: 3px solid #0000ff75 !important;overflow-y: scroll !important;">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr style="text-align: center !important;">
+                    <th scope="col">
+                        <h4>No.</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Operation</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Code</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Is active</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Home Screen is active</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Font Image</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Name</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Goggles Select</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Categories Select</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Brands Select</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Gender Select</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Discount</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Informations</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Image 1</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Image 2</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Image 3</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Image 4</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Image 5</h4>
+                    </th>
+                    <th scope="col">
+                        <h4>Date and Time</h4>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for coupons in goggles_coupons %}
+                <tr class="text-center">
+                    <th scope="row">
+                        <h5 style="width: 30px !important;">
+                            {% if '0123456789'|make_list %}
+                            {{ forloop.counter }}
+                            {% endif %}
+                        </h5>
+                    </th>
+
+                    <td title="Data View || Edit || Delete">
+                        <a href="/coupons/view-{{ coupons.coupon_code }}/"
+                            class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                            style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #f5d162 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                            <span>
+                                <span>View</span>
+                            </span>
+                        </a>
+
+                        <a href="/coupons/edit-{{ coupons.coupon_code }}/"
+                            class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                            style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #0000ff57 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                            <span>
+                                <span>Edit</span>
+                            </span>
+                        </a>
+
+                        <a href="/coupons/delete-{{ coupons.coupon_code }}/"
+                            class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                            onClick="return confirm('Are you sure you want to delete?')"
+                            style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #ff0000b5 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                            <span>
+                                <span>Delete</span>
+                            </span>
+                        </a>
+                    </td>
+
+                    <td title="Code = {{coupons.coupon_code}}">
+                        {% if coupons.coupon_code == '' %}
+                        <h5 style="width: 30px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 30px !important;">{{coupons.coupon_code}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="is active = {{coupons.is_active}}">
+                        {% if coupons.is_active == '' %}
+                        <h5 style="width: 70px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 70px !important;">{{coupons.is_active}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Home Screen is active = {{coupons.home_screen_is_active}}">
+                        {% if coupons.home_screen_is_active == '' %}
+                        <h5 style="width: 70px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 70px !important;">{{coupons.home_screen_is_active}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Font Image={{coupons.coupon_font_img}}">
+                        {% if coupons.coupon_font_img != '' %}
+                        <h5 style="width: 100px !important;">
+                            <img src="/Images/{{coupons.coupon_font_img}}" alt="{{coupons.coupon_name}} Image"
+                                class="d-flex justify-content-center align-items-center" width="100" height="100">
+                        </h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Name = {{coupons.coupon_name}}">
+                        {% if coupons.coupon_name == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">{{coupons.coupon_name}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Goggles Select = {{coupons.goggles_select}}">
+                        {% if coupons.goggles_select == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">{{coupons.goggles_select}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Categories Select = {{coupons.categories_select}}">
+                        {% if coupons.categories_select == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">{{coupons.categories_select}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Brands Select = {{coupons.brands_select}}">
+                        {% if coupons.brands_select == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">{{coupons.brands_select}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Gender Select = {{coupons.Gender_select}}">
+                        {% if coupons.Gender_select == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">{{coupons.Gender_select}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Discount = {{coupons.coupon_discount}}">
+                        {% if coupons.coupon_discount == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">{{coupons.coupon_discount}}%</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Informations = {{coupons.coupon_informations}}">
+                        {% if coupons.coupon_informations == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">{{coupons.coupon_informations}}</h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Image 1 = {{coupons.coupon_img_1}}">
+                        {% if coupons.coupon_img_1 != '' %}
+                        <h5 style="width: 100px !important;">
+                            <img src="/Images/{{coupons.coupon_img_1}}" alt="{{coupons.coupon_name}} Image"
+                                class="d-flex justify-content-center align-items-center" width="100" height="100">
+                        </h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Image 2 = {{coupons.coupon_img_2}}">
+                        {% if coupons.coupon_img_2 != '' %}
+                        <h5 style="width: 100px !important;">
+                            <img src="/Images/{{coupons.coupon_img_2}}" alt="{{coupons.coupon_name}} Image"
+                                class="d-flex justify-content-center align-items-center" width="100" height="100">
+                        </h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Image 3 = {{coupons.coupon_img_3}}">
+                        {% if coupons.coupon_img_3 != '' %}
+                        <h5 style="width: 100px !important;">
+                            <img src="/Images/{{coupons.coupon_img_3}}" alt="{{coupons.coupon_name}} Image"
+                                class="d-flex justify-content-center align-items-center" width="100" height="100">
+                        </h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Image 4 = {{coupons.coupon_img_4}}">
+                        {% if coupons.coupon_img_4 != '' %}
+                        <h5 style="width: 100px !important;">
+                            <img src="/Images/{{coupons.coupon_img_4}}" alt="{{coupons.coupon_name}} Image"
+                                class="d-flex justify-content-center align-items-center" width="100" height="100">
+                        </h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="Image 5 = {{coupons.coupon_img_5}}">
+                        {% if coupons.coupon_img_5 != '' %}
+                        <h5 style="width: 100px !important;">
+                            <img src="/Images/{{coupons.coupon_img_5}}" alt="{{coupons.coupon_name}} Image"
+                                class="d-flex justify-content-center align-items-center" width="100" height="100">
+                        </h5>
+                        {% endif %}
+                    </td>
+
+                    <td title="DateTime = {{coupons.joind_date}} {{coupons.joind_time}}">
+                        {% if coupons.joind_date == '' and coupons.joind_time == '' %}
+                        <h5 style="width: 100px !important;">-</h5>
+                        {% else %}
+                        <h5 style="width: 100px !important;">
+                            {{coupons.joind_date}}
+                            {{coupons.joind_time}}
+                        </h5>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="position-fixed translate-middle-x" style="bottom: 5% !important; left: 60% !important;" id="add">
+        <button type="button" class="btn rounded-circle" data-bs-toggle="modal" data-bs-target="#addcoupons"
+            style="background: rgba(0, 0, 0, 0.665) !important;box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">
+            <i class="fa fa-plus fs-1 p-1 text-white"></i>
+        </button>
+    </div>
+    <div class="modal" id="addcoupons" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="addcouponsLabel" aria-hidden="true" style="--bs-modal-width:620px !important;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header p-2 m-2">
+                    <h4 class="modal-title" id="addcouponsLabel">ADD Coupons</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col">
+                                <label for="id_coupon_code" style="color: #00000090 !important;">
+                                    <h4>Coupon Code</h4>
+                                </label>
+                                {{coupons_form.coupon_code}}
+                            </div>
+                            <div class="col">
+                                <label for="id_is_active" style="color: #00000090 !important;">
+                                    <h4>is active</h4>
+                                </label>
+                                <select class="form-select form-select-sm" id="id_is_active" name="is_active"
+                                    aria-label=".form-select-sm example" required>
+                                    <option value="True">True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="id_home_screen_is_active" style="color: #00000090 !important;">
+                                    <h4>Home Screen is active</h4>
+                                </label>
+                                <select class="form-select form-select-sm" id="id_home_screen_is_active"
+                                    name="home_screen_is_active" aria-label=".form-select-sm example" required>
+                                    <option value="True">True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col">
+                                <label for="id_coupon_font_img" style="color: #00000090 !important;">
+                                    <h4>Font Image</h4>
+                                </label>
+                                {{coupons_form.coupon_font_img}}
+                            </div>
+                            <img src="#" alt="" class="col" id="fontimg"
+                                style="width: 0 !important;max-width: 150px !important;">
+                            <script>
+                                id_coupon_font_img.onchange = evt => {
+                                    const [file] = id_coupon_font_img.files
+                                    if (file) {
+                                        fontimg.src = URL.createObjectURL(file)
+                                    }
+                                }
+                            </script>
+                        </div>
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col">
+                                <label for="id_coupon_name" style="color: #00000090 !important;">
+                                    <h4>Coupon Name</h4>
+                                </label>
+                                {{coupons_form.coupon_name}}
+                            </div>
+                            <div class="col-5" id="gender_select">
+                                <label for="id_Gender_select" style="color: #00000090 !important;">
+                                    <h4>Gender select</h4>
+                                </label>
+                                <div class="open-modal-btn-wrapper-gender">
+                                    <button type="button" class="btn w-100 open-modal-btn-gender"
+                                        style="border: 1px solid #dee2e6;background-color: #f8f9fa;">
+                                        Gender Check
+                                    </button>
+                                </div>
+
+                                <div class="modal-overlay-gender hide-gender">
+                                    <div class="modal-wrapper-gender rounded-4 bg-white">
+                                        <div class="modal-header justify-content-center p-2 m-2">
+                                            <h4 class="modal-title">Gender Select</h4>
+                                            <button type="button" class="btn-close close-modal-btn-gender"></button>
+                                        </div>
+                                        <div class="modal-body p-1 m-1">
+                                            <label class="form-check-label w-100 mb-2" for="genderradiokall">
+                                                <div class="rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1">
+                                                            <input type="radio"
+                                                                class="genderradiokall form-check-input fs-1"
+                                                                value="All" id="genderradiokall"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <img src="{% static 'Images/all.avif' %}" alt="all avatar"
+                                                                class="rounded-circle" width="60" height="60">
+                                                        </div>
+                                                        <div class="col">
+                                                            <h4>All</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            <label class="form-check-label w-100 mb-2" for="male">
+                                                <div class="rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1">
+                                                            <input type="checkbox"
+                                                                class="gendercheckbox form-check-input fs-1"
+                                                                value="Male" id="male"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <img src="{% static 'Images/man.png' %}" alt="Male avatar"
+                                                                class="rounded-circle" width="60" height="60">
+                                                        </div>
+                                                        <div class="col">
+                                                            <h4>Male</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            <label class="form-check-label w-100 mb-2" for="female">
+                                                <div class="rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1">
+                                                            <input type="checkbox"
+                                                                class="gendercheckbox form-check-input fs-1"
+                                                                value="Female" id="female"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <img src="{% static 'Images/woman.png' %}"
+                                                                alt="Female avatar" class="rounded-circle" width="60"
+                                                                height="60">
+                                                        </div>
+                                                        <div class="col">
+                                                            <h4>Female</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            <label class="form-check-label w-100" for="kids">
+                                                <div class="rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1">
+                                                            <input type="checkbox"
+                                                                class="gendercheckbox form-check-input fs-1"
+                                                                value="Kids" id="kids"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <img src="{% static 'Images/kids.avif' %}" alt="kids avatar"
+                                                                class="rounded-circle" width="60" height="60">
+                                                        </div>
+                                                        <div class="col">
+                                                            <h4>Kids</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            <input type="hidden" id="gendervalue" class="gendervalue"
+                                                name="Gender_select" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function updateTextInput() {
+                                        const GenderRadio = document.querySelectorAll('.genderradiokall');
+                                        const GenderCheckboxes = document.querySelectorAll('.gendercheckbox');
+                                        const GenderValues = document.querySelector('.gendervalue');
+
+                                        const radioValue = Array.from(GenderRadio)
+                                            .filter(radio => radio.checked)
+                                            .map(radio => radio.value);
+
+                                        const checkboxValues = Array.from(GenderCheckboxes)
+                                            .filter(checkbox => checkbox.checked)
+                                            .map(checkbox => checkbox.value);
+
+                                        GenderValues.value = [...radioValue, ...checkboxValues].join(', ');
+                                    }
+
+                                    function handleMutualExclusion(event) {
+                                        const target = event.target;
+                                        const GenderRadio = document.querySelectorAll('.genderradiokall');
+                                        const GenderCheckboxes = document.querySelectorAll('.gendercheckbox');
+
+                                        if (target.classList.contains('genderradiokall')) {
+                                            GenderCheckboxes.forEach(gendercheckbox => (gendercheckbox.checked = false));
+                                        } else if (target.classList.contains('gendercheckbox')) {
+                                            GenderRadio.forEach(genderradiokall => (genderradiokall.checked = false));
+                                        }
+
+                                        updateTextInput();
+                                    }
+
+                                    document.querySelectorAll('.genderradiokall, .gendercheckbox').forEach(input => {
+                                        input.addEventListener('change', handleMutualExclusion);
+                                    });
+                                </script>
+
+                                <script>
+                                    const GenderOpenBtn = document.querySelector(".open-modal-btn-gender");
+                                    const GenderModal = document.querySelector(".modal-overlay-gender");
+                                    const GenderCloseBtn = document.querySelector(".close-modal-btn-gender");
+
+                                    function GenderOpenModal() {
+                                        GenderModal.classList.remove("hide-gender");
+                                    }
+
+                                    function GenderCloseModal(e, clickedOutside) {
+                                        if (clickedOutside) {
+                                            if (e.target.classList.contains("modal-overlay-gender"))
+                                                GenderModal.classList.add("hide-gender");
+                                        } else GenderModal.classList.add("hide-gender");
+                                    }
+
+                                    GenderOpenBtn.addEventListener("click", GenderOpenModal);
+                                    GenderModal.addEventListener("click", (e) => GenderCloseModal(e, true));
+                                    GenderCloseBtn.addEventListener("click", GenderCloseModal);
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col" id="brand_select">
+                                <label for="id_brands_select" style="color: #00000090 !important;">
+                                    <h4>Brand select</h4>
+                                </label>
+                                <div class="open-modal-btn-wrapper-brand">
+                                    <button type="button" class="btn w-100 open-modal-btn-brand"
+                                        style="border: 1px solid #dee2e6;background-color: #f8f9fa;">
+                                        Brand Check
+                                    </button>
+                                </div>
+
+                                <div class="modal-overlay-brand hide-brand">
+                                    <div class="modal-wrapper-brand rounded-2">
+                                        <div
+                                            class="modal-header p-2 m-2 d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h4 class="modal-title me-3">Brand Select</h4>
+                                            </div>
+                                            <div class="d-flex">
+                                                <button type="submit" class="btn" id="BrandSearchButton"><i
+                                                        class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
+                                                <input type="search" class="form-control bg-body"
+                                                    style="width: 74vw !important;font-size: 17px !important;"
+                                                    placeholder="Search Brand..." name="search" id="BrandSearchBox">
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn-close close-modal-btn-brand"></button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body p-1 m-1">
+                                            <label class="form-check-label mb-2" for="brandradiokall" title="All Brands"
+                                                style="width: 239px !important;">
+                                                <div class="rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1" style="width: 10%;">
+                                                            <input type="radio"
+                                                                class="brandradiokall form-check-input fs-1" value="All"
+                                                                id="brandradiokall"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-1" style="width: 22%;">
+                                                            <img src="{% static 'Images/all_logo.webp' %}"
+                                                                alt="all brands logo" class="rounded-circle" width="50"
+                                                                height="50">
+                                                        </div>
+                                                        <div
+                                                            class="col d-flex justify-content-start align-items-center">
+                                                            <h5 id="BrandName">All</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            {% for brand in goggles_brand %}
+                                            <label class="form-check-label mb-2" title="{{brand.goggles_brand_name}}"
+                                                style="width: 239px !important;">
+                                                <div class="BrandItem rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1" style="width: 10%;">
+                                                            <input type="checkbox"
+                                                                class="brandcheckbox form-check-input fs-1"
+                                                                value="{{brand.goggles_brand_name}}" id="brandcheckbox"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-1" style="width: 22%;">
+                                                            <img src="/Images/{{brand.goggles_brand_img}}"
+                                                                alt="{{brand.goggles_brand_img}} logo"
+                                                                class="rounded-circle" width="50" height="50">
+                                                        </div>
+                                                        <div
+                                                            class="col d-flex justify-content-start align-items-center">
+                                                            <h5 id="BrandName">{{brand.goggles_brand_name}}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            {% endfor %}
+
+                                            <input type="hidden" id="brandvalue" class="brandvalue"
+                                                name="brands_select" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function BrandUpdateTextInput() {
+                                        const BrandRadio = document.querySelectorAll('.brandradiokall');
+                                        const BrandCheckboxes = document.querySelectorAll('.brandcheckbox');
+                                        const BrandValues = document.querySelector('.brandvalue');
+
+                                        const BrandRadioValue = Array.from(BrandRadio)
+                                            .filter(radio => radio.checked)
+                                            .map(radio => radio.value);
+
+                                        const BrandCheckboxValues = Array.from(BrandCheckboxes)
+                                            .filter(checkbox => checkbox.checked)
+                                            .map(checkbox => checkbox.value);
+
+                                        BrandValues.value = [...BrandRadioValue, ...BrandCheckboxValues].join(', ');
+                                    }
+
+                                    function BrandHandleMutualExclusion(event) {
+                                        const BrandTarget = event.target;
+                                        const BrandRadio = document.querySelectorAll('.brandradiokall');
+                                        const BrandCheckboxes = document.querySelectorAll('.brandcheckbox');
+
+                                        if (BrandTarget.classList.contains('brandradiokall')) {
+                                            BrandCheckboxes.forEach(brandcheckbox => (brandcheckbox.checked = false));
+                                        } else if (BrandTarget.classList.contains('brandcheckbox')) {
+                                            BrandRadio.forEach(brandradiokall => (brandradiokall.checked = false));
+                                        }
+
+                                        BrandUpdateTextInput();
+                                    }
+
+                                    document.querySelectorAll('.brandradiokall, .brandcheckbox').forEach(input => {
+                                        input.addEventListener('change', BrandHandleMutualExclusion);
+                                    });
+                                </script>
+
+                                <script>
+                                    const BrandOpenBtn = document.querySelector(".open-modal-btn-brand");
+                                    const BrandModal = document.querySelector(".modal-overlay-brand");
+                                    const BrandCloseBtn = document.querySelector(".close-modal-btn-brand");
+
+                                    function BrandOpenModal() {
+                                        BrandModal.classList.remove("hide-brand");
+                                    }
+
+                                    function BrandCloseModal(e, clickedOutside) {
+                                        if (clickedOutside) {
+                                            if (e.target.classList.contains("modal-overlay-brand"))
+                                                BrandModal.classList.add("hide-brand");
+                                        } else BrandModal.classList.add("hide-brand");
+                                    }
+
+                                    BrandOpenBtn.addEventListener("click", BrandOpenModal);
+                                    BrandModal.addEventListener("click", (e) => BrandCloseModal(e, true));
+                                    BrandCloseBtn.addEventListener("click", BrandCloseModal);
+                                </script>
+
+                                <script>
+                                    const BrandSearchBox = document.getElementById('BrandSearchBox');
+                                    const BrandItems = document.querySelectorAll('.BrandItem');
+
+                                    BrandSearchBox.addEventListener('input', function () {
+                                        const BrandSearchText = BrandSearchBox.value.toLowerCase();
+
+                                        BrandItems.forEach(BrandItem => {
+                                            const BrandItemText = BrandItem.textContent.toLowerCase();
+                                            if (BrandItemText.includes(BrandSearchText)) {
+                                                BrandItem.classList.remove('BrandHidden');
+                                            } else {
+                                                BrandItem.classList.add('BrandHidden');
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
+                            <div class="col" id="categories_select">
+                                <label for="id_categories_select" style="color: #00000090 !important;">
+                                    <h4>Categories select</h4>
+                                </label>
+                                <div class="open-modal-btn-wrapper-categories">
+                                    <button type="button" class="btn w-100 open-modal-btn-categories"
+                                        style="border: 1px solid #dee2e6;background-color: #f8f9fa;">
+                                        Categories Check
+                                    </button>
+                                </div>
+
+                                <div class="modal-overlay-categories hide-categories">
+                                    <div class="modal-wrapper-categories rounded-2">
+                                        <div
+                                            class="modal-header p-2 m-2 d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h4 class="modal-title me-3">Categories Select</h4>
+                                            </div>
+                                            <div class="d-flex">
+                                                <button type="submit" class="btn" id="CategoriesSearchButton"><i
+                                                        class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
+                                                <input type="search" class="form-control bg-body"
+                                                    style="width: 72vw !important;font-size: 17px !important;"
+                                                    placeholder="Search Categories..." name="search"
+                                                    id="CategoriesSearchBox">
+                                            </div>
+                                            <div>
+                                                <button type="button"
+                                                    class="btn-close close-modal-btn-categories"></button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body p-1 m-1">
+                                            <label class="form-check-label mb-2" for="categoriesradiokall"
+                                                title="All Categories" style="width: 239px !important;">
+                                                <div class="rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1" style="width: 10%;">
+                                                            <input type="radio"
+                                                                class="categoriesradiokall form-check-input fs-1"
+                                                                value="All" id="categoriesradiokall"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-1" style="width: 22%;">
+                                                            <img src="{% static 'Images/all_logo.webp' %}"
+                                                                alt="all categories logo" class="rounded-circle"
+                                                                width="50" height="50">
+                                                        </div>
+                                                        <div
+                                                            class="col d-flex justify-content-start align-items-center">
+                                                            <h5 id="CategoriesName">All</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            {% for categories in goggles_type %}
+                                            <label class="form-check-label mb-2"
+                                                title="{{categories.goggles_types_name}}"
+                                                style="width: 239px !important;">
+                                                <div class="CategoriesItem rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1" style="width: 10%;">
+                                                            <input type="checkbox"
+                                                                class="categoriescheckbox form-check-input fs-1"
+                                                                value="{{categories.goggles_types_name}}"
+                                                                id="categoriescheckbox"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-1" style="width: 22%;">
+                                                            <img src="/Images/{{categories.goggles_types_img}}"
+                                                                alt="{{categories.goggles_types_name}} logo"
+                                                                class="rounded-circle" width="50" height="50">
+                                                        </div>
+                                                        <div
+                                                            class="col d-flex justify-content-start align-items-center">
+                                                            <h5 id="CategoriesName">{{categories.goggles_types_name}}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            {% endfor %}
+
+                                            <input type="hidden" id="categoriesvalue" class="categoriesvalue"
+                                                name="categories_select" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function CategoriesUpdateTextInput() {
+                                        const CategoriesRadio = document.querySelectorAll('.categoriesradiokall');
+                                        const CategoriesCheckboxes = document.querySelectorAll('.categoriescheckbox');
+                                        const CategoriesValues = document.querySelector('.categoriesvalue');
+
+                                        const CategoriesRadioValue = Array.from(CategoriesRadio)
+                                            .filter(radio => radio.checked)
+                                            .map(radio => radio.value);
+
+                                        const CategoriesCheckboxValues = Array.from(CategoriesCheckboxes)
+                                            .filter(checkbox => checkbox.checked)
+                                            .map(checkbox => checkbox.value);
+
+                                        CategoriesValues.value = [...CategoriesRadioValue, ...CategoriesCheckboxValues].join(', ');
+                                    }
+
+                                    function CategoriesHandleMutualExclusion(event) {
+                                        const CategoriesTarget = event.target;
+                                        const CategoriesRadio = document.querySelectorAll('.categoriesradiokall');
+                                        const CategoriesCheckboxes = document.querySelectorAll('.categoriescheckbox');
+
+                                        if (CategoriesTarget.classList.contains('categoriesradiokall')) {
+                                            CategoriesCheckboxes.forEach(categoriescheckbox => (categoriescheckbox.checked = false));
+                                        } else if (CategoriesTarget.classList.contains('categoriescheckbox')) {
+                                            CategoriesRadio.forEach(categoriesradiokall => (categoriesradiokall.checked = false));
+                                        }
+
+                                        CategoriesUpdateTextInput();
+                                    }
+
+                                    document.querySelectorAll('.categoriesradiokall, .categoriescheckbox').forEach(input => {
+                                        input.addEventListener('change', CategoriesHandleMutualExclusion);
+                                    });
+                                </script>
+
+                                <script>
+                                    const CategoriesOpenBtn = document.querySelector(".open-modal-btn-categories");
+                                    const CategoriesModal = document.querySelector(".modal-overlay-categories");
+                                    const CategoriesCloseBtn = document.querySelector(".close-modal-btn-categories");
+
+                                    function CategoriesOpenModal() {
+                                        CategoriesModal.classList.remove("hide-categories");
+                                    }
+
+                                    function CategoriesCloseModal(e, clickedOutside) {
+                                        if (clickedOutside) {
+                                            if (e.target.classList.contains("modal-overlay-categories"))
+                                                CategoriesModal.classList.add("hide-categories");
+                                        } else CategoriesModal.classList.add("hide-categories");
+                                    }
+
+                                    CategoriesOpenBtn.addEventListener("click", CategoriesOpenModal);
+                                    CategoriesModal.addEventListener("click", (e) => CategoriesCloseModal(e, true));
+                                    CategoriesCloseBtn.addEventListener("click", CategoriesCloseModal);
+                                </script>
+
+                                <script>
+                                    const CategoriesSearchBox = document.getElementById('CategoriesSearchBox');
+                                    const CategoriesItems = document.querySelectorAll('.CategoriesItem');
+
+                                    CategoriesSearchBox.addEventListener('input', function () {
+                                        const CategoriesSearchText = CategoriesSearchBox.value.toLowerCase();
+
+                                        CategoriesItems.forEach(CategoriesItem => {
+                                            const CategoriesItemText = CategoriesItem.textContent.toLowerCase();
+                                            if (CategoriesItemText.includes(CategoriesSearchText)) {
+                                                CategoriesItem.classList.remove('CategoriesHidden');
+                                            } else {
+                                                CategoriesItem.classList.add('CategoriesHidden');
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
+                            <div class="col" id="goggles_select">
+                                <label for="id_goggles_select" style="color: #00000090 !important;">
+                                    <h4>Goggles select</h4>
+                                </label>
+                                <div class="open-modal-btn-wrapper-goggles">
+                                    <button type="button" class="btn w-100 open-modal-btn-goggles"
+                                        style="border: 1px solid #dee2e6;background-color: #f8f9fa;">
+                                        Goggles Check
+                                    </button>
+                                </div>
+
+                                <div class="modal-overlay-goggles hide-goggles">
+                                    <div class="modal-wrapper-goggles rounded-2">
+                                        <div
+                                            class="modal-header p-2 m-2 d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h4 class="modal-title me-3">Goggles Select</h4>
+                                            </div>
+                                            <div class="d-flex">
+                                                <button type="submit" class="btn" id="GogglesSearchButton"><i
+                                                        class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
+                                                <input type="search" class="form-control bg-body"
+                                                    style="width: 74vw !important;font-size: 17px !important;"
+                                                    placeholder="Search Goggles..." name="search" id="GogglesSearchBox">
+                                            </div>
+                                            <div>
+                                                <button type="button"
+                                                    class="btn-close close-modal-btn-goggles"></button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body p-1 m-1">
+                                            <label class="form-check-label mb-2" for="gogglesradiokall"
+                                                title="All Goggles" style="width: 239px !important;">
+                                                <div class="rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1" style="width: 10%;">
+                                                            <input type="radio"
+                                                                class="gogglesradiokall form-check-input fs-1"
+                                                                value="All" id="gogglesradiokall"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-1" style="width: 22%;">
+                                                            <img src="{% static 'Images/all_logo.webp' %}"
+                                                                alt="all goggles logo" class="rounded-circle" width="50"
+                                                                height="50">
+                                                        </div>
+                                                        <div
+                                                            class="col d-flex justify-content-start align-items-center">
+                                                            <h5 id="GogglesName">All</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            {% for goggles in goggless %}
+                                            <label class="form-check-label mb-2" title="{{goggles.goggles_name}}"
+                                                style="width: 239px !important;">
+                                                <div class="GogglesItem rounded-3"
+                                                    style="border: 1px solid #dee2e6 !important;background-color: #f8f9fa !important;">
+                                                    <div
+                                                        class="row d-fiex justify-content-center align-items-center p-1">
+                                                        <div class="col-1" style="width: 10%;">
+                                                            <input type="checkbox"
+                                                                class="gogglescheckbox form-check-input fs-1"
+                                                                value="{{goggles.goggles_name}}" id="gogglescheckbox"
+                                                                style="font-size: 20px !important;" />
+                                                        </div>
+                                                        <div class="col-1" style="width: 22%;">
+                                                            <img src="/Images/{{goggles.goggles_font_img}}"
+                                                                alt="{{goggles.goggles_name}} logo"
+                                                                class="rounded-circle" width="50" height="50">
+                                                        </div>
+                                                        <div
+                                                            class="col d-flex justify-content-start align-items-center">
+                                                            <h5 id="GogglesName">{{goggles.goggles_name}}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            {% endfor %}
+
+                                            <input type="hidden" id="gogglesvalue" class="gogglesvalue"
+                                                name="goggles_select" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function GogglesUpdateTextInput() {
+                                        const GogglesRadio = document.querySelectorAll('.gogglesradiokall');
+                                        const GogglesCheckboxes = document.querySelectorAll('.gogglescheckbox');
+                                        const GogglesValues = document.querySelector('.gogglesvalue');
+
+                                        const GogglesRadioValue = Array.from(GogglesRadio)
+                                            .filter(radio => radio.checked)
+                                            .map(radio => radio.value);
+
+                                        const GogglesCheckboxValues = Array.from(GogglesCheckboxes)
+                                            .filter(checkbox => checkbox.checked)
+                                            .map(checkbox => checkbox.value);
+
+                                        GogglesValues.value = [...GogglesRadioValue, ...GogglesCheckboxValues].join(', ');
+                                    }
+
+                                    function GogglesHandleMutualExclusion(event) {
+                                        const GogglesTarget = event.target;
+                                        const GogglesRadio = document.querySelectorAll('.gogglesradiokall');
+                                        const GogglesCheckboxes = document.querySelectorAll('.gogglescheckbox');
+
+                                        if (GogglesTarget.classList.contains('gogglesradiokall')) {
+                                            GogglesCheckboxes.forEach(gogglescheckbox => (gogglescheckbox.checked = false));
+                                        } else if (GogglesTarget.classList.contains('gogglescheckbox')) {
+                                            GogglesRadio.forEach(gogglesradiokall => (gogglesradiokall.checked = false));
+                                        }
+
+                                        GogglesUpdateTextInput();
+                                    }
+
+                                    document.querySelectorAll('.gogglesradiokall, .gogglescheckbox').forEach(input => {
+                                        input.addEventListener('change', GogglesHandleMutualExclusion);
+                                    });
+                                </script>
+
+                                <script>
+                                    const GogglesOpenBtn = document.querySelector(".open-modal-btn-goggles");
+                                    const GogglesModal = document.querySelector(".modal-overlay-goggles");
+                                    const GogglesCloseBtn = document.querySelector(".close-modal-btn-goggles");
+
+                                    function GogglesOpenModal() {
+                                        GogglesModal.classList.remove("hide-goggles");
+                                    }
+
+                                    function GogglesCloseModal(e, clickedOutside) {
+                                        if (clickedOutside) {
+                                            if (e.target.classList.contains("modal-overlay-goggles"))
+                                                GogglesModal.classList.add("hide-goggles");
+                                        } else GogglesModal.classList.add("hide-goggles");
+                                    }
+
+                                    GogglesOpenBtn.addEventListener("click", GogglesOpenModal);
+                                    GogglesModal.addEventListener("click", (e) => GogglesCloseModal(e, true));
+                                    GogglesCloseBtn.addEventListener("click", GogglesCloseModal);
+                                </script>
+
+                                <script>
+                                    const GogglesSearchBox = document.getElementById('GogglesSearchBox');
+                                    const GogglesItems = document.querySelectorAll('.GogglesItem');
+
+                                    GogglesSearchBox.addEventListener('input', function () {
+                                        const GogglesSearchText = GogglesSearchBox.value.toLowerCase();
+
+                                        GogglesItems.forEach(GogglesItem => {
+                                            const GogglesItemText = GogglesItem.textContent.toLowerCase();
+                                            if (GogglesItemText.includes(GogglesSearchText)) {
+                                                GogglesItem.classList.remove('GogglesHidden');
+                                            } else {
+                                                GogglesItem.classList.add('GogglesHidden');
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col-5">
+                                <label for="id_coupon_discount" style="color: #00000090 !important;">
+                                    <h4>Discount</h4>
+                                </label>
+                                {{coupons_form.coupon_discount}}
+                            </div>
+                            <div class="col">
+                                <label for="id_coupon_informations" style="color: #00000090 !important;">
+                                    <h4>Informations</h4>
+                                </label>
+                                {{coupons_form.coupon_informations}}
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <button type="button" class="btn fw-bold p-1 m-1 open-modal-btn rounded-pill w-75"
+                                style="color: #00000090 !important;border: 1px solid #dee2e6;box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1) !important;"
+                                id="show_down" onclick="down_details()"><i class="fa-solid fa-caret-down me-3"></i>extra
+                                images field</button>
+                        </div>
+
+                        <div class="mb-4" id="couponsimg" style="display: none !important;">
+                            <div class="mb-2 row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    <label for="id_coupon_img_1" style="color: #00000090 !important;">
+                                        <h4>Image 1</h4>
+                                    </label>
+                                    {{coupons_form.coupon_img_1}}
+                                </div>
+                                <img src="#" alt="" class="col" id="img1"
+                                    style="width: 0 !important;max-width: 150px !important;">
+                                <script>
+                                    id_coupon_img_1.onchange = evt => {
+                                        const [file] = id_coupon_img_1.files
+                                        if (file) {
+                                            img1.src = URL.createObjectURL(file)
+                                        }
+                                    }
+                                </script>
+                            </div>
+                            <div class="mb-2 row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    <label for="id_coupon_img_2" style="color: #00000090 !important;">
+                                        <h4>Image 2</h4>
+                                    </label>
+                                    {{coupons_form.coupon_img_2}}
+                                </div>
+                                <img src="#" alt="" class="col" id="img2"
+                                    style="width: 0 !important;max-width: 150px !important;">
+                                <script>
+                                    id_coupon_img_2.onchange = evt => {
+                                        const [file] = id_coupon_img_2.files
+                                        if (file) {
+                                            img2.src = URL.createObjectURL(file)
+                                        }
+                                    }
+                                </script>
+                            </div>
+                            <div class="mb-2 row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    <label for="id_coupon_img_3" style="color: #00000090 !important;">
+                                        <h4>Image 3</h4>
+                                    </label>
+                                    {{coupons_form.coupon_img_3}}
+                                </div>
+                                <img src="#" alt="" class="col" id="img3"
+                                    style="width: 0 !important;max-width: 150px !important;">
+                                <script>
+                                    id_coupon_img_3.onchange = evt => {
+                                        const [file] = id_coupon_img_3.files
+                                        if (file) {
+                                            img3.src = URL.createObjectURL(file)
+                                        }
+                                    }
+                                </script>
+                            </div>
+                            <div class="mb-2 row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    <label for="id_coupon_img_4" style="color: #00000090 !important;">
+                                        <h4>Image 4</h4>
+                                    </label>
+                                    {{coupons_form.coupon_img_4}}
+                                </div>
+                                <img src="#" alt="" class="col" id="img4"
+                                    style="width: 0 !important;max-width: 150px !important;">
+                                <script>
+                                    id_coupon_img_4.onchange = evt => {
+                                        const [file] = id_coupon_img_4.files
+                                        if (file) {
+                                            img4.src = URL.createObjectURL(file)
+                                        }
+                                    }
+                                </script>
+                            </div>
+                            <div class="mb-2 row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    <label for="id_coupon_img_5" style="color: #00000090 !important;">
+                                        <h4>Image 5</h4>
+                                    </label>
+                                    {{coupons_form.coupon_img_5}}
+                                </div>
+                                <img src="#" alt="" class="col" id="img5"
+                                    style="width: 0 !important;max-width: 150px !important;">
+                                <script>
+                                    id_coupon_img_5.onchange = evt => {
+                                        const [file] = id_coupon_img_5.files
+                                        if (file) {
+                                            img5.src = URL.createObjectURL(file)
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <button type="button" class="btn fw-bold p-1 m-1 open-modal-btn rounded-pill w-75"
+                                style="display: none !important;color: #00000090 !important;border: 1px solid #dee2e6;box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1) !important;"
+                                id="show_up" onclick="up_details()"><i class="fa-solid fa-caret-up me-3"></i>hide extra
+                                images field</button>
+                        </div>
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col">
+                                <input type="hidden" class="form-control text-black" value="{{ datetime|date:'Y-m-d' }}"
+                                    name="joind_date" required id="id_joind_date">
+                            </div>
+                            <div class="col">
+                                <input type="hidden" class="form-control text-black" value="{{ datetime|time:'G:i' }}"
+                                    name="joind_time" required id="id_joind_time">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col modal-footer d-flex justify-content-center align-items-center">
+                                <button type="submit" class="btn btn-primary w-100 rounded-2 fs-4" name="submit"
+                                    value="submit"
+                                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">ADD</button>
+                            </div>
+                            <div class="col modal-footer d-flex justify-content-center align-items-center">
+                                <button type="button" class="btn btn-secondary w-100 rounded-2 fs-4"
+                                    data-bs-dismiss="modal"
+                                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

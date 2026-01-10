@@ -1,0 +1,101 @@
+[
+    {
+        "model": "app1.Coupons",
+        "pk": 1,
+        "fields": {
+            "coupon_code": "1",
+            "is_active": "True",
+            "home_screen_is_active": "True",
+            "coupon_font_img": "Home-harmony-desktop-extra500-model-2.webp",
+            "coupon_name": "Home-harmony",
+            "goggles_select": "All",
+            "categories_select": "All",
+            "brands_select": "All",
+            "Gender_select": "All",
+            "coupon_discount": "15",
+            "coupon_informations": "",
+            "coupon_img_1": "",
+            "coupon_img_2": "",
+            "coupon_img_3": "",
+            "coupon_img_4": "",
+            "coupon_img_5": "",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+
+    {
+        "model": "app1.Coupons",
+        "pk": 2,
+        "fields": {
+            "coupon_code": "2",
+            "is_active": "True",
+            "home_screen_is_active": "True",
+            "coupon_font_img": "New Web Banner.png",
+            "coupon_name": "New Web Banner",
+            "goggles_select": "Men",
+            "categories_select": "All",
+            "brands_select": "All",
+            "Gender_select": "All",
+            "coupon_discount": "15",
+            "coupon_informations": "",
+            "coupon_img_1": "",
+            "coupon_img_2": "",
+            "coupon_img_3": "",
+            "coupon_img_4": "",
+            "coupon_img_5": "",
+            "joind_date": "2024-10-01",
+            "joind_time": "08:56:28"
+        }
+    },
+
+    {
+        "model": "app1.Coupons",
+        "pk": 3,
+        "fields": {
+            "coupon_code": "3",
+            "is_active": "True",
+            "home_screen_is_active": "True",
+            "coupon_font_img": "Turban-DesktopBanner.webp",
+            "coupon_name": "Turban",
+            "goggles_select": "All",
+            "categories_select": "All",
+            "brands_select": "All",
+            "Gender_select": "All",
+            "coupon_discount": "15",
+            "coupon_informations": "",
+            "coupon_img_1": "",
+            "coupon_img_2": "",
+            "coupon_img_3": "",
+            "coupon_img_4": "",
+            "coupon_img_5": "",
+            "joind_date": "2024-10-02",
+            "joind_time": "08:56:28"
+        }
+    },
+
+    {
+        "model": "app1.Coupons",
+        "pk": 4,
+        "fields": {
+            "coupon_code": "4",
+            "is_active": "True",
+            "home_screen_is_active": "True",
+            "coupon_font_img": "r1.webp",
+            "coupon_name": "r1",
+            "goggles_select": "All",
+            "categories_select": "All",
+            "brands_select": "All",
+            "Gender_select": "All",
+            "coupon_discount": "15",
+            "coupon_informations": "",
+            "coupon_img_1": "",
+            "coupon_img_2": "",
+            "coupon_img_3": "",
+            "coupon_img_4": "",
+            "coupon_img_5": "",
+            "joind_date": "2024-10-03",
+            "joind_time": "08:56:28"
+        }
+    }
+]

@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="" id="user_brands">
+    <div class="p-2 m-2 mb-5">
+        <div class="row p-0 m-0 row-cols-1 row-cols-md-3 d-flex">
+            {% for g_brand in goggles_brand %}
+            <div class="col p-1 m-1" style="width: 262px !important;">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal"
+                    data-bs-target="#BrandModal{{g_brand.goggles_brand_id}}">
+                    <div class="border bg-white p-2 m-2 rounded-4">
+                        <div class="d-flex justify-content-center align-items-center mb-3"
+                            style="height: 200px !important;">
+                            {% if g_brand.goggles_brand_img == '' %}
+                            <img src="/Images/goggles_img/not_img.jpg"
+                                class="d-flex justify-content-center align-items-center rounded-3" alt="Not Image"
+                                title="Not Image" width="160">
+                            {% else %}
+                            <img src="/Images/{{ g_brand.goggles_brand_img }}" class="rounded-3"
+                                alt="{{ g_brand.goggles_brand_name }} Image" title="{{ g_brand.goggles_brand_name }}"
+                                width="160">
+                            {% endif %}
+                        </div>
+                        <div class="rounded-3" style="background-color: #fbf9f7 !important;" id="card-body">
+                            <div class="" title="{{g_brand.goggles_brand_name}}"
+                                style="font-size: 19px !important; color: darkslateblue !important;">
+                                {{g_brand.goggles_brand_name}}</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="modal fade p-0" id="BrandModal{{g_brand.goggles_brand_id}}" tabindex="-1"
+                data-bs-backdrop="static" data-bs-keyboard="false"
+                aria-labelledby="BrandModalLabel{{g_brand.goggles_brand_id}}" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-header p-1 m-1">
+                            <h4 class="modal-title" id="BrandModalLabel{{g_brand.goggles_brand_id}}">
+                                {{g_brand.goggles_brand_name}}</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row p-2 m-2">
+                                <div class="col" style="max-width: 275px !important;">
+                                    {% if g_brand.goggles_brand_img == '' %}
+                                    <img src="/Images/not_img.jpg"
+                                        class="d-flex justify-content-center align-items-center rounded-2"
+                                        alt="Not Image" title="Not Image" id="brandimg" style="width: 30vw !important;">
+                                    {% else %}
+                                    <img src="/Images/{{ g_brand.goggles_brand_img }}"
+                                        class="d-flex justify-content-center align-items-center rounded-2" id="brandimg"
+                                        alt="{{ g_brand.goggles_brand_name }} Image" data-bs-toggle="modal"
+                                        data-bs-target="#brandimg{{ g_brand.goggles_brand_id }}"
+                                        style="width: 250px !important;">
+                                    {% endif %}
+                                </div>
+                                <div class="col text-start">
+                                    <div class="row p-1">
+                                        <h2>{{g_brand.goggles_brand_name}}</h2>
+                                    </div>
+                                    <div class="row p-1">
+                                        <h4 style="color: #00000090 !important;">
+                                            {{ g_brand.goggles_brand_informations }}
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="color: #0000005e !important;">
+                            <div class="row p-2 p-2 d-flex justify-content-center align-items-center"
+                                id="brands-pills-tab" role="tablist">
+                                <button
+                                    class="active btn fs-4 col d-flex justify-content-center align-items-center border rounded-pill me-2"
+                                    id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button"
+                                    role="tab" aria-controls="pills-all" aria-selected="true">
+                                    All
+                                </button>
+
+                                <button
+                                    class="btn fs-4 col d-flex justify-content-center align-items-center border rounded-pill me-2"
+                                    id="pills-men-tab" data-bs-toggle="pill" data-bs-target="#pills-men" type="button"
+                                    role="tab" aria-controls="pills-men" aria-selected="false">
+                                    Men
+                                </button>
+
+                                <button
+                                    class="btn fs-4 col d-flex justify-content-center align-items-center border rounded-pill me-2"
+                                    id="pills-women-tab" data-bs-toggle="pill" data-bs-target="#pills-women"
+                                    type="button" role="tab" aria-controls="pills-women" aria-selected="false">
+                                    Women
+                                </button>
+
+                                <button
+                                    class="btn fs-4 col d-flex justify-content-center align-items-center border rounded-pill me-2"
+                                    id="pills-kids-tab" data-bs-toggle="pill" data-bs-target="#pills-kids" type="button"
+                                    role="tab" aria-controls="pills-kids" aria-selected="false">
+                                    Kids
+                                </button>
+                            </div>
+
+                            <center>
+                                <div class="tab-content p-1 m-1" id="brands-pills-tabContent"
+                                    style="overflow-y: scroll !important;">
+                                    <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
+                                        aria-labelledby="pills-all-tab">
+                                        <div class="row p-0 m-0 row-cols-1 row-cols-md-3 d-flex">
+                                            {% for go in goggles_all %}
+                                            {% if go.goggles_brand_id == g_brand.goggles_brand_id %}
+                                            <div class="text-capitalize rounded-3 p-1 m-1"
+                                                style="width: 189px !important;">
+                                                <div class="d-flex justify-content-center align-items-center"
+                                                    style="height: 150px !important;">
+                                                    <a href="/Eyeglasses-11/cart-{{go.goggles_id}}"
+                                                        class="text-decoration-none me-1">
+                                                        {% if go.goggles_font_img == '' %}
+                                                        <img src="/Images/not_img.jpg"
+                                                            class="d-flex justify-content-center align-items-center rounded-4"
+                                                            alt="Not Image" title="Not Image"
+                                                            style="width: 163px !important;">
+                                                        {% else %}
+                                                        <img src="/Images/{{ go.goggles_font_img }}" class="rounded-4"
+                                                            alt="{{ go.goggles_name }} Image"
+                                                            title="{{ go.goggles_name }}"
+                                                            style="width: 163px !important;">
+                                                        {% endif %}
+                                                    </a>
+                                                </div>
+                                                <a href="/Eyeglasses-11/cart-{{go.goggles_id}}"
+                                                    class="text-decoration-none">
+                                                    <div class="rounded-3 p-2"
+                                                        style="background-color: #fbf9f7 !important;">
+                                                        <div class="text-start p1" title="{{go.goggles_name}}"
+                                                            style="font-size: 19px !important;color: darkslateblue !important;width: 13vw !important;white-space: nowrap !important;overflow: hidden !important;text-overflow: ellipsis !important;">
+                                                            {{go.goggles_name}}</div>
+                                                        <div class=" text-start fw-normal p2"
+                                                            title="{{go.goggles_informations}}"
+                                                            style="color: #616161 !important;width: 13vw !important;white-space: nowrap !important;overflow: hidden !important;text-overflow: ellipsis !important;">
+                                                            {{go.goggles_informations}}</div>
+                                                        <div class="text-start text-dark"
+                                                            title="Rs.₹{{go.goggles_price}}.00"
+                                                            style="font-weight: 500 !important;">
+                                                            <script>
+                                                                document.write("Rs. ₹", numberWithCommas("{{ go.goggles_price }}.00"))
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="pills-men" role="tabpanel"
+                                        aria-labelledby="pills-men-tab">
+                                        <div class="row p-0 m-0 row-cols-1 row-cols-md-3 d-flex">
+                                            {% for go in goggles_men %}
+                                            {% if go.goggles_brand_id == g_brand.goggles_brand_id %}
+                                            <div class="text-capitalize rounded-3 p-1 m-1"
+                                                style="width: 189px !important;">
+                                                <div class="d-flex justify-content-center align-items-center"
+                                                    style="height: 150px !important;">
+                                                    <a href="/Eyeglasses-11/cart-{{go.goggles_id}}"
+                                                        class="text-decoration-none me-1">
+                                                        {% if go.goggles_font_img == '' %}
+                                                        <img src="/Images/not_img.jpg"
+                                                            class="d-flex justify-content-center align-items-center rounded-4"
+                                                            alt="Not Image" title="Not Image"
+                                                            style="width: 163px !important;">
+                                                        {% else %}
+                                                        <img src="/Images/{{ go.goggles_font_img }}" class="rounded-4"
+                                                            alt="{{ go.goggles_name }} Image"
+                                                            title="{{ go.goggles_name }}"
+                                                            style="width: 163px !important;">
+                                                        {% endif %}
+                                                    </a>
+                                                </div>
+                                                <a href="/Eyeglasses-11/cart-{{go.goggles_id}}"
+                                                    class="text-decoration-none">
+                                                    <div class="rounded-3 p-2"
+                                                        style="background-color: #fbf9f7 !important;">
+                                                        <div class="text-start p1" title="{{go.goggles_name}}"
+                                                            style="font-size: 19px !important;color: darkslateblue !important;width: 13vw !important;white-space: nowrap !important;overflow: hidden !important;text-overflow: ellipsis !important;">
+                                                            {{go.goggles_name}}</div>
+                                                        <div class=" text-start fw-normal p2"
+                                                            title="{{go.goggles_informations}}"
+                                                            style="color: #616161 !important;width: 13vw !important;white-space: nowrap !important;overflow: hidden !important;text-overflow: ellipsis !important;">
+                                                            {{go.goggles_informations}}</div>
+                                                        <div class="text-start text-dark"
+                                                            title="Rs.₹{{go.goggles_price}}.00"
+                                                            style="font-weight: 500 !important;">
+                                                            <script>
+                                                                document.write("Rs. ₹", numberWithCommas("{{ go.goggles_price }}.00"))
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="pills-women" role="tabpanel"
+                                        aria-labelledby="pills-women-tab">
+                                        <div class="row p-0 m-0 row-cols-1 row-cols-md-3 d-flex">
+                                            {% for go in goggles_women %}
+                                            {% if go.goggles_brand_id == g_brand.goggles_brand_id %}
+                                            <div class="text-capitalize rounded-3 p-1 m-1"
+                                                style="width: 189px !important;">
+                                                <div class="d-flex justify-content-center align-items-center"
+                                                    style="height: 150px !important;">
+                                                    <a href="/Eyeglasses-11/cart-{{go.goggles_id}}"
+                                                        class="text-decoration-none me-1">
+                                                        {% if go.goggles_font_img == '' %}
+                                                        <img src="/Images/not_img.jpg"
+                                                            class="d-flex justify-content-center align-items-center rounded-4"
+                                                            alt="Not Image" title="Not Image"
+                                                            style="width: 163px !important;">
+                                                        {% else %}
+                                                        <img src="/Images/{{ go.goggles_font_img }}" class="rounded-4"
+                                                            alt="{{ go.goggles_name }} Image"
+                                                            title="{{ go.goggles_name }}"
+                                                            style="width: 163px !important;">
+                                                        {% endif %}
+                                                    </a>
+                                                </div>
+                                                <a href="/Eyeglasses-11/cart-{{go.goggles_id}}"
+                                                    class="text-decoration-none">
+                                                    <div class="rounded-3 p-2"
+                                                        style="background-color: #fbf9f7 !important;">
+                                                        <div class="text-start p1" title="{{go.goggles_name}}"
+                                                            style="font-size: 19px !important;color: darkslateblue !important;width: 13vw !important;white-space: nowrap !important;overflow: hidden !important;text-overflow: ellipsis !important;">
+                                                            {{go.goggles_name}}</div>
+                                                        <div class=" text-start fw-normal p2"
+                                                            title="{{go.goggles_informations}}"
+                                                            style="color: #616161 !important;width: 13vw !important;white-space: nowrap !important;overflow: hidden !important;text-overflow: ellipsis !important;">
+                                                            {{go.goggles_informations}}</div>
+                                                        <div class="text-start text-dark"
+                                                            title="Rs.₹{{go.goggles_price}}.00"
+                                                            style="font-weight: 500 !important;">
+                                                            <script>
+                                                                document.write("Rs. ₹", numberWithCommas("{{ go.goggles_price }}.00"))
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="pills-kids" role="tabpanel"
+                                        aria-labelledby="pills-kids-tab">
+                                        <div class="row p-0 m-0 row-cols-1 row-cols-md-3 d-flex">
+                                            {% for go in goggles_kids %}
+                                            {% if go.goggles_brand_id == g_brand.goggles_brand_id %}
+                                            <div class="text-capitalize rounded-3 p-1 m-1"
+                                                style="width: 189px !important;">
+                                                <div class="d-flex justify-content-center align-items-center"
+                                                    style="height: 150px !important;">
+                                                    <a href="/Eyeglasses-11/cart-{{go.goggles_id}}"
+                                                        class="text-decoration-none me-1">
+                                                        {% if go.goggles_font_img == '' %}
+                                                        <img src="/Images/not_img.jpg"
+                                                            class="d-flex justify-content-center align-items-center rounded-4"
+                                                            alt="Not Image" title="Not Image"
+                                                            style="width: 163px !important;">
+                                                        {% else %}
+                                                        <img src="/Images/{{ go.goggles_font_img }}" class="rounded-4"
+                                                            alt="{{ go.goggles_name }} Image"
+                                                            title="{{ go.goggles_name }}"
+                                                            style="width: 163px !important;">
+                                                        {% endif %}
+                                                    </a>
+                                                </div>
+                                                <a href="/Eyeglasses-11/cart-{{go.goggles_id}}"
+                                                    class="text-decoration-none">
+                                                    <div class="rounded-3 p-2"
+                                                        style="background-color: #fbf9f7 !important;">
+                                                        <div class="text-start p1" title="{{go.goggles_name}}"
+                                                            style="font-size: 19px !important;color: darkslateblue !important;width: 13vw !important;white-space: nowrap !important;overflow: hidden !important;text-overflow: ellipsis !important;">
+                                                            {{go.goggles_name}}</div>
+                                                        <div class=" text-start fw-normal p2"
+                                                            title="{{go.goggles_informations}}"
+                                                            style="color: #616161 !important;width: 13vw !important;white-space: nowrap !important;overflow: hidden !important;text-overflow: ellipsis !important;">
+                                                            {{go.goggles_informations}}</div>
+                                                        <div class="text-start text-dark"
+                                                            title="Rs.₹{{go.goggles_price}}.00"
+                                                            style="font-weight: 500 !important;">
+                                                            <script>
+                                                                document.write("Rs. ₹", numberWithCommas("{{ go.goggles_price }}.00"))
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% for g_brand in goggles_brand %}
+<div class="modal" id="brandimg{{ g_brand.goggles_brand_id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="brandimg{{ g_brand.goggles_brand_id }}Label" data-bs-dismiss="modal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-body d-flex justify-content-center align-items-center">
+                <div class="row">
+                    <img src="/Images/{{ g_brand.goggles_brand_img }}" class="rounded-3 m-1 hover-opacity"
+                        alt="{{ g_brand.goggles_brand_name }} Brand" title="{{ g_brand.goggles_brand_name }}"
+                        style="width: 100vw !important;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

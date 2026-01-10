@@ -1,0 +1,17 @@
+[
+    {
+        "model": "app1.User",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "username": "Dhruv",
+            "email": "dhruv10@gmail.com",
+            "phone_no": "1234567890",
+            "gender": "Other",
+            "birthday": "10-01-2004",
+            "password": "dhruv10",
+            "joind_date": "2024-11-01",
+            "joind_time": "12:59:28"
+        }
+    }
+]

@@ -1,0 +1,306 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+{% for cv in coupons_view %}
+<div id="coupons_view">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">{{ cv.coupon_name }} Coupons
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+    <div class="mb-1">
+        <div class="text-decoration-none text-dark rounded-2 me-2 mb-3 p-0 m-0 bg-white w-100" id="couponsbox"
+            style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .1) !important;border-top: 3px solid #0000ff75 !important;">
+            <div class="row">
+                {% if cv.coupon_font_img == '' %}
+                <img src="/Images/not_img.jpg" class="d-flex justify-content-center align-items-center rounded-2"
+                    alt="Not Image" title="Not Image" id="couponsimg" style="height: 300px !important;">
+                {% else %}
+                <img src="/Images/{{ cv.coupon_font_img }}"
+                    class="d-flex justify-content-center align-items-center rounded-2" id="couponsimg"
+                    alt="{{ cv.coupon_name }} Image" data-bs-toggle="modal"
+                    data-bs-target="#couponsimg{{ cv.coupon_code }}" style="height: 300px !important;">
+                <div class="modal" id="couponsimg{{ cv.coupon_code }}" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="couponsimg{{ cv.coupon_code }}Label"
+                    data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ cv.coupon_font_img }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ cv.coupon_name }} Coupons" title="{{ cv.coupon_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="row p-2 m-2">
+                        {% if cv.coupon_code != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Code :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.coupon_code}}</h4>
+                        </div>
+                        {% endif %}
+
+                        {% if cv.is_active != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">is active :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.is_active}}</h4>
+                        </div>
+                        {% endif %}
+
+                        {% if cv.home_screen_is_active != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Home Screen is active :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.home_screen_is_active}}</h4>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row p-2 m-2">
+                        {% if cv.coupon_name != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Name :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.coupon_name}}</h4>
+                        </div>
+                        {% endif %}
+
+                        {% if cv.Gender_select != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Gender :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.Gender_select}}</h4>
+                        </div>
+                        {% endif %}
+
+                        {% if cv.coupon_discount != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Discount :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.coupon_discount}}%</h4>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row p-2 m-2">
+                        {% if cv.brands_select != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Brand Select :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.brands_select}}</h4>
+                        </div>
+                        {% endif %}
+
+                        {% if cv.categories_select != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Categories Select :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.categories_select}}</h4>
+                        </div>
+                        {% endif %}
+
+                        {% if cv.goggles_select != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Goggles Select :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.goggles_select}}</h4>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row p-2 m-2">
+                        {% if cv.coupon_informations != '' %}
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Informations :</h4>
+                            <h4 style="color: #00000090 !important;">{{cv.coupon_informations}}</h4>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col p-2 m-2" style="border-left: 2px solid #f0f0f0 !important;">
+                    <div class="row p-2 m-2">
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Image 1 :</h4>
+                            {% if cv.coupon_img_1 == '' %}
+                            <img src="/Images/not_img.jpg"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100" alt="Not Image"
+                                title="Not Image" id="couponsimg1">
+                            {% else %}
+                            <img src="/Images/{{ cv.coupon_img_1 }}"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100"
+                                id="couponsimg1" alt="{{ cv.coupon_name }} Image" data-bs-toggle="modal"
+                                data-bs-target="#couponsimg1{{ cv.coupon_code }}">
+                            <div class="modal" id="couponsimg1{{ cv.coupon_code }}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="couponsimg1{{ cv.coupon_code }}Label" data-bs-dismiss="modal"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen">
+                                    <div class="modal-content">
+                                        <div class="modal-body d-flex justify-content-center align-items-center">
+                                            <div class="row">
+                                                <img src="/Images/{{ cv.coupon_img_1 }}"
+                                                    class="rounded-3 m-1 hover-opacity"
+                                                    alt="{{ cv.coupon_name }} Coupons" title="{{ cv.coupon_name }}"
+                                                    style="width: 100vw !important;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Image 2 :</h4>
+                            {% if cv.coupon_img_2 == '' %}
+                            <img src="/Images/not_img.jpg"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100" alt="Not Image"
+                                title="Not Image" id="couponsimg2">
+                            {% else %}
+                            <img src="/Images/{{ cv.coupon_img_2 }}"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100"
+                                id="couponsimg2" alt="{{ cv.coupon_name }} Image" data-bs-toggle="modal"
+                                data-bs-target="#couponsimg2{{ cv.coupon_code }}">
+                            <div class="modal" id="couponsimg2{{ cv.coupon_code }}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="couponsimg2{{ cv.coupon_code }}Label" data-bs-dismiss="modal"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen">
+                                    <div class="modal-content">
+                                        <div class="modal-body d-flex justify-content-center align-items-center">
+                                            <div class="row">
+                                                <img src="/Images/{{ cv.coupon_img_2 }}"
+                                                    class="rounded-3 m-1 hover-opacity"
+                                                    alt="{{ cv.coupon_name }} Coupons" title="{{ cv.coupon_name }}"
+                                                    style="width: 100vw !important;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row p-2 m-2">
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Image 3 :</h4>
+                            {% if cv.coupon_img_3 == '' %}
+                            <img src="/Images/not_img.jpg"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100" alt="Not Image"
+                                title="Not Image" id="couponsimg1">
+                            {% else %}
+                            <img src="/Images/{{ cv.coupon_img_3 }}"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100"
+                                id="couponsimg3" alt="{{ cv.coupon_name }} Image" data-bs-toggle="modal"
+                                data-bs-target="#couponsimg3{{ cv.coupon_code }}">
+                            <div class="modal" id="couponsimg3{{ cv.coupon_code }}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="couponsimg1{{ cv.coupon_code }}Label" data-bs-dismiss="modal"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen">
+                                    <div class="modal-content">
+                                        <div class="modal-body d-flex justify-content-center align-items-center">
+                                            <div class="row">
+                                                <img src="/Images/{{ cv.coupon_img_3 }}"
+                                                    class="rounded-3 m-1 hover-opacity"
+                                                    alt="{{ cv.coupon_name }} Coupons" title="{{ cv.coupon_name }}"
+                                                    style="width: 100vw !important;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Image 4 :</h4>
+                            {% if cv.coupon_img_4 == '' %}
+                            <img src="/Images/not_img.jpg"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100" alt="Not Image"
+                                title="Not Image" id="couponsimg2">
+                            {% else %}
+                            <img src="/Images/{{ cv.coupon_img_4 }}"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100"
+                                id="couponsimg4" alt="{{ cv.coupon_name }} Image" data-bs-toggle="modal"
+                                data-bs-target="#couponsimg4{{ cv.coupon_code }}">
+                            <div class="modal" id="couponsimg4{{ cv.coupon_code }}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="couponsimg4{{ cv.coupon_code }}Label" data-bs-dismiss="modal"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen">
+                                    <div class="modal-content">
+                                        <div class="modal-body d-flex justify-content-center align-items-center">
+                                            <div class="row">
+                                                <img src="/Images/{{ cv.coupon_img_4 }}"
+                                                    class="rounded-3 m-1 hover-opacity"
+                                                    alt="{{ cv.coupon_name }} Coupons" title="{{ cv.coupon_name }}"
+                                                    style="width: 100vw !important;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row p-2 m-2">
+                        <div class="col">
+                            <h4 style="color: #000000d4 !important;">Image 5 :</h4>
+                            {% if cv.coupon_img_5 == '' %}
+                            <img src="/Images/not_img.jpg"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100" alt="Not Image"
+                                title="Not Image" id="couponsimg5">
+                            {% else %}
+                            <img src="/Images/{{ cv.coupon_img_5 }}"
+                                class="d-flex justify-content-center align-items-center rounded-2 w-100"
+                                id="couponsimg5" alt="{{ cv.coupon_name }} Image" data-bs-toggle="modal"
+                                data-bs-target="#couponsimg5{{ cv.coupon_code }}">
+                            <div class="modal" id="couponsimg5{{ cv.coupon_code }}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="couponsimg5{{ cv.coupon_code }}Label" data-bs-dismiss="modal"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen">
+                                    <div class="modal-content">
+                                        <div class="modal-body d-flex justify-content-center align-items-center">
+                                            <div class="row">
+                                                <img src="/Images/{{ cv.coupon_img_5 }}"
+                                                    class="rounded-3 m-1 hover-opacity"
+                                                    alt="{{ cv.coupon_name }} Coupons" title="{{ cv.coupon_name }}"
+                                                    style="width: 100vw !important;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

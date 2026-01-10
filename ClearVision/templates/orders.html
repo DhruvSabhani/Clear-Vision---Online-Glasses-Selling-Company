@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="" id="orders">
+    <div class="row">
+        <div class="rounded bg-body border text-dark rounded-2 border bg-white me-5"
+            style="box-shadow: var(--bs-box-shadow-sm) !important; width: 330px !important;height: 220px !important; position: relative;top: 12px !important;left: 25px !important;">
+            <div class="row p-1 text-start">
+                <span
+                    style="font-weight: 600 !important;font-size: 20px !important;color: #00000090 !important;">Filters</span>
+            </div>
+            <hr class="p-0 m-0">
+            <div class="row p-1 text-start">
+                <span style="font-weight: 600 !important;font-size: 14px !important;">ORDER
+                    TIME</span>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="ordertime" id="30days">
+                <label class="form-check-label" for="30days">
+                    Last 30 days
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="ordertime" id="2023">
+                <label class="form-check-label" for="2023">
+                    2023
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="ordertime" id="2022">
+                <label class="form-check-label" for="2022">
+                    2022
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="ordertime" id="2021">
+                <label class="form-check-label" for="2021">
+                    2021
+                </label>
+            </div>
+            <div class="form-check text-start mb-2">
+                <input class="form-check-input" type="radio" name="ordertime" id="older">
+                <label class="form-check-label" for="older">
+                    Older
+                </label>
+            </div>
+
+        </div>
+        <div class="col p-2 m-2">
+            <a href="/order-show/" class="btn text-decoration-none text-dark rounded-2 border mb-3 bg-white w-100"
+                style="box-shadow: var(--bs-box-shadow-sm) !important;position: relative !important;right: 10px !important;">
+                <div class="row">
+                    <div class="col-1" style="width: 120px !important;">
+                        <img src="/Images/grey-transparent-gray-full-rim-rectangle-lenskart-air-signia-la-e14573-c3-eyeglasses_g_2477_09-july.webp" alt="User Profile" class="rounded-3" width="100">
+                    </div>
+                    <div class="col-3 d-flex justify-content-start">
+                        <div class="row-1 text-start">
+                            <h3>Gray Transparent Full Rim Square</h3>
+                            <div class="d-flex justify-content-start"
+                                style="color: #878787 !important; font-size: 17px !important;">
+                                <span>Color : Gray Transparent</span>
+                            </div>
+                            <div class="d-flex justify-content-start"
+                                style="color: #878787 !important; font-size: 17px !important;">
+                                <span>Size : Medium</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h3>₹1,800</h3>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-end">
+                        <div class="row-1">
+                            <div class="me-2"
+                                style="background-color: #26a541 !important;width: 10px !important;height: 10px !important;border-radius: 50% !important;display: inline-block !important;">
+                            </div>
+                            <span class="fs-4">
+                                Delivered on Nov, 29
+                            </span>
+                            <br><br>
+                            <div class="d-flex justify-content-end align-items-center">
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3"></span>
+                                <span class="fa fa-star fs-4 checked me-3"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 d-flex justify-content-center align-items-center">
+                        <div class="row">
+                            <h3><i class="fa-solid fa-chevron-right"></i></h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/order-show/" class="btn text-decoration-none text-dark rounded-2 border mb-3 bg-white w-100"
+                style="box-shadow: var(--bs-box-shadow-sm) !important;position: relative !important;right: 10px !important;">
+                <div class="row">
+                    <div class="col-1" style="width: 120px !important;">
+                        <img src="/Images/grey-transparent-gray-full-rim-rectangle-lenskart-air-signia-la-e14573-c3-eyeglasses_g_2477_09-july.webp" alt="User Profile" class="rounded-3" width="100">
+                    </div>
+                    <div class="col-3 d-flex justify-content-start">
+                        <div class="row-1 text-start">
+                            <h3>Gray Transparent Full Rim Square</h3>
+                            <div class="d-flex justify-content-start"
+                                style="color: #878787 !important; font-size: 17px !important;">
+                                <span>Color : Gray Transparent</span>
+                            </div>
+                            <div class="d-flex justify-content-start"
+                                style="color: #878787 !important; font-size: 17px !important;">
+                                <span>Size : Medium</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h3>₹1,800</h3>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-end">
+                        <div class="row-1">
+                            <div class="me-2"
+                                style="background-color: #26a541 !important;width: 10px !important;height: 10px !important;border-radius: 50% !important;display: inline-block !important;">
+                            </div>
+                            <span class="fs-4">
+                                Delivered on Dec, 29
+                            </span>
+                            <br><br>
+                            <div class="d-flex justify-content-end align-items-center">
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3"></span>
+                                <span class="fa fa-star fs-4 checked me-3"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 d-flex justify-content-center align-items-center">
+                        <div class="row">
+                            <h3><i class="fa-solid fa-chevron-right"></i></h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/order-show/" class="btn text-decoration-none text-dark rounded-2 border mb-3 bg-white w-100"
+                style="box-shadow: var(--bs-box-shadow-sm) !important;position: relative !important;right: 10px !important;">
+                <div class="row">
+                    <div class="col-1" style="width: 120px !important;">
+                        <img src="/Images/grey-transparent-gray-full-rim-rectangle-lenskart-air-signia-la-e14573-c3-eyeglasses_g_2477_09-july.webp" alt="User Profile" class="rounded-3" width="100">
+                    </div>
+                    <div class="col-3 d-flex justify-content-start">
+                        <div class="row-1 text-start">
+                            <h3>Gray Transparent Full Rim Square</h3>
+                            <div class="d-flex justify-content-start"
+                                style="color: #878787 !important; font-size: 17px !important;">
+                                <span>Color : Gray Transparent</span>
+                            </div>
+                            <div class="d-flex justify-content-start"
+                                style="color: #878787 !important; font-size: 17px !important;">
+                                <span>Size : Medium</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <h3>₹1,800</h3>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-end">
+                        <div class="row-1">
+                            <div class="me-2"
+                                style="background-color: #26a541 !important;width: 10px !important;height: 10px !important;border-radius: 50% !important;display: inline-block !important;">
+                            </div>
+                            <span class="fs-4">
+                                Delivered on Jan, 29
+                            </span>
+                            <br><br>
+                            <div class="d-flex justify-content-end align-items-center">
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3" style="color: orange !important;"></span>
+                                <span class="fa fa-star fs-4 checked me-3"></span>
+                                <span class="fa fa-star fs-4 checked me-3"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 d-flex justify-content-center align-items-center">
+                        <div class="row">
+                            <h3><i class="fa-solid fa-chevron-right"></i></h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

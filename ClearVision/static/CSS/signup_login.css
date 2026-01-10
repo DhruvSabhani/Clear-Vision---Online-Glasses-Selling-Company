@@ -1,0 +1,51 @@
+body {
+  background-color: #f1f3f64f !important;
+  font-family: math !important;
+  /* font-weight: 400 !important; */
+  font-size: 17px !important;
+}
+
+::-webkit-scrollbar {
+  width: 0px !important;
+  display: none !important;
+}
+
+section .container-xl #first-col div .row .col-9 div,
+section .container-xl #first-col div .row .col-7 div,
+input::placeholder
+/* section .container-xl #first-col div .row .col-9 form, */
+/* section .container-xl #first-col div .row .col-7 div, */
+/* section .container-xl #first-col div .row .col-7 form */ {
+  color: #8c8d90 !important;
+}
+
+label {
+  color: black !important;
+}
+
+input,
+button {
+  font-size: 17px !important;
+}
+
+section .container-xl #second-col {
+  background-color: #3f70ed !important;
+}
+
+section .container-xl #second-col div .row h2 {
+  width: 58% !important;
+}
+
+@media only screen and (max-width: 992px) {
+  section .container-xl #first-col {
+    width: 100% !important;
+  }
+
+  section .container-xl #first-col div .row .col-9 {
+    width: 90% !important;
+  }
+
+  section .container-xl #second-col {
+    display: none !important;
+  }
+}

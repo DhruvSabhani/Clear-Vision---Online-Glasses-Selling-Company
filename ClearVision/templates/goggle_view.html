@@ -1,0 +1,642 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+{% for gv in goggleview %}
+<div class="" id="goggle_view">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">{{gv.goggles_name}} goggle
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+    <div class="mb-1 text-decoration-none text-dark rounded-2 p-2 me-2 mb-3 bg-white w-100" id="typebox"
+        style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .1) !important;">
+        <center>
+            {% if gv.goggles_img1 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img1">
+                    <img src="/Images/{{ gv.goggles_img1 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img1 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image1-{{ gv.goggles_img1 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img1Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img1 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+
+            {% if gv.goggles_img2 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img2">
+                    <img src="/Images/{{ gv.goggles_img2 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img2 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image2-{{ gv.goggles_img2 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img2Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img2 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+
+            {% if gv.goggles_img3 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img3">
+                    <img src="/Images/{{ gv.goggles_img3 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img3 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image3-{{ gv.goggles_img3 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img3Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img3 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+
+            {% if gv.goggles_img4 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img4">
+                    <img src="/Images/{{ gv.goggles_img4 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img4 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image4-{{ gv.goggles_img4 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img4Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img4 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+
+            {% if gv.goggles_img5 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img5">
+                    <img src="/Images/{{ gv.goggles_img5 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img5 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image5-{{ gv.goggles_img5 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img5Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img5 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+
+            {% if gv.goggles_img6 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img6">
+                    <img src="/Images/{{ gv.goggles_img6 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img6 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image6-{{ gv.goggles_img6 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img6Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img6 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+
+            {% if gv.goggles_img7 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img7">
+                    <img src="/Images/{{ gv.goggles_img7 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img7 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image7-{{ gv.goggles_img7 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img7Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img7 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+
+            {% if gv.goggles_img8 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img8">
+                    <img src="/Images/{{ gv.goggles_img8 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img8 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image8-{{ gv.goggles_img8 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img8" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img8Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img8 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+
+            {% if gv.goggles_img9 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img9">
+                    <img src="/Images/{{ gv.goggles_img9 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img9 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image9-{{ gv.goggles_img9 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img9" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img9Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img9 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+
+            {% if gv.goggles_img10 != '' %}
+            <div class="btn text-dark rounded-2 border mb-4 me-1 position-relative">
+                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#img10">
+                    <img src="/Images/{{ gv.goggles_img10 }}"
+                        class="d-flex justify-content-center align-items-center rounded" id="goggleimg"
+                        alt="{{ gv.goggles_img10 }} Image" width="140" height="140">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <a href="/goggle/delete/image10-{{ gv.goggles_img10 }}/">
+                            <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                onClick="return confirm('Are you sure you want to delete image?')">
+                                <i class="fa-solid fa-trash fs-4"></i>
+                            </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="modal" id="img10" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="img10Label" data-bs-dismiss="modal" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <img src="/Images/{{ gv.goggles_img10 }}" class="rounded-3 m-1 hover-opacity"
+                                    alt="{{ gv.goggles_name }} Image" title="{{ gv.goggles_name }}"
+                                    style="width: 100vw !important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+        </center>
+
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-3 border-end d-flex justify-content-center align-items-center p-2">
+                <div>
+                    {% if gv.goggles_review != '' %}
+                    <span class="p-0 m-0 fs-2 d-flex justify-content-center align-items-center">★★★★★</span>
+                    {% endif %}
+                    <p class=" d-flex justify-content-center align-items-center" style="color: #878787 !important;">12
+                        Ratings and {{gv.goggles_review}} Review</p>
+                </div>
+            </div>
+            <div class="col p-4">
+                <div class="row">
+                    <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                        <div class="fs-4 me-1 d-flex">
+                            <span>5</span>
+                            <span>★</span>
+                        </div>
+                        <div class="progress rounded-pill m-2"
+                            style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                            <div class="progress-bar rounded-pill" role="progressbar"
+                                style="width: {{gv.goggles_review}}% !important; background: #388e3c !important;"
+                                aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>
+                        <div class="fs-4" style="color: #878787 !important;">
+                            <span>{{gv.goggles_review}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                        <div class="fs-4 me-1 d-flex">
+                            <span>4</span>
+                            <span>★</span>
+                        </div>
+                        <div class="progress rounded-pill m-2"
+                            style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                            <div class="progress-bar rounded-pill" role="progressbar"
+                                style="width: {{ gv.goggles_review }}% !important; background: #388e3c !important;"
+                                aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>
+                        <div class="fs-4" style="color: #878787 !important;">
+                            <span>{{gv.goggles_review}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                        <div class="fs-4 me-1 d-flex">
+                            <span>3</span>
+                            <span>★</span>
+                        </div>
+                        <div class="progress rounded-pill m-2"
+                            style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                            <div class="progress-bar rounded-pill" role="progressbar"
+                                style="width: {{ gv.goggles_review }}% !important; background: #388e3c !important;"
+                                aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>
+                        <div class="fs-4" style="color: #878787 !important;">
+                            <span>{{gv.goggles_review}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                        <div class="fs-4 me-1 d-flex">
+                            <span>2</span>
+                            <span>★</span>
+                        </div>
+                        <div class="progress rounded-pill m-2"
+                            style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                            <div class="progress-bar rounded-pill" role="progressbar"
+                                style="width: {{ gv.goggles_review }}% !important; background: #388e3c !important;"
+                                aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>
+                        <div class="fs-4" style="color: #878787 !important;">
+                            <span>{{gv.goggles_review}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col p-0 m-0 d-flex justify-content-center align-items-center">
+                        <div class="fs-4 me-1 d-flex">
+                            <span>1</span>
+                            <span>★</span>
+                        </div>
+                        <div class="progress rounded-pill m-2"
+                            style="width: 100% !important;height: 5px !important; background: #f0f0f0 !important;">
+                            <div class="progress-bar rounded-pill" role="progressbar"
+                                style="width: {{ gv.goggles_review }}% !important; background: #388e3c !important;"
+                                aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>
+                        <div class="fs-4" style="color: #878787 !important;">
+                            <span>{{gv.goggles_review}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col" style="max-width: 315px !important;">
+                {% if gv.goggles_types_img == '' %}
+                <img src="/Images/not_img.jpg" class="d-flex justify-content-center align-items-center rounded-2"
+                    alt="Not Image" title="Not Image" id="typeimg" style="width: 30vw !important;">
+                {% else %}
+                <img src="/Images/{{ gv.goggles_font_img }}"
+                    class="d-flex justify-content-center align-items-center rounded-2 border" id="typeimg"
+                    alt="{{ gv.goggles_types_name }} Image" data-bs-toggle="modal"
+                    data-bs-target="#typeimg{{ gv.goggles_types_id }}" width="300" height="300">
+
+                <div class="modal" id="typeimg{{ gv.goggles_types_id }}" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="typeimg{{ gv.goggles_types_id }}Label"
+                    data-bs-dismiss="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div class="row">
+                                    <img src="/Images/{{ gv.goggles_font_img }}" class="rounded-3 m-1 hover-opacity"
+                                        alt="{{ gv.goggles_name }} Category" title="{{ gv.goggles_name }}"
+                                        style="width: 100vw !important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if gv.goggles_warranty != '' %}
+                <div class="border p-2 rounded-3 m-1">
+                    <p class="d-flex justify-content-center align-items-center"><span
+                            class="fas fa-user-shield fs-3 me-3"></span><span class="fas fa-exchange fs-3"></span></p>
+                    <p class="d-flex justify-content-center align-items-center">{{gv.goggles_warranty}}</p>
+                </div>
+                {% endif %}
+
+            </div>
+            <div class="col">
+                <div class="row fs-1 p-1 fw-bold">
+                    <div class="col text-start">
+                        {% if gv.goggles_name != '' %}
+                        {{gv.goggles_name}}
+                        {% endif %}
+                    </div>
+                    <div class="col text-end btn-group d-flex justify-content-end align-items-center" id="edit">
+                        <a href="/goggle/edit-{{gv.goggles_id}}/">
+                            <button class="text-center w-100 rounded-pill border-0 p-0 m-0 bg-body me-5">
+                                <i class="fa-solid fa-pen-to-square fs-2" style="color: #00000090 !important;"></i>
+                            </button>
+                        </a>
+                        <a href="/goggle/delete-{{gv.goggles_id}}/"
+                            onClick="return confirm('Are you sure you want to delete?')">
+                            <button class="text-center w-100 rounded-pill border-0 p-0 m-0 bg-body">
+                                <i class="fa-solid fa-trash fs-2" style="color: #00000090 !important;"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row text-start">
+                    <div class="rate text-start">
+                        {% if gv.goggles_review != '' %}
+                        <span class="fa fa-star fs-6 checked" style="color: orange !important;"></span>
+                        <span class="fa fa-star fs-6 checked" style="color: orange !important;"></span>
+                        <span class="fa fa-star fs-6 checked" style="color: orange !important;"></span>
+                        <span class="fa fa-star fs-6" style="color: #00000090 !important;"></span>
+                        <span class="fa fa-star fs-6" style="color: #00000090 !important;"></span>
+                        &nbsp;
+                        <span class="fs-4">{{gv.goggles_review}} Reviews</span>
+                        {% endif %}
+                        &nbsp;
+                        <span class="fs-4"><i class="fa-solid fa-bag-shopping"></i>&nbsp;1 Orders</span>
+                    </div>
+                </div>
+                <div class="row text-start fs-2 p-1 fw-bold">
+                    {% if gv.goggles_price != '' %}
+                    <script>
+                        document.write("₹", numberWithCommas({{ gv.goggles_price }}))
+                    </script>
+                    {% endif %}
+                </div>
+                <div class="row p-1">
+                    <h4 style="color: #00000090 !important;">{{ gv.goggles_informations }}</h4>
+                </div>
+                <div class="row p-2">
+                    {% if gv.goggles_brand_id != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Brand</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_brand_id}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_types_id != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Type</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_types_id}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_gender != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Gender</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_gender}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_model_name != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Model</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_model_name}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_color != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Color</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_color}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_size != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Size</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_size}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_width != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Width</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_width}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_height != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Height</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_height}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_weight != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Weight</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_weight}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_material != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Material</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_material}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_shape != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Shape</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_shape}}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if gv.goggles_quantity != '' %}
+                    <div class="border rounded-3 p-1 m-1" style="width: 165px !important;">
+                        <p class="fw-bold p-0 m-0 d-flex justify-content-start align-items-center">Quantity</p>
+                        <hr class="p-0 m-0">
+                        <p class="p-0 m-0">{{gv.goggles_quantity}}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

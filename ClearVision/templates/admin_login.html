@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Load Static Folder -->
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Web Icon Link -->
+    <link rel="icon" href="{% static 'Images/logo-no-background.png' %}" type="image/x-icon" />
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="{% static 'CSS/admin_login_style.css' %}" />
+    <!-- JS Link -->
+
+    <!-- Fontwesome Icon Link -->
+    <link rel="stylesheet" href="{% static 'Resources/Fontawesome/css/all.min.css' %}" />
+    <!-- Bootstrap CSS Link -->
+    <link rel="stylesheet" href="{% static 'Resources/Bootstrap/css/bootstrap.min.css' %}" />
+    <!-- Bootstrap JS Link -->
+    <script src="{% static 'Resources/Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <title>ClearVision Dashboard Login</title>
+  </head>
+
+  <body id="admin_login">
+    <section class="d-flex justify-content-center align-items-center p-2 m-2 p-md-5 p-xl-5">
+      <div class="row container-xl p-0 m-0">
+        <div class="col-12 col-md-6 bsb-tpl-bg-lotion" id="first-col">
+          <div class="p-md-4 p-xl-5">
+            <div class="row p-3 d-flex justify-content-center align-items-center">
+              <div class="col border-2 border-end d-flex justify-content-end align-items-center">
+                <a href="/"><img src="{% static 'Images\logo-no-background.png' %}" alt="Clear Vision Logo" class="" width="236" id="clearvision_logo" /></a>
+              </div>
+              <div class="col d-flex justify-content-start align-items-center">
+                <a href="/dashboard/"><img src="{% static 'Images\bGhbzTsDNoes_OTSSABo3-transformed.png' %}" alt="Deshboard Logo" class="" width="100" id="admin_logo" /></a>
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-9 rounded-5 bg-white shadow-sm">
+                <div class="text-center m-3">
+                  <h3 class="text-black">Sign In Dashboard</h3>
+                  <p>Welcome back! Please enter your details</p>
+                </div>
+                {% include 'alert.html' %}
+                <form action="" method="POST">
+                  {% csrf_token %}
+                  <div class="m-3">
+                    <label for="email_admin" class="form-label">Email</label>
+                    <input type="email" class="form-control text-black" id="email_admin" name="email_admin" placeholder="Enter your email" />
+                  </div>
+
+                  <div class="m-3">
+                    <label for="password_admin" class="form-label">Password</label>
+                    <input type="password" class="form-control text-black" id="password_admin" name="password_admin" placeholder="Enter your password" />
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col d-flex justify-content-center align-items-center">
+                          <div class="form-check">
+                            <input class="form-check-input border-2" type="checkbox" id="checkbox_login" required />
+                            <label class="form-check-label text-black" for="checkbox_login">Remember me</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <a href="#" class="fs-4 text-decoration-none">Forgot Password?</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-3">
+                    <div class="modal-footer d-flex justify-content-center align-items-center">
+                      <button type="submit" class="btn btn-primary w-100 rounded-3" name="submit" value="submit">Sign In</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-5 d-flex justify-content-center align-items-center rounded-3 shadow-sm" id="second-col">
+          <div class="p-5">
+            <div class="row d-flex justify-content-center align-items-center">
+              <h2 class="text-center text-white">Welcome back! Please sign in to your <b class="text-decoration-underline">ClearVision Deshboard</b> account</h2>
+            </div>
+            <div class="row carousel slide d-flex justify-content-center align-items-center" id="carouselExampleInterval" data-bs-ride="carousel">
+              <div class="carousel-inner rounded-3">
+                <div class="carousel-item active" data-bs-interval="1000">
+                  <img src="{% static '/Images/3d-growth-stock-chart.png' %}" class="d-block" alt="..." width="400" height="400" />
+                </div>
+                <div class="carousel-item" data-bs-interval="1000">
+                  <img src="{% static '/Images/3d-online-marketing-financial-report-chart.png' %}" class="d-block" alt="..." width="400" height="400" />
+                </div>
+                <div class="carousel-item" data-bs-interval="1000">
+                  <img src="{% static '/Images/3d-business-strategy.png' %}" class="d-block" alt="..." width="400" height="400" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

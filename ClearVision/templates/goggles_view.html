@@ -1,0 +1,273 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="" id="goggles_view">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">goggles view
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+    <div class="mb-1">
+        {% for view in cetegories_view %}
+        <div class="text-decoration-none text-dark rounded-2 me-2 mb-3 bg-white w-100" id="typebox"
+            style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .1) !important;border-top: 3px solid #0000ff75 !important;">
+            <div class="row">
+                <div class="col" style="max-width: 430px !important;">
+                    {% if view.goggles_types_img == '' %}
+                    <img src="/Images/not_img.jpg" class="d-flex justify-content-center align-items-center rounded-2"
+                        alt="Not Image" title="Not Image" id="typeimg" style="width: 30vw !important;">
+                    {% else %}
+                    <img src="/Images/{{ view.goggles_types_img }}"
+                        class="d-flex justify-content-center align-items-center rounded-2" id="typeimg"
+                        alt="{{ view.goggles_types_name }} Image" data-bs-toggle="modal"
+                        data-bs-target="#typeimg{{ view.goggles_types_id }}" style="width: 30vw !important;">
+
+                    <div class="modal" id="typeimg{{ view.goggles_types_id }}" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="typeimg{{ view.goggles_types_id }}Label"
+                        data-bs-dismiss="modal" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-body d-flex justify-content-center align-items-center">
+                                    <div class="row">
+                                        <img src="/Images/{{ view.goggles_types_img }}"
+                                            class="rounded-3 m-1 hover-opacity"
+                                            alt="{{ view.goggles_types_name }} Category"
+                                            title="{{ view.goggles_types_name }}" style="width: 100vw !important;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col">
+                    <div class="row p-1">
+                        <h2>{{view.goggles_types_name}}</h2>
+                    </div>
+                    <div class="row p-1">
+                        <h4 style="color: #00000090 !important;">{{ view.goggles_types_informations }}</h4>
+                    </div>
+                </div>
+            </div>
+            <hr style="color: #0000005e !important;">
+
+            <div class="row p-2 m-3 d-flex justify-content-center align-items-center" id="pills-tab" role="tablist">
+                <button
+                    class="active btn fs-4 col d-flex justify-content-center align-items-center border rounded-pill me-2"
+                    id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab"
+                    aria-controls="pills-all" aria-selected="true">
+                    All
+                </button>
+
+                <button class="btn fs-4 col d-flex justify-content-center align-items-center border rounded-pill me-2"
+                    id="pills-men-tab" data-bs-toggle="pill" data-bs-target="#pills-men" type="button" role="tab"
+                    aria-controls="pills-men" aria-selected="false">
+                    Men
+                </button>
+
+                <button class="btn fs-4 col d-flex justify-content-center align-items-center border rounded-pill me-2"
+                    id="pills-women-tab" data-bs-toggle="pill" data-bs-target="#pills-women" type="button" role="tab"
+                    aria-controls="pills-women" aria-selected="false">
+                    Women
+                </button>
+
+                <button class="btn fs-4 col d-flex justify-content-center align-items-center border rounded-pill me-2"
+                    id="pills-kids-tab" data-bs-toggle="pill" data-bs-target="#pills-kids" type="button" role="tab"
+                    aria-controls="pills-kids" aria-selected="false">
+                    Kids
+                </button>
+            </div>
+            <center>        
+                <div class="tab-content p-1 m-1" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
+                        aria-labelledby="pills-all-tab">
+                        {% for goggles in goggles_view %}
+                        {% if goggles.goggles_gender == "All" %}
+                        <div class="btn text-dark rounded-2 border mb-3 me-5 p-0 m-0 position-relative" id="allbox"
+                            style="width: 19% !important;">
+                            <div class="position-absolute top-50 translate-middle d-none" id="alledit"
+                                style="left: -1% !important;">
+                                <a href="/goggle/edit-{{goggles.goggles_id}}/">
+                                    <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white">
+                                        <i class="fa-solid fa-pen-to-square fs-4"></i>
+                                    </button>
+                                </a>
+                            </div>
+                            <a href="/goggle/view-{{goggles.goggles_id}}/" class="text-decoration-none">
+                                {% if goggles.goggles_font_img == '' %}
+                                <img src="/Images/not_img.jpg" class="rounded-3" alt="Not Image" title="Not Image">
+                                {% else %}
+                                <img src="/Images/{{ goggles.goggles_font_img }}" class="rounded-3"
+                                    alt="{{ goggles.goggles_name }} Image" title="{{ goggles.goggles_name }}"
+                                    width="130" height="130">
+                                {% endif %}
+
+                                <!-- <h4 class="text-center text-dark">
+                                    {{goggles.goggles_name}}
+                                </h4> -->
+
+                                <div class="text-start rounded-3" title="{{brands.goggles_brand_name}}"
+                                    style="background-color: #fbf9f7 !important;">
+                                    <label class="p-1 m-0" style="color: #00000090 !important;">
+                                        <h4>{{goggles.goggles_name}}</h4>
+                                    </label>
+                                </div>
+                            </a>
+                            <div class="position-absolute top-50 translate-middle d-none" id="alldelete"
+                                style="left: 99% !important;">
+                                <a href="/goggle/delete-{{goggles.goggles_id}}/">
+                                    <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                        onClick="return confirm('Are you sure you want to delete?')">
+                                        <i class="fa-solid fa-trash fs-4"></i>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-men" role="tabpanel" aria-labelledby="pills-men-tab">
+                        {% for goggles in goggles_view %}
+                        {% if goggles.goggles_gender == "Men" %}
+                        <div class="btn text-dark rounded-2 border mb-3 me-5 position-relative" id="menbox"
+                            style="width: 19% !important;">
+                            <div class="position-absolute top-50 translate-middle d-none" id="menedit"
+                                style="left: -1% !important;">
+                                <a href="/goggle/edit-{{goggles.goggles_id}}/">
+                                    <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white">
+                                        <i class="fa-solid fa-pen-to-square fs-4"></i>
+                                    </button>
+                                </a>
+                            </div>
+                            <a href="/goggle/view-{{goggles.goggles_id}}/" class="text-decoration-none">
+                                {% if goggles.goggles_font_img == '' %}
+                                <img src="/Images/not_img.jpg" class="rounded-3" alt="Not Image" title="Not Image">
+                                {% else %}
+                                <img src="/Images/{{ goggles.goggles_font_img }}" class="rounded-3"
+                                    alt="{{ goggles.goggles_name }} Image" title="{{ goggles.goggles_name }}"
+                                    width="130" height="130">
+                                {% endif %}
+
+                                <h4 class="text-center text-dark">
+                                    {{goggles.goggles_name}}
+                                </h4>
+                            </a>
+                            <div class="position-absolute top-50 translate-middle d-none" id="mendelete"
+                                style="left: 99% !important;">
+                                <a href="/goggle/delete-{{goggles.goggles_id}}/">
+                                    <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                        onClick="return confirm('Are you sure you want to delete?')">
+                                        <i class="fa-solid fa-trash fs-4"></i>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-women" role="tabpanel" aria-labelledby="pills-women-tab">
+                        {% for goggles in goggles_view %}
+                        {% if goggles.goggles_gender == "Women" %}
+                        <div class="btn text-dark rounded-2 border mb-3 me-5 position-relative" id="womenbox"
+                            style="width: 19% !important;">
+                            <div class="position-absolute top-50 translate-middle d-none" id="womenedit"
+                                style="left: -1% !important;">
+                                <a href="/goggle/edit-{{goggles.goggles_id}}/">
+                                    <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white">
+                                        <i class="fa-solid fa-pen-to-square fs-4"></i>
+                                    </button>
+                                </a>
+                            </div>
+                            <a href="/goggle/view-{{goggles.goggles_id}}/" class="text-decoration-none">
+                                {% if goggles.goggles_font_img == '' %}
+                                <img src="/Images/not_img.jpg" class="rounded-3" alt="Not Image" title="Not Image">
+                                {% else %}
+                                <img src="/Images/{{ goggles.goggles_font_img }}" class="rounded-3"
+                                    alt="{{ goggles.goggles_name }} Image" title="{{ goggles.goggles_name }}"
+                                    width="130" height="130">
+                                {% endif %}
+
+                                <h4 class="text-center text-dark">
+                                    {{goggles.goggles_name}}
+                                </h4>
+                            </a>
+                            <div class="position-absolute top-50 translate-middle d-none" id="womendelete"
+                                style="left: 99% !important;">
+                                <a href="/goggle/delete-{{goggles.goggles_id}}/">
+                                    <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                        onClick="return confirm('Are you sure you want to delete?')">
+                                        <i class="fa-solid fa-trash fs-4"></i>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-kids" role="tabpanel" aria-labelledby="pills-kids-tab">
+                        {% for goggles in goggles_view %}
+                        {% if goggles.goggles_gender == "Kids" %}
+                        <div class="btn text-dark rounded-2 border mb-3 me-5 position-relative" id="kidsbox"
+                            style="width: 19% !important;">
+                            <div class="position-absolute top-50 translate-middle d-noen" id="kidsedit"
+                                style="left: -1% !important;">
+                                <a href="/goggle/edit-{{goggles.goggles_id}}/">
+                                    <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white">
+                                        <i class="fa-solid fa-pen-to-square fs-4"></i>
+                                    </button>
+                                </a>
+                            </div>
+                            <a href="/goggle/view-{{goggles.goggles_id}}/" class="text-decoration-none">
+                                {% if goggles.goggles_font_img == '' %}
+                                <img src="/Images/not_img.jpg" class="rounded-3" alt="Not Image" title="Not Image">
+                                {% else %}
+                                <img src="/Images/{{ goggles.goggles_font_img }}" class="rounded-3"
+                                    alt="{{ goggles.goggles_name }} Image" title="{{ goggles.goggles_name }}"
+                                    width="130" height="130">
+                                {% endif %}
+
+                                <h4 class="text-center text-dark">
+                                    {{goggles.goggles_name}}
+                                </h4>
+                            </a>
+                            <div class="position-absolute top-50 translate-middle d-none" id="kidsdelete"
+                                style="left: 99% !important;">
+                                <a href="/goggle/delete-{{goggles.goggles_id}}/">
+                                    <button class="text-center w-100 rounded-pill border p-1 m-1 bg-white"
+                                        onClick="return confirm('Are you sure you want to delete?')">
+                                        <i class="fa-solid fa-trash fs-4"></i>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </center>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Load Static Folder -->
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Web Icon Link -->
+    <link rel="icon" href="{% static 'Images/logo-no-background.png' %}" type="image/x-icon">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="{% static 'CSS/index_style.css' %}">
+    <!-- JS Link -->
+    <script src="{% static 'JS/Index.js' %}"></script>
+    <script src="{% static 'JS/Slider.js' %}"></script>
+    <script src="{% static 'JS/Loader.js' %}"></script>
+    <script src="{% static 'JS/Quantity.js' %}"></script>
+    <!-- Fontwesome Icon Link -->
+    <link rel="stylesheet" href="{% static 'Resources/Fontawesome/css/all.min.css' %}">
+    <!-- Bootstrap CSS Link -->
+    <link rel="stylesheet" href="{% static 'Resources/Bootstrap/css/bootstrap.min.css' %}">
+    <!-- Bootstrap JS Link -->
+    <script src="{% static 'Resources/Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <title>Clear Vision</title>
+</head>
+
+<body onload="myFunction()">
+    <div id="loader"></div>
+    {% include "header.html" %}
+    <div id="clearvision">Welcome!</div>
+    <div class="animate-bottom" style="display:none;" id="myDiv">
+        {% block body %}{% endblock %}
+        <br><br><br><br><br><br>
+        {% include "footer.html" %}
+    </div>
+</body>
+
+</html>

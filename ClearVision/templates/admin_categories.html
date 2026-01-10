@@ -1,0 +1,223 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+<div id="categories">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">categories
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+    <div class="mb-1">
+        {% for types in goggles_type %}
+        <div class="btn text-decoration-none text-dark rounded-2 p-2 me-2 mb-3 bg-white w-100" id="typebox"
+            style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .1) !important;">
+            <div class="row p-1">
+                <div class="col-8">
+                    <h4 class="text-center w-100 rounded-pill border" style="background: #f0f8ffc9 !important;">
+                        {{ types.goggles_types_name }}
+                    </h4>
+                </div>
+                <div class="col">
+                    <a href="/categories/goggles/view-{{ types.goggles_types_id }}">
+                        <button class="text-center w-100 rounded-pill border p-0 m-0"
+                            style="background: #f0f8ffc9 !important;">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="/categories/edit/{{ types.goggles_types_id }}">
+                        <button class="text-center w-100 rounded-pill border p-0 m-0"
+                            style="background: #f0f8ffc9 !important;">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="/categories/delete/{{ types.goggles_types_id }}"
+                        onClick="return confirm('Are you sure you want to delete?')">
+                        <button class="text-center w-100 rounded-pill border p-0 m-0" id="typedelete"
+                            style="background: #f0f8ffc9 !important;">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% if types.goggles_types_img == '' %}
+                    <img src="/Images/not_img.jpg" class="d-flex justify-content-center align-items-center rounded-4"
+                        alt="Not Image" title="Not Image" id="typeimg">
+                    {% else %}
+                    <img src="/Images/{{ types.goggles_types_img }}"
+                        class="d-flex justify-content-center align-items-center rounded-4" data-bs-toggle="modal"
+                        data-bs-target="#typeimg{{ types.goggles_types_id }}" id="typeimg"
+                        alt="{{ types.goggles_types_name }} Image">
+
+                    <div class="modal" id="typeimg{{ types.goggles_types_id }}" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1"
+                        aria-labelledby="typeimg{{ types.goggles_types_id }}Label" data-bs-dismiss="modal"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-body d-flex justify-content-center align-items-center">
+                                    <div class="row">
+                                        <img src="/Images/{{ types.goggles_types_img }}"
+                                            class="rounded-3 m-1 hover-opacity"
+                                            alt="{{ types.goggles_types_name }} Category"
+                                            title="{{ types.goggles_types_name }}" style="width: 100vw !important;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col p-3" style="text-align: -webkit-center !important;">
+                    <div class="row">
+                        <div class="col-3">
+                            <h2 class="text-center rounded-pill" style="background: #f0f8ffc9 !important;">00</h2>
+                        </div>
+                        <div class="col-3">
+                            <div class="d-flex justify-content-center align-items-center rounded-pill"
+                                style="background: #f0f8ffc9 !important;">30%</div>
+                            <div class="rounded-pill"
+                                style="width: 5px !important;height: 100% !important; background: #f0f0f0 !important;transform: rotate(180deg) !important;">
+                                <div class="rounded-pill"
+                                    style="width: 5px !important;height: 30% !important;background: rgba(0, 0, 255, 0.436) !important;">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center rounded-pill"
+                                style="background: #f0f8ffc9 !important;">Men</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="d-flex justify-content-center align-items-center rounded-pill"
+                                style="background: #f0f8ffc9 !important;">60%</div>
+                            <div class="rounded-pill"
+                                style="width: 5px !important;height: 100% !important; background: #f0f0f0 !important;transform: rotate(180deg) !important;">
+                                <div class="rounded-pill"
+                                    style="width: 5px !important;height: 60% !important;background: rgba(0, 0, 255, 0.436) !important;">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center rounded-pill"
+                                style="background: #f0f8ffc9 !important;">Women</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="d-flex justify-content-center align-items-center rounded-pill"
+                                style="background: #f0f8ffc9 !important;">90%</div>
+                            <div class="rounded-pill"
+                                style="width: 5px !important;height: 100% !important; background: #f0f0f0 !important;transform: rotate(180deg) !important;">
+                                <div class="rounded-pill"
+                                    style="width: 5px !important;height: 90% !important;background: rgba(0, 0, 255, 0.436) !important;">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center rounded-pill"
+                                style="background: #f0f8ffc9 !important;">Kids</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="position-fixed translate-middle-x" style="bottom: 5% !important; left: 60% !important;"
+        id="add">
+        <button type="button" class="btn rounded-circle" data-bs-toggle="modal" data-bs-target="#addcetebry"
+            style="background: rgba(0, 0, 0, 0.665) !important;box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">
+            <i class="fa fa-plus fs-1 p-1 text-white"></i>
+        </button>
+    </div>
+    <div class="modal" id="addcetebry" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="addcetebryLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center p-2 m-2">
+                    <h4 class="modal-title" id="addcetebryLabel">ADD Goggles Category</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col-7">
+                                {{ form.goggles_types_id }}
+                            </div>
+
+                            <div class="col">
+                                <select class="form-select form-select-sm" id="id_is_active" name="is_active"
+                                    aria-label=".form-select-sm example" style="font-size: 19px !important;">
+                                    <option value="True" selected>True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row d-flex justify-content-center align-items-center">
+                            <div class="col">
+                                {{ form.goggles_types_img }}
+                            </div>
+
+                            <img src="#" alt="" class="col" id="blah" style="width: 0;">
+
+                        </div>
+                        <script>
+                            id_goggles_types_img.onchange = evt => {
+                                const [file] = id_goggles_types_img.files
+                                if (file) {
+                                    blah.src = URL.createObjectURL(file)
+                                }
+                            }
+                        </script>
+
+                        <div class="mb-3">
+                            {{ form.goggles_types_name }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.goggles_types_informations }}
+                        </div>
+
+                        <div class="mb-3 d-none">
+                            <input type="text" class="form-control text-black" value="{{ datetime|date:'Y-m-d' }}"
+                                name="joind_date" required id="id_joind_date">
+                        </div>
+
+                        <div class="mb-3 d-none">
+                            <input type="text" class="form-control text-black" value="{{ datetime|time:'G:i' }}"
+                                name="joind_time" required id="id_joind_time">
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col modal-footer d-flex justify-content-center align-items-center">
+                                <button type="submit" class="btn btn-primary w-100 rounded-2" name="submit"
+                                    value="submit"
+                                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">ADD</button>
+                            </div>
+                            <div class="col modal-footer d-flex justify-content-center align-items-center">
+                                <button type="button" class="btn btn-secondary w-100 rounded-2" data-bs-dismiss="modal"
+                                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

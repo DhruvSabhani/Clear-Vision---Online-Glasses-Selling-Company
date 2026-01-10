@@ -1,0 +1,823 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+<div class="" id="add_products">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">
+            products
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+
+    <div class="text-decoration-none text-dark rounded-1 mb-3 w-100 shadow-sm bg-body" id="addproductsbox"
+        style="border-top: 3px solid #0000ff75 !important;">
+        <div class="row p-2 m-1 d-flex justify-content-center align-items-center" id="pills-tab" role="tablist">
+            {% for types in goggles_type %}
+            <button class="btn col d-flex justify-content-center align-items-center border rounded-pill me-2 mb-2"
+                style="color: #00000090 !important;font-size: 16px !important;"
+                id="pills-{{types.goggles_types_id}}-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-{{types.goggles_types_id}}" type="button" onclick="show_table();" role="tab"
+                aria-controls="pills-{{types.goggles_types_id}}" aria-selected="true">
+                {{types.goggles_types_name}}
+            </button>
+            {% endfor %}
+            <div class="tab-content" id="pills-tabContent" style="overflow-y: scroll !important;">
+                {% for types in goggles_type %}
+                <div class="tab-pane fade" id="pills-{{types.goggles_types_id}}" role="tabpanel"
+                    aria-labelledby="pills-{{types.goggles_types_id}}-tab">
+                    <table class="table table-bordered table-hover" style="font-size: x-small !important;">
+                        <thead>
+                            <tr style="text-align: center !important;">
+                                <th scope="col">
+                                    <h4>No.</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Operation</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>ID</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Font Image</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>is active</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Brand Name</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Type Name</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Name</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Price('₹')</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Discount('%')</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Gender</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Modal Name</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Color</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Size</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Width</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Height</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Weight</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Material</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Warranty</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Shape</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Review</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Quantity</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 1</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 2</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 3</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 4</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 5</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 6</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 7</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 8</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 9</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Img 10</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Informations</h4>
+                                </th>
+                                <th scope="col">
+                                    <h4>Date and Time</h4>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for gv in goggless %}
+                            {% if types.goggles_types_id == gv.goggles_types_id %}
+                            <tr class="text-center">
+                                <th scope="row">
+                                    <h5 style="width: 30px !important;">
+                                        {% if '0123456789'|make_list %}
+                                        {{ forloop.counter }}
+                                        {% endif %}
+                                    </h5>
+                                </th>
+
+                                <td title="Data View || Edit || Delete">
+                                    <a href="/goggle/view-{{gv.goggles_id}}/"
+                                        class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                                        style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #f5d162 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                                        <span>
+                                            <span>View</span>
+                                        </span>
+                                    </a>
+
+                                    <a href="/goggle/edit-{{gv.goggles_id}}/"
+                                        class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                                        style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #0000ff57 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                                        <span>
+                                            <span>Edit</span>
+                                        </span>
+                                    </a>
+
+                                    <a href="/goggle/delete-{{gv.goggles_id}}/"
+                                        class="btn d-flex justify-content-center align-items-center rounded-pill text-dark w-100 mb-2"
+                                        onClick="return confirm('Are you sure you want to delete?')"
+                                        style="height: 30px !important;font-size: 16px !important;font-weight: 500 !important;background-color: #ff0000b5 !important;outline-color: transparent !important;transition: 0.3s !important;">
+                                        <span>
+                                            <span>Delete</span>
+                                        </span>
+                                    </a>
+                                </td>
+
+                                <td title="ID = {{gv.goggles_id}}">
+                                    {% if gv.goggles_id == '' %}
+                                    <h5 style="width: 30px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 30px !important;">{{gv.goggles_id}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Font Image={{gv.goggles_font_img}}">
+                                    {% if gv.goggles_font_img != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_font_img}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="is active = {{gv.is_active}}">
+                                    {% if gv.is_active == '' %}
+                                    <h5 style="width: 70px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 70px !important;">{{gv.is_active}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                {% for gb in goggles_brand %}
+                                {% if gv.goggles_brand_id == gb.goggles_brand_id %}
+                                <td title="Brand = {{gb.goggles_brand_name}}">
+                                    {% if gb.goggles_brand_name == '' %}
+                                    <h5 style="width: 110px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 110px !important;">{{ gb.goggles_brand_name }}</h5>
+                                    {% endif %}
+                                </td>
+                                {% endif %}
+                                {% endfor %}
+
+                                {% for gt in goggles_type %}
+                                {% if gv.goggles_types_id == gt.goggles_types_id %}
+                                <td title="Type = {{gt.goggles_types_name}}">
+                                    {% if gt.goggles_types_name == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gt.goggles_types_name}}</h5>
+                                    {% endif %}
+                                </td>
+                                {% endif %}
+                                {% endfor %}
+
+                                <td title="Name = {{gv.goggles_name}}">
+                                    {% if gv.goggles_name == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_name}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Price = ₹{{gv.goggles_price}}">
+                                    {% if gv.goggles_price == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">
+                                        <script>
+                                            document.write("₹", numberWithCommas({{ gv.goggles_price }}))
+                                        </script>
+                                    </h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Discount = ₹{{gv.goggles_discount}}">
+                                    {% if gv.goggles_discount == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">
+                                        <script>
+                                            document.write(numberWithCommas({{ gv.goggles_discount }}), "%")
+                                        </script>
+                                    </h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Gender = {{gv.goggles_gender}}">
+                                    {% if gv.goggles_gender == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_gender}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Modal Name = {{gv.goggles_model_name}}">
+                                    {% if gv.goggles_model_name == '' %}
+                                    <h5 style="width: 110px !important;">
+                                        -
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 110px !important;">
+                                        {{gv.goggles_model_name}}
+                                    </h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Color = {{gv.goggles_color}}">
+                                    {% if gv.goggles_color == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_color}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Size = {{gv.goggles_size}}">
+                                    {% if gv.goggles_size == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_size}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Width = {{gv.goggles_width}}">
+                                    {% if gv.goggles_width == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_width}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Height = {{gv.goggles_height}}">
+                                    {% if gv.goggles_height == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_height}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Weight = {{gv.goggles_weight}}">
+                                    {% if gv.goggles_weight == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_weight}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Material = {{gv.goggles_material}}">
+                                    {% if gv.goggles_material == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_material}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Warranty = {{gv.goggles_warranty}}">
+                                    {% if gv.goggles_warranty == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_warranty}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Shape = {{gv.goggles_shape}}">
+                                    {% if gv.goggles_shape == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_shape}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Review = {{gv.goggles_review}}">
+                                    {% if gv.goggles_review == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_review}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Quantity = {{gv.goggles_quantity}}">
+                                    {% if gv.goggles_quantity == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">{{gv.goggles_quantity}}</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 1 = {{gv.goggles_img1}}">
+                                    {% if gv.goggles_img1 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img1}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 2 = {{gv.goggles_img2}}">
+                                    {% if gv.goggles_img2 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img2}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 3 = {{gv.goggles_img3}}">
+                                    {% if gv.goggles_img3 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img3}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 4 = {{gv.goggles_img4}}">
+                                    {% if gv.goggles_img4 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img4}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 5 = {{gv.goggles_img5}}">
+                                    {% if gv.goggles_img5 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img5}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 6 = {{gv.goggles_img6}}">
+                                    {% if gv.goggles_img6 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img6}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 7 = {{gv.goggles_img7}}">
+                                    {% if gv.goggles_img7 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img7}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 8 = {{gv.goggles_img8}}">
+                                    {% if gv.goggles_img8 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img8}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 9 = {{gv.goggles_img9}}">
+                                    {% if gv.goggles_img9 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img9}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Image 10 = {{gv.goggles_img10}}">
+                                    {% if gv.goggles_img10 != '' %}
+                                    <h5 style="width: 100px !important;">
+                                        <img src="/Images/{{gv.goggles_img10}}" alt="{{gv.goggles_name}} Image"
+                                            class="d-flex justify-content-center align-items-center" width="100"
+                                            height="100">
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="Informations = {{gv.goggles_informations}}">
+                                    {% if gv.goggles_informations == '' %}
+                                    <h5 style="width: 500px !important;">
+                                        -
+                                    </h5>
+                                    {% else %}
+                                    <h5 style="width: 500px !important;">
+                                        {{gv.goggles_informations}}
+                                    </h5>
+                                    {% endif %}
+                                </td>
+
+                                <td title="DateTime = {{gv.joind_date}} {{gv.joind_time}}">
+                                    {% if gv.joind_date == '' and gv.joind_time == '' %}
+                                    <h5 style="width: 100px !important;">-</h5>
+                                    {% else %}
+                                    <h5 style="width: 100px !important;">
+                                        {{gv.joind_date}}
+                                        {{gv.joind_time}}
+                                    </h5>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="text-decoration-none text-dark rounded-1 me-2 bg-white w-100 shadow-sm p-3 mb-5 bg-body"
+        id="add_goggles_form" style="border-top: 3px solid #0000ff75 !important;">
+        <div class="modal-header justify-content-center">
+            <h4 class="modal-title text-uppercase" id="addcetebryLabel">ADD Goggle</h4>
+        </div>
+        <hr>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <div class="col-3">
+                    {{goggles_form.goggles_id}}
+                </div>
+                <div class="col-2">
+                    <select class="form-select form-select-sm" id="id_goggles_gender" name="goggles_gender"
+                        aria-label=".form-select-sm example" style="font-size: 19px !important;">
+                        <option selected>Gender</option>
+                        <option value="All">All</option>
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="Kids">Kids</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <select class="form-select form-select-sm" id="id_goggles_types_id" name="goggles_types_id"
+                        aria-label=".form-select-sm example" style="font-size: 19px !important;" required>
+                        <option selected>Type</option>
+                        {% for gt in goggles_type %}
+                        <option value="{{gt.goggles_types_id}}">{{gt.goggles_types_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-2">
+                    <select class="form-select form-select-sm" id="id_goggles_brand_id" name="goggles_brand_id"
+                        aria-label=".form-select-sm example" style="font-size: 19px !important;" required>
+                        <option selected>Brand</option>
+                        {% for bg in goggles_brand %}
+                        <option value="{{bg.goggles_brand_id}}">{{bg.goggles_brand_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-2">
+                    <select class="form-select form-select-sm" id="id_is_active" name="is_active"
+                        aria-label=".form-select-sm example" style="font-size: 19px !important;" required>
+                        <option value="True" selected>True</option>
+                        <option value="False">False</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <div class="col-3">
+                    {{goggles_form.goggles_name}}
+                </div>
+                <div class="col-3">
+                    {{ goggles_form.goggles_font_img }}
+                </div>
+                <img src="#" alt="" class="col" id="blah" style="width: 0 !important;max-width: 200px !important;">
+                <script>
+                    id_goggles_font_img.onchange = evt => {
+                        const [file] = id_goggles_font_img.files
+                        if (file) {
+                            blah.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <div class="col-3">
+                    {{goggles_form.goggles_price}}
+                </div>
+
+                <div class="col-3">
+                    {{goggles_form.goggles_discount}}
+                </div>
+
+                <div class="col-4">
+                    {{goggles_form.goggles_model_name}}
+                </div>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <div class="col-3">
+                    {{goggles_form.goggles_color}}
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_size}}
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_width}}
+                </div>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <div class="col-3">
+                    {{goggles_form.goggles_height}}
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_weight}}
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_material}}
+                </div>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <div class="col-3">
+                    {{goggles_form.goggles_warranty}}
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_shape}}
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_quantity}}
+                </div>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <img src="#" alt="" class="col" id="blah1" style="width: 0 !important;max-width: 252px !important;">
+                <img src="#" alt="" class="col" id="blah2" style="width: 0 !important;max-width: 252px !important;">
+                <img src="#" alt="" class="col" id="blah3" style="width: 0 !important;max-width: 252px !important;">
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <div class="col-3">
+                    {{goggles_form.goggles_img1}}
+                    <script>
+                        id_goggles_img1.onchange = evt => {
+                            const [file] = id_goggles_img1.files
+                            if (file) {
+                                blah1.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_img2}}
+                    <script>
+                        id_goggles_img2.onchange = evt => {
+                            const [file] = id_goggles_img2.files
+                            if (file) {
+                                blah2.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_img3}}
+                    <script>
+                        id_goggles_img3.onchange = evt => {
+                            const [file] = id_goggles_img3.files
+                            if (file) {
+                                blah3.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <img src="#" alt="" class="col" id="blah4" style="width: 0 !important;max-width: 252px !important;">
+                <img src="#" alt="" class="col" id="blah5" style="width: 0 !important;max-width: 252px !important;">
+                <img src="#" alt="" class="col" id="blah6" style="width: 0 !important;max-width: 252px !important;">
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <div class="col-3">
+                    {{goggles_form.goggles_img4}}
+                    <script>
+                        id_goggles_img4.onchange = evt => {
+                            const [file] = id_goggles_img4.files
+                            if (file) {
+                                blah4.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_img5}}
+                    <script>
+                        id_goggles_img5.onchange = evt => {
+                            const [file] = id_goggles_img5.files
+                            if (file) {
+                                blah5.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_img6}}
+                    <script>
+                        id_goggles_img6.onchange = evt => {
+                            const [file] = id_goggles_img6.files
+                            if (file) {
+                                blah6.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <img src="#" alt="" class="col" id="blah7" style="width: 0 !important;max-width: 252px !important;">
+                <img src="#" alt="" class="col" id="blah8" style="width: 0 !important;max-width: 252px !important;">
+                <img src="#" alt="" class="col" id="blah9" style="width: 0 !important;max-width: 252px !important;">
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <div class="col-3">
+                    {{goggles_form.goggles_img7}}
+                    <script>
+                        id_goggles_img7.onchange = evt => {
+                            const [file] = id_goggles_img7.files
+                            if (file) {
+                                blah7.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_img8}}
+                    <script>
+                        id_goggles_img8.onchange = evt => {
+                            const [file] = id_goggles_img8.files
+                            if (file) {
+                                blah8.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="col-3">
+                    {{goggles_form.goggles_img9}}
+                    <script>
+                        id_goggles_img9.onchange = evt => {
+                            const [file] = id_goggles_img9.files
+                            if (file) {
+                                blah9.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start align-items-center">
+                <img src="#" alt="" class="col" id="blah10" style="width: 0 !important;max-width: 252px !important;">
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-start">
+                <div class="col-3">
+                    {{goggles_form.goggles_img10}}
+                    <script>
+                        id_goggles_img10.onchange = evt => {
+                            const [file] = id_goggles_img10.files
+                            if (file) {
+                                blah10.src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </div>
+
+                <div class="col-6">
+                    {{goggles_form.goggles_informations}}
+                </div>
+            </div>
+
+            <div class="mb-3 d-none">
+                <input type="text" class="form-control text-black" value="{{ datetime|date:'Y-m-d' }}" name="joind_date"
+                    id="id_joind_date">
+            </div>
+
+            <div class="mb-3 d-none">
+                <input type="text" class="form-control text-black" value="{{ datetime|time:'G:i' }}" name="joind_time"
+                    id="id_joind_time">
+            </div>
+
+            <div class="mb-3 col-9">
+                <hr>
+            </div>
+
+            <div class="mb-3 row d-flex justify-content-left align-items-center" id="button">
+                <div class="col-6">
+                    <button type="submit" class="btn btn-primary w-100 rounded-2 fs-4" name="submit" value="submit"
+                        style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">ADD</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="position-fixed translate-middle-x" style="bottom: 5% !important; left: 60% !important;" id="add">
+        <a href="" class="btn rounded-circle"
+            style="background: rgba(0, 0, 0, 0.665) !important;box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">
+            <i class="fa fa-plus fs-1 p-1 text-white"></i>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

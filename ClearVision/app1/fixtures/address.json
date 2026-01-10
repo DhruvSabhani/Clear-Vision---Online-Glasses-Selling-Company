@@ -1,0 +1,19 @@
+[
+    {
+        "model": "app1.Address",
+        "pk": 1,
+        "fields": {
+            "userid": "1",
+            "full_name": "Sabhani Dhruv R.",
+            "useremail": "dhruv10@gmail.com",
+            "house_no": "292",
+            "colony_name": "Patel Sheri",
+            "city_name": "Rajasitapur",
+            "pincode": "363320",
+            "state": "Gujarat",
+            "country": "India",
+            "joind_date": "2024-10-14",
+            "joind_time": "18:56:28"
+        }
+    }
+]

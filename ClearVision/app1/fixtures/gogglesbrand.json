@@ -1,0 +1,236 @@
+[
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 1,
+        "fields": {
+            "goggles_brand_id": "1",
+            "is_active": "True",
+            "goggles_brand_img": "RayBan_brand.png",
+            "goggles_brand_name": "Ray Ban",
+            "goggles_brand_informations": "Ray-Ban is a brand of luxury sunglasses and eyeglasses created in 1936 by Bausch & Lomb. The brand is best known for its Wayfarer and Aviator lines of sunglasses. In 1999, Bausch & Lomb sold the brand to Italian eyewear conglomerate Luxottica Group for a reported $640 million.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 2,
+        "fields": {
+            "goggles_brand_id": "2",
+            "is_active": "True",
+            "goggles_brand_img": "Oakley_brand.png",
+            "goggles_brand_name": "Oakley",
+            "goggles_brand_informations": "Oakley:Top 10 Sunglasses Brands in the World. Oakley is an American brand of sunglasses, sports equipment, and clothing. Founded in 1975",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 3,
+        "fields": {
+            "goggles_brand_id": "3",
+            "is_active": "True",
+            "goggles_brand_img": "Carrera_brand.webp",
+            "goggles_brand_name": "Carrera",
+            "goggles_brand_informations": "Carrera is a trademark belonging to Safilo Group S.p.A. that designs and produces sunglasses and sports eyewear. Founded in Austria in 1956, it now operates from Padova, Italy.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 4,
+        "fields": {
+            "goggles_brand_id": "4",
+            "is_active": "True",
+            "goggles_brand_img": "Fastrack_brand.png",
+            "goggles_brand_name": "Fastrack",
+            "goggles_brand_informations": "Fastrack is an Indian fashion accessory retail brand, launched in 1998 as a sub-brand of Titan Watches. In 2005, Fastrack was spun off as an independent brand targeting the urban youth and growing fashion industry in India. Fastrack began opening retail stores throughout the country.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 5,
+        "fields": {
+            "goggles_brand_id": "5",
+            "is_active": "True",
+            "goggles_brand_img": "Prada_brand.png",
+            "goggles_brand_name": "Prada",
+            "goggles_brand_informations": "Prada is an Italian luxury fashion house that produces different sunglasses in various styles and designs.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 6,
+        "fields": {
+            "goggles_brand_id": "6",
+            "is_active": "True",
+            "goggles_brand_img": "Gucci_brand.webp",
+            "goggles_brand_name": "Gucci",
+            "goggles_brand_informations": "Gucci is an Italian luxury brand that offers a wide range of sunglasses in various styles and designs.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 7,
+        "fields": {
+            "goggles_brand_id": "7",
+            "is_active": "True",
+            "goggles_brand_img": "Idee_brand.webp",
+            "goggles_brand_name": "IDEE",
+            "goggles_brand_informations": "IDEE. IDEE Eyewear is a contemporary eyewear brand that was launched in 2000 as one of the most fashionable sunglasses brand names.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 8,
+        "fields": {
+            "goggles_brand_id": "8",
+            "is_active": "True",
+            "goggles_brand_img": "Persol_brand.png",
+            "goggles_brand_name": "Persol",
+            "goggles_brand_informations": "Persol is an Italian brand of sunglasses and eyeglasses founded in 1917. It is known for its high-quality materials and craftsmanship.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 9,
+        "fields": {
+            "goggles_brand_id": "9",
+            "is_active": "True",
+            "goggles_brand_img": "CalvinKlein_brand.png",
+            "goggles_brand_name": "Calvin Klein",
+            "goggles_brand_informations": "Calvin Klein eyewear combines modern aesthetics with high-quality craftsmanship.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 10,
+        "fields": {
+            "goggles_brand_id": "10",
+            "is_active": "True",
+            "goggles_brand_img": "Polaroid_brand.png",
+            "goggles_brand_name": "Polaroid",
+            "goggles_brand_informations": "Polaroid. Established in 1937, Polaroid is a pioneering eyewear brand committed to making the world more colourful through sustainable choices.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 11,
+        "fields": {
+            "goggles_brand_id": "11",
+            "is_active": "True",
+            "goggles_brand_img": "VincentChase_brand.png",
+            "goggles_brand_name": "Vincent Chase",
+            "goggles_brand_informations": "Vincent Chase is an eyewear brand known for durability and affordability.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 12,
+        "fields": {
+            "goggles_brand_id": "12",
+            "is_active": "True",
+            "goggles_brand_img": "Burberry_brand.jpg",
+            "goggles_brand_name": "Burberry",
+            "goggles_brand_informations": "Burberry: Starting in 1856, Thomas Burberry created the Burberry eyewear brand in India as a luxurious brand.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 13,
+        "fields": {
+            "goggles_brand_id": "13",
+            "is_active": "True",
+            "goggles_brand_img": "Lenskart_brand.png",
+            "goggles_brand_name": "Lenskart",
+            "goggles_brand_informations": "Lenskart is an Indian multinational optical prescription eyewear retail chain, based in Gurugram. As of March 2023, Its manufacturing facility in New Delhi manufactures 3 lakh glasses a month. Lenskart is building an automated factory in Bhiwadi, Rajasthan, with an annual production capacity of 5 crore glasses",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 14,
+        "fields": {
+            "goggles_brand_id": "14",
+            "is_active": "True",
+            "goggles_brand_img": "Moscot_brand.png",
+            "goggles_brand_name": "Moscot",
+            "goggles_brand_informations": "Moscot. For over five generations, Moscot has outfitted discerning New Yorkers—along with an increasingly global customer base—with eyewear that'd make",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 15,
+        "fields": {
+            "goggles_brand_id": "15",
+            "is_active": "True",
+            "goggles_brand_img": "OliverPeoples_brand.png",
+            "goggles_brand_name": "Oliver Peoples",
+            "goggles_brand_informations": "Oliver Peoples. After beginning as a Hollywood brand in the 1980s, Oliver Peoples is still making waves in the fashion industry.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 16,
+        "fields": {
+            "goggles_brand_id": "16",
+            "is_active": "True",
+            "goggles_brand_img": "VogueEyewear_brand.png",
+            "goggles_brand_name": "Vogue Eyewear",
+            "goggles_brand_informations": "Carrera is a well-known eyewear brand established in 1956.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 17,
+        "fields": {
+            "goggles_brand_id": "17",
+            "is_active": "True",
+            "goggles_brand_img": "RandolphEngineering_brand.jpg",
+            "goggles_brand_name": "Randolph Engineering",
+            "goggles_brand_informations": "Randolph Engineering has been the prime aviator plug for the Department of Defense since the '80s.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    },
+    {
+        "model": "app1.Gogglesbrand",
+        "pk": 18,
+        "fields": {
+            "goggles_brand_id": "18",
+            "is_active": "True",
+            "goggles_brand_img": "Specsmakers_brand.jpg",
+            "goggles_brand_name": "Specsmakers",
+            "goggles_brand_informations": "Specsmakers claims to be a leader in crafting high-quality, comfortable, stylish, and affordable sunglasses, eyewear, and optical accessories.",
+            "joind_date": "2024-09-29",
+            "joind_time": "08:56:28"
+        }
+    }
+]

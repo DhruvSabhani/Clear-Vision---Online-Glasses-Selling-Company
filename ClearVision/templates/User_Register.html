@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Load Static Folder -->
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Web Icon Link -->
+    <link rel="icon" href="{% static 'Images/logo-no-background.png' %}" type="image/x-icon" />
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="{% static 'CSS/signup_login.css' %}" />
+    <!-- Fontwesome Icon Link -->
+    <link rel="stylesheet" href="{% static 'Resources/Fontawesome/css/all.min.css' %}" />
+    <!-- Bootstrap CSS Link -->
+    <link rel="stylesheet" href="{% static 'Resources/Bootstrap/css/bootstrap.min.css' %}" />
+    <!-- Bootstrap JS Link -->
+    <script src="{% static 'Resources/Bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <title>Sign Up - Clear Vision</title>
+  </head>
+
+  <body>
+    <section class="d-flex justify-content-center align-items-center">
+      <div class="row container-xl p-0 m-0">
+        <div class="col bsb-tpl-bg-lotion" id="first-col">
+          <div class="p-md-4 p-xl-5">
+            <div class="row p-3">
+              <div class="col d-flex justify-content-center align-items-center">
+                <a href="/"><img src="{% static 'Images\logo-no-background.png' %}" alt="Clear Vision Logo" class="" width="300" /></a>
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-7 rounded-5 bg-white shadow-sm">
+                <div class="text-center m-3">
+                  <h3 class="text-black">Sign Up</h3>
+                  <p>Welcome back! Please enter your details</p>
+                </div>
+                {% include 'alert.html' %}
+                <form action="" method="POST" class="p-2 m-2">
+                  {% csrf_token %}
+
+                  <div class="row mb-3">
+                    <div class="col">
+                      <label for="name_register" class="form-label"><i class="fa-solid fa-user"></i>&nbsp;Username</label>
+                      <input type="text" class="form-control text-black" id="name_register" name="name_register" placeholder="Enter your username" />
+                    </div>
+                    <div class="col">
+                      <label for="phone_register" class="form-label"><i class="fa-solid fa-phone"></i>&nbsp;Phone Number</label>
+                      <input type="number" class="form-control text-black" id="phone_register" name="phone_register" placeholder="Enter your phone no." />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col">
+                      <label class="form-label me-2"><i class="fa-solid fa-person-half-dress"></i>&nbsp;Gender</label>
+                      <br />
+                      <input class="form-check-input" type="radio" name="gender_register" id="male" value="Male" checked />
+                      <label class="form-check-label me-2" for="male"><i class="fa-solid fa-person"></i>Male</label>
+                      <input class="form-check-input" type="radio" name="gender_register" id="female" value="Female" />
+                      <label class="form-check-label me-2" for="female"><i class="fa-solid fa-person-dress"></i>Female</label>
+                      <input class="form-check-input" type="radio" name="gender_register" id="other" value="Other" />
+                      <label class="form-check-label me-2" for="other">Other</label>
+                    </div>
+                    <div class="col">
+                      <label for="birthday_register" class="form-label"><i class="fa-solid fa-cake-candles"></i>&nbsp;Birthday</label>
+                      <input type="date" class="form-control text-black" id="birthday_register" name="birthday_register" placeholder="Enter your birthday" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col">
+                      <label for="email_register" class="form-label"><i class="fa-solid fa-envelope"></i>&nbsp;Email</label>
+                      <input type="email" class="form-control text-black" id="email_register" name="email_register" placeholder="Enter your email id" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col">
+                      <label for="password_register" class="form-label"><i class="fa-solid fa-lock"></i>&nbsp;Password</label>
+                      <input type="text" class="form-control text-black" id="password_register" name="password_register" placeholder="Enter your password" />
+                    </div>
+                    <div class="col">
+                      <label for="confirm_password_register" class="form-label"><i class="fa-solid fa-lock"></i>&nbsp;Confirm Password</label>
+                      <input type="password" class="form-control text-black" id="confirm_password_register" name="confirm_password_register" placeholder="Enter your confirm password" />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3 d-none">
+                    <div class="col">
+                      <input type="text" class="form-control text-black" value="{{ datetime|date:'Y-m-d' }}" name="joind_date" id="joind_date" />
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control text-black" value="{{ datetime|time:'G:i a' }}" name="joind_time" id="joind_time" />
+                    </div>
+                  </div>
+
+                  <div class="col-12 mb-3">
+                    <div class="modal-footer d-flex justify-content-center align-items-center border-2">
+                      <button type="submit" class="btn btn-primary w-75" name="submit" value="submit">Sign Up</button>
+                    </div>
+                  </div>
+
+                  <div class="text-center">
+                    <p>
+                      Already have an account?<a href="/login/" class="link-primary text-decoration-none">&nbsp;Login now</a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

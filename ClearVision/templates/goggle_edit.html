@@ -1,0 +1,432 @@
+{% extends "admin_base.html" %}
+{% block body %}
+{% load static %}
+{% include "alert.html" %}
+
+{% for edit in goggle_edit %}
+<div class="p-2" id="goggleedit">
+    <div class="row d-flex justify-content-center align-items-end mb-4">
+        <button type="button"
+            class="btn rounded-circle border bg-white col-1 me-4 d-flex justify-content-center align-items-center"
+            style="width: 35px !important;height: 35px !important;position: relative !important;top: 3px !important;"
+            onclick="history.back()">
+            <i class="fa-solid fa-arrow-left fs-3"></i>
+        </button>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center text-uppercase border rounded-pill bg-white"
+            style="font-weight: 600 !important;">edit {{ edit.goggles_name }} Goggle
+        </div>
+
+        <div class="col progress rounded-pill mb-3 d-flex justify-content-center align-items-center"
+            style="height: 2px !important; background: #f0f0f0 !important;">
+        </div>
+    </div>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <div class="col-2">
+                <label for="id_goggles_id" style="color: #00000090 !important;">
+                    <h4>Goggles ID</h4>
+                </label>
+                {{goggles_form.goggles_id}}
+            </div>
+            <div class="col-2">
+                <label for="id_goggles_gender" style="color: #00000090 !important;">
+                    <h4>Goggle Gender</h4>
+                </label>
+                <select class="form-select form-select-sm" id="id_goggles_gender" name="goggles_gender"
+                    aria-label=".form-select-sm example" style="font-size: 19px !important;">
+                    <option value="{{edit.goggles_gender}}" selected>{{edit.goggles_gender}}</option>
+                    <option value="All">All</option>
+                    <option value="Men">Men</option>
+                    <option value="Women">Women</option>
+                    <option value="Kids">Kids</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label for="id_goggles_types_id" style="color: #00000090 !important;">
+                    <h4>Goggle Type</h4>
+                </label>
+                <select class="form-select form-select-sm" id="id_goggles_types_id" name="goggles_types_id"
+                    aria-label=".form-select-sm example" style="font-size: 19px !important;" required>
+                    <option value="{{edit.goggles_types_id}}" selected>
+                        {% for gt in goggles_type %}
+                        {% if edit.goggles_types_id == gt.goggles_types_id %}
+                        {{gt.goggles_types_name}}
+                        {% endif %}
+                        {% endfor %}
+                    </option>
+                    {% for gt in goggles_type %}
+                    <option value="{{gt.goggles_types_id}}">{{gt.goggles_types_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-2">
+                <label for="id_goggles_brand_id" style="color: #00000090 !important;">
+                    <h4>Goggle Brand</h4>
+                </label>
+                <select class="form-select form-select-sm" id="id_goggles_brand_id" name="goggles_brand_id"
+                    aria-label=".form-select-sm example" style="font-size: 19px !important;" required>
+                    <option value="{{edit.goggles_types_id}}" selected>
+                        {% for gb in goggles_brand %}
+                        {% if edit.goggles_brand_id == gb.goggles_brand_id %}
+                        {{gb.goggles_brand_name}}
+                        {% endif %}
+                        {% endfor %}
+                    </option>
+                    {% for gb in goggles_brand %}
+                    <option value="{{gb.goggles_brand_id}}">{{gb.goggles_brand_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-2">
+                <label for="id_is_active" style="color: #00000090 !important;">
+                    <h4>is active</h4>
+                </label>
+                <select class="form-select form-select-sm" id="id_is_active" name="is_active"
+                    aria-label=".form-select-sm example" style="font-size: 19px !important;" required>
+                    <option value="{{edit.is_active}}" selected>{{edit.is_active}}</option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <div class="col-3">
+                <label for="id_goggles_name" style="color: #00000090 !important;">
+                    <h4>Goggle Name</h4>
+                </label>
+                {{goggles_form.goggles_name}}
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_font_img" style="color: #00000090 !important;">
+                    <h4>Goggle Font Image</h4>
+                </label>
+                {{ goggles_form.goggles_font_img }}
+            </div>
+            <img src="/Images/{{ edit.goggles_font_img }}" alt="" class="col" id="blah"
+                style="width: 0 !important;max-width: 200px !important;">
+            <script>
+                id_goggles_font_img.onchange = evt => {
+                    const [file] = id_goggles_font_img.files
+                    if (file) {
+                        blah.src = URL.createObjectURL(file)
+                    }
+                }
+            </script>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <div class="col-3">
+                <label for="id_goggles_price" style="color: #00000090 !important;">
+                    <h4>Goggle Price('₹')</h4>
+                </label>
+                {{goggles_form.goggles_price}}
+            </div>
+
+            <div class="col-3">
+                <label for="id_goggles_discount" style="color: #00000090 !important;">
+                    <h4>Goggle Discount('%')</h4>
+                </label>
+                {{goggles_form.goggles_discount}}
+            </div>
+
+            <div class="col-4">
+                <label for="id_goggles_model_name" style="color: #00000090 !important;">
+                    <h4>Goggle Model</h4>
+                </label>
+                {{goggles_form.goggles_model_name}}
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <div class="col-3">
+                <label for="id_goggles_color" style="color: #00000090 !important;">
+                    <h4>Goggle Color</h4>
+                </label>
+                {{goggles_form.goggles_color}}
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_size" style="color: #00000090 !important;">
+                    <h4>Goggle Size</h4>
+                </label>
+                {{goggles_form.goggles_size}}
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_width" style="color: #00000090 !important;">
+                    <h4>Goggle Width</h4>
+                </label>
+                {{goggles_form.goggles_width}}
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <div class="col-3">
+                <label for="id_goggles_height" style="color: #00000090 !important;">
+                    <h4>Goggle Height</h4>
+                </label>
+                {{goggles_form.goggles_height}}
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_weight" style="color: #00000090 !important;">
+                    <h4>Goggle Weight</h4>
+                </label>
+                {{goggles_form.goggles_weight}}
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_material" style="color: #00000090 !important;">
+                    <h4>Goggle Material</h4>
+                </label>
+                {{goggles_form.goggles_material}}
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <div class="col-3">
+                <label for="id_goggles_warranty" style="color: #00000090 !important;">
+                    <h4>Goggle Warranty</h4>
+                </label>
+                {{goggles_form.goggles_warranty}}
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_shape" style="color: #00000090 !important;">
+                    <h4>Goggle Shape</h4>
+                </label>
+                {{goggles_form.goggles_shape}}
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_quantity" style="color: #00000090 !important;">
+                    <h4>Goggle Quantity</h4>
+                </label>
+                {{goggles_form.goggles_quantity}}
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <img src="/Images/{{ edit.goggles_img1 }}" alt="" class="col" id="blah1"
+                style="width: 0 !important;max-width: 252px !important;">
+            <img src="/Images/{{ edit.goggles_img2 }}" alt="" class="col" id="blah2"
+                style="width: 0 !important;max-width: 252px !important;">
+            <img src="/Images/{{ edit.goggles_img3 }}" alt="" class="col" id="blah3"
+                style="width: 0 !important;max-width: 252px !important;">
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <div class="col-3">
+                <label for="id_goggles_img1" style="color: #00000090 !important;">
+                    <h4>Goggle Image 1</h4>
+                </label>
+                {{goggles_form.goggles_img1}}
+                <script>
+                    id_goggles_img1.onchange = evt => {
+                        const [file] = id_goggles_img1.files
+                        if (file) {
+                            blah1.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_img2" style="color: #00000090 !important;">
+                    <h4>Goggle Image 2</h4>
+                </label>
+                {{goggles_form.goggles_img2}}
+                <script>
+                    id_goggles_img2.onchange = evt => {
+                        const [file] = id_goggles_img2.files
+                        if (file) {
+                            blah2.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_img3" style="color: #00000090 !important;">
+                    <h4>Goggle Image 3</h4>
+                </label>
+                {{goggles_form.goggles_img3}}
+                <script>
+                    id_goggles_img3.onchange = evt => {
+                        const [file] = id_goggles_img3.files
+                        if (file) {
+                            blah3.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <img src="/Images/{{ edit.goggles_img4 }}" alt="" class="col" id="blah4"
+                style="width: 0 !important;max-width: 252px !important;">
+            <img src="/Images/{{ edit.goggles_img5 }}" alt="" class="col" id="blah5"
+                style="width: 0 !important;max-width: 252px !important;">
+            <img src="/Images/{{ edit.goggles_img6 }}" alt="" class="col" id="blah6"
+                style="width: 0 !important;max-width: 252px !important;">
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <div class="col-3">
+                <label for="id_goggles_img4" style="color: #00000090 !important;">
+                    <h4>Goggle Image 4</h4>
+                </label>
+                {{goggles_form.goggles_img4}}
+                <script>
+                    id_goggles_img4.onchange = evt => {
+                        const [file] = id_goggles_img4.files
+                        if (file) {
+                            blah4.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_img5" style="color: #00000090 !important;">
+                    <h4>Goggle Image 5</h4>
+                </label>
+                {{goggles_form.goggles_img5}}
+                <script>
+                    id_goggles_img5.onchange = evt => {
+                        const [file] = id_goggles_img5.files
+                        if (file) {
+                            blah5.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_img6" style="color: #00000090 !important;">
+                    <h4>Goggle Image 6</h4>
+                </label>
+                {{goggles_form.goggles_img6}}
+                <script>
+                    id_goggles_img6.onchange = evt => {
+                        const [file] = id_goggles_img6.files
+                        if (file) {
+                            blah6.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <img src="/Images/{{ edit.goggles_img7 }}" alt="" class="col" id="blah7"
+                style="width: 0 !important;max-width: 252px !important;">
+            <img src="/Images/{{ edit.goggles_img8 }}" alt="" class="col" id="blah8"
+                style="width: 0 !important;max-width: 252px !important;">
+            <img src="/Images/{{ edit.goggles_img9 }}" alt="" class="col" id="blah9"
+                style="width: 0 !important;max-width: 252px !important;">
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <div class="col-3">
+                <label for="id_goggles_img7" style="color: #00000090 !important;">
+                    <h4>Goggle Image 7</h4>
+                </label>
+                {{goggles_form.goggles_img7}}
+                <script>
+                    id_goggles_img7.onchange = evt => {
+                        const [file] = id_goggles_img7.files
+                        if (file) {
+                            blah7.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_img8" style="color: #00000090 !important;">
+                    <h4>Goggle Image 8</h4>
+                </label>
+                {{goggles_form.goggles_img8}}
+                <script>
+                    id_goggles_img8.onchange = evt => {
+                        const [file] = id_goggles_img8.files
+                        if (file) {
+                            blah8.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+            <div class="col-3">
+                <label for="id_goggles_img9" style="color: #00000090 !important;">
+                    <h4>Goggle Image 9</h4>
+                </label>
+                {{goggles_form.goggles_img9}}
+                <script>
+                    id_goggles_img9.onchange = evt => {
+                        const [file] = id_goggles_img9.files
+                        if (file) {
+                            blah9.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start align-items-center">
+            <img src="/Images/{{ edit.goggles_img10 }}" alt="" class="col" id="blah10"
+                style="width: 0 !important;max-width: 252px !important;">
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-start">
+            <div class="col-3">
+                <label for="id_goggles_img10" style="color: #00000090 !important;">
+                    <h4>Goggle Image 10</h4>
+                </label>
+                {{goggles_form.goggles_img10}}
+                <script>
+                    id_goggles_img10.onchange = evt => {
+                        const [file] = id_goggles_img10.files
+                        if (file) {
+                            blah10.src = URL.createObjectURL(file)
+                        }
+                    }
+                </script>
+            </div>
+
+            <div class="col-6">
+                <label for="id_goggles_informations" style="color: #00000090 !important;">
+                    <h4>Goggle Information</h4>
+                </label>
+                {{goggles_form.goggles_informations}}
+            </div>
+        </div>
+
+        <div class="mb-3 d-none">
+            <input type="text" class="form-control text-black" value="{{ datetime|date:'Y-m-d' }}" name="joind_date"
+                id="id_joind_date">
+        </div>
+
+        <div class="mb-3 d-none">
+            <input type="text" class="form-control text-black" value="{{ datetime|time:'G:i' }}" name="joind_time"
+                id="id_joind_time">
+        </div>
+
+        <div class="mb-3 col-9">
+            <hr>
+        </div>
+
+        <div class="mb-3 row d-flex justify-content-left align-items-center" id="button">
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary w-100 rounded-2 fs-4" name="submit" value="submit"
+                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">Update</button>
+            </div>
+            <div class="col-3">
+                <a href="/add-product/" class="btn btn-secondary w-100 rounded-2 fs-4" name="submit"
+                    style="box-shadow: 0 2px 7px 0 rgba(0, 0, 0, .3) !important;">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endfor %}
+
+{% endblock %}
