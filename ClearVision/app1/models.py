@@ -36,16 +36,16 @@ STATE_CHOICE = (
 COUNTRY_CHOICE = (("India", "India"),)
 
 GENDER_CHOICE = (
-    ("Male", "Male"),
-    ("Female", "Female"),
-    ("Other", "Other"),
+    ("M", "Male"),
+    ("F", "Female"),
+    ("O", "Other"),
 )
 
 GOGGLES_GENDER = (
     ("All", "All"),
-    ("Men", "Men"),
-    ("Women", "Women"),
-    ("Kids", "Kids"),
+    ("M", "Men"),
+    ("W", "Women"),
+    ("K", "Kids"),
 )
 
 
@@ -53,10 +53,10 @@ class User(AbstractUser):
     id = models.BigAutoField(
         auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
     )
-    email = models.EmailField(verbose_name="Email Address", max_length=20, unique=True)
+    email = models.EmailField(verbose_name="Email Address", max_length=255, unique=True)
     phone_no = models.CharField(max_length=10, blank=True, verbose_name="Phone No")
     gender = models.CharField(
-        choices=GENDER_CHOICE, max_length=6, blank=True, verbose_name="Gender"
+        choices=GENDER_CHOICE, max_length=1, blank=True, verbose_name="Gender"
     )
     birthday = models.CharField(max_length=10, blank=True, verbose_name="Birthday")
     joind_date = models.CharField(max_length=10, blank=True, verbose_name="Joind Date")
@@ -71,12 +71,6 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
-    def has_perm(self, perm, obj=None):
-        return True
-
-    def has_module_perms(self, app_lebel):
-        return True
-
 
 class Gogglestype(models.Model):
     id = models.BigAutoField(
@@ -87,7 +81,7 @@ class Gogglestype(models.Model):
         max_length=10, blank=True, verbose_name="Goggles Types ID"
     )
     goggles_types_img = models.ImageField(
-        upload_to="", blank=True, verbose_name="Goggles Types Images"
+        upload_to="Images/", blank=True, verbose_name="Goggles Types Images"
     )
     goggles_types_name = models.CharField(
         max_length=25, blank=True, verbose_name="Goggles Types Name"
@@ -111,7 +105,7 @@ class Gogglesbrand(models.Model):
         max_length=10, blank=True, verbose_name="Goggles Brand ID"
     )
     goggles_brand_img = models.ImageField(
-        upload_to="", blank=True, verbose_name="Goggles Brand Images"
+        upload_to="Images/", blank=True, verbose_name="Goggles Brand Images"
     )
     goggles_brand_name = models.CharField(
         max_length=25, blank=True, verbose_name="Goggles Brand Name"
@@ -139,7 +133,7 @@ class Goggles(models.Model):
     )
     goggles_id = models.IntegerField()
     goggles_font_img = models.ImageField(
-        upload_to="", blank=True, verbose_name="Goggles Images"
+        upload_to="Images/", blank=True, verbose_name="Goggles Images"
     )
     goggles_name = models.CharField(
         max_length=50, blank=True, verbose_name="Goggles Name"
@@ -185,16 +179,36 @@ class Goggles(models.Model):
     goggles_quantity = models.CharField(
         max_length=25, blank=True, verbose_name="Goggles Quantity"
     )
-    goggles_img1 = models.ImageField(upload_to="", blank=True, verbose_name="Image 1")
-    goggles_img2 = models.ImageField(upload_to="", blank=True, verbose_name="Image 2")
-    goggles_img3 = models.ImageField(upload_to="", blank=True, verbose_name="Image 3")
-    goggles_img4 = models.ImageField(upload_to="", blank=True, verbose_name="Image 4")
-    goggles_img5 = models.ImageField(upload_to="", blank=True, verbose_name="Image 5")
-    goggles_img6 = models.ImageField(upload_to="", blank=True, verbose_name="Image 6")
-    goggles_img7 = models.ImageField(upload_to="", blank=True, verbose_name="Image 7")
-    goggles_img8 = models.ImageField(upload_to="", blank=True, verbose_name="Image 8")
-    goggles_img9 = models.ImageField(upload_to="", blank=True, verbose_name="Image 9")
-    goggles_img10 = models.ImageField(upload_to="", blank=True, verbose_name="Image 10")
+    goggles_img1 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 1"
+    )
+    goggles_img2 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 2"
+    )
+    goggles_img3 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 3"
+    )
+    goggles_img4 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 4"
+    )
+    goggles_img5 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 5"
+    )
+    goggles_img6 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 6"
+    )
+    goggles_img7 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 7"
+    )
+    goggles_img8 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 8"
+    )
+    goggles_img9 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 9"
+    )
+    goggles_img10 = models.ImageField(
+        upload_to="Images/", blank=True, verbose_name="Image 10"
+    )
     joind_date = models.DateField()
     joind_time = models.TimeField()
 
@@ -225,6 +239,17 @@ class Address(models.Model):
     joind_date = models.DateField()
     joind_time = models.TimeField()
 
+    def fully_address(self):
+        parts = [
+            self.house_no,
+            self.colony_name,
+            self.city_name,
+            self.state,
+            self.pincode,
+            self.country,
+        ]
+        return ", ".join([p for p in parts if p])
+
     def __str__(self):
         return self.userid
 
@@ -237,8 +262,8 @@ class CustomerReviews(models.Model):
         max_length=10, blank=True, verbose_name="Goggles ID"
     )
     is_active = models.CharField(max_length=5, verbose_name="Is Active", blank=True)
-    photos = models.ImageField(upload_to="", blank=True, verbose_name="Photos")
-    videos = models.FileField(upload_to="", blank=True, verbose_name="Videos")
+    photos = models.ImageField(upload_to="Images/", blank=True, verbose_name="Photos")
+    videos = models.FileField(upload_to="Images/", blank=True, verbose_name="Videos")
     description = models.CharField(
         max_length=1000, blank=True, verbose_name="Description"
     )
@@ -261,7 +286,7 @@ class Coupons(models.Model):
         max_length=5, verbose_name="Home Screen is active", blank=True
     )
     coupon_font_img = models.ImageField(
-        upload_to="", blank=True, verbose_name="Font Image"
+        upload_to="Images/", blank=True, verbose_name="Font Image"
     )
     coupon_name = models.CharField(
         max_length=10, verbose_name="Coupons Name", blank=True
@@ -277,19 +302,19 @@ class Coupons(models.Model):
         max_length=1000, blank=True, verbose_name="Coupon Informations"
     )
     coupon_img_1 = models.ImageField(
-        upload_to="", blank=True, verbose_name="Coupon Image 1"
+        upload_to="Images/", blank=True, verbose_name="Coupon Image 1"
     )
     coupon_img_2 = models.ImageField(
-        upload_to="", blank=True, verbose_name="Coupon Image 2"
+        upload_to="Images/", blank=True, verbose_name="Coupon Image 2"
     )
     coupon_img_3 = models.ImageField(
-        upload_to="", blank=True, verbose_name="Coupon Image 3"
+        upload_to="Images/", blank=True, verbose_name="Coupon Image 3"
     )
     coupon_img_4 = models.ImageField(
-        upload_to="", blank=True, verbose_name="Coupon Image 4"
+        upload_to="Images/", blank=True, verbose_name="Coupon Image 4"
     )
     coupon_img_5 = models.ImageField(
-        upload_to="", blank=True, verbose_name="Coupon Image 5"
+        upload_to="Images/", blank=True, verbose_name="Coupon Image 5"
     )
     joind_date = models.DateField()
     joind_time = models.TimeField()
@@ -328,7 +353,7 @@ class Orders(models.Model):
         max_length=100, blank=True, verbose_name="Goggles Name"
     )
     item_image = models.ImageField(
-        upload_to="", blank=True, verbose_name="Goggles Image"
+        upload_to="Images/", blank=True, verbose_name="Goggles Image"
     )
     item_rating = models.IntegerField(verbose_name="Item Rating", blank=True)
     item_quantity = models.IntegerField(verbose_name="Item Quantity", blank=True)

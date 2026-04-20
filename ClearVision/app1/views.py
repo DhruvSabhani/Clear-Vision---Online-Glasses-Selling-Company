@@ -36,7 +36,16 @@ def Index(request):
     except:
         pass
 
+    user_email = request.user.email
+
     address = Address.objects.all()
+    # active=True User Addrees
+    active_address = Address.objects.filter(
+        userid=request.user.id, is_active=True
+    ).first()
+    # active_address = request.user.id
+    count_address = Address.objects.filter(useremail="dhruv10@gmail.com").count()
+
     goggles_brand = Gogglesbrand.objects.all()
     goggless = Goggles.objects.all()
     goggles_type = Gogglestype.objects.all()
@@ -79,6 +88,8 @@ def Index(request):
         "af": af,
         "userwarning": userwarning,
         "address": address,
+        "active_address": active_address,
+        "count_address": count_address,
         "goggles_brand": goggles_brand,
         "goggles_type": goggles_type,
         "goggles_coupons": goggles_coupons,

@@ -4,14 +4,14 @@
         "pk": 1,
         "fields": {
             "id": 1,
-            "username": "Dhruv",
-            "email": "dhruv10@gmail.com",
+            "username": "Admin",
+            "email": "admin@gmail.com",
             "phone_no": "1234567890",
             "gender": "Other",
-            "birthday": "10-01-2004",
-            "password": "dhruv10",
-            "joind_date": "2024-11-01",
-            "joind_time": "12:59:28"
+            "birthday": "10-10-1001",
+            "password": "admin",
+            "joind_date": "1001-10-10",
+            "joind_time": "10:10:10"
         }
     }
 ]
